@@ -1504,7 +1504,7 @@ h6 {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .back-to-top {
     bottom: 15px;
   }
@@ -1518,7 +1518,7 @@ h6 {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 400px) {
   #intro {
     height: auto;
     padding: 80px 0 60px 0;
