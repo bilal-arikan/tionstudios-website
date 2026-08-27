@@ -6,7 +6,8 @@ import App from './App'
 import LegalPage from './LegalPage'
 
 const page = document.body.dataset.page || 'home'
-const content = page === 'home' ? <App /> : <LegalPage type={page} />
+const legalPages = ['privacy', 'terms']
+const content = legalPages.includes(page) ? <LegalPage type={page} /> : <App page={page} />
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
