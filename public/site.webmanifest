@@ -1,11 +1,11 @@
 {
   "name": "TION Studios",
   "short_name": "TION",
-  "description": "Dijital ürün ve yazılım stüdyosu",
+  "description": "Web, mobil ve oyun geliştirme stüdyosu",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#071110",
-  "theme_color": "#071110",
+  "background_color": "#f5f8fd",
+  "theme_color": "#413e66",
   "icons": [
     {
       "src": "/apple-touch-icon.png",

@@ -7,9 +7,8 @@ export const games = [
     platform: 'iOS',
     status: 'App Store’da',
     image: '/images/projects/real-driver.jpg',
-    wideImage: '/images/projects/real-driver-action.jpg',
-    description:
-      'Şehir keşfi, araç kişiselleştirme ve sürüş hissini tek bir mobil deneyimde buluşturan açık dünya otomobil oyunu.',
+    wideImage: '/images/projects/real-driver.jpg',
+    description: 'Şehir ve sürüş simülasyonu.',
     focus: ['Açık dünya', '3D araçlar', 'Mobil performans'],
     storeUrl: 'https://apps.apple.com/us/app/real-driver-legend-of-the-city/id1607564621',
     featured: true,
@@ -22,8 +21,7 @@ export const games = [
     platform: 'Mobil',
     status: 'Stüdyo arşivi',
     image: '/images/projects/sea-treasure.jpg',
-    description:
-      'Korsan temalı düşük poligonlu bir dünyada koşu, yön bulma ve keşif mekaniklerini bir araya getiren mobil oyun.',
+    description: 'Korsan temalı mobil runner oyunu.',
     focus: ['Runner mekaniği', 'Low-poly dünya', 'Mobil oyun'],
   },
   {
@@ -34,8 +32,7 @@ export const games = [
     platform: 'Mobil',
     status: 'Geliştirme arşivi',
     image: '/images/projects/mice-company.jpg',
-    description:
-      'Renkli karakterleri ve erişilebilir oyun yapısını merkeze alan, karakter odaklı casual mobil oyun konsepti.',
+    description: 'Karakter odaklı casual mobil oyun projesi.',
     focus: ['Karakter tasarımı', 'Casual deneyim', 'Oyun konsepti'],
   },
   {
@@ -46,8 +43,7 @@ export const games = [
     platform: 'Mobil',
     status: 'Stüdyo arşivi',
     image: '/images/projects/neon.jpg',
-    description:
-      'Minimal bir görsel dil, hızlı kararlar ve refleks odaklı oynanış üzerine kurulan kompakt arcade deneyimi.',
+    description: 'Refleks odaklı arcade oyunu.',
     focus: ['Refleks', 'Minimal tasarım', 'Arcade döngüsü'],
   },
   {
@@ -58,8 +54,7 @@ export const games = [
     platform: 'Mobil',
     status: 'Stüdyo arşivi',
     image: '/images/projects/platforms.jpg',
-    description:
-      'Küp tabanlı 3D bir dünyada zamanlama, yön kontrolü ve platform hareketlerini birleştiren arcade çalışma.',
+    description: '3D platform ve arcade oyunu.',
     focus: ['3D platform', 'Zamanlama', 'Seviye tasarımı'],
   },
   {
@@ -70,8 +65,7 @@ export const games = [
     platform: 'Mobil',
     status: 'Stüdyo arşivi',
     image: '/images/projects/mountain-tires.jpg',
-    description:
-      'Arazi koşulları, denge ve fizik tabanlı tırmanış mekaniklerini odağına alan yandan görünümlü sürüş oyunu.',
+    description: 'Fizik tabanlı arazi sürüş oyunu.',
     focus: ['Araç fiziği', 'Arazi sürüşü', 'Arcade'],
   },
   {
@@ -82,8 +76,7 @@ export const games = [
     platform: 'Mobil',
     status: 'Stüdyo arşivi',
     image: '/images/projects/war-train.jpg',
-    description:
-      'Zırhlı tren yolculuğunu, çevre keşfini ve aksiyon öğelerini bir araya getiren mobil oyun projesi.',
+    description: 'Tren simülasyonu ve aksiyon oyunu.',
     focus: ['Tren simülasyonu', '3D çevre', 'Aksiyon'],
   },
 ]

@@ -9,6 +9,7 @@ TION Studios için React + Vite ile geliştirilen modern kurumsal web sitesi.
 - Lucide Icons
 - Manrope Variable Font
 - Saf CSS animasyonları ve responsive tasarım
+- İlk TION sitesinden korunan lacivert/cyan renk paleti, logo ve mağaza rozeti
 
 ## Kurulum
 

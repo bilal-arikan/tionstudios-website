@@ -41,32 +41,32 @@ const services = [
   {
     number: '01',
     icon: Palette,
-    title: 'Ürün Stratejisi & UX/UI',
-    text: 'Doğru problemi tanımlar, kullanıcı yolculuğunu sadeleştirir ve geliştirmeye hazır bir ürün sistemi tasarlarız.',
-    tags: ['Keşif', 'UX araştırma', 'UI sistemleri'],
+    title: 'Ürün Tasarımı',
+    text: 'Ürün kapsamı, kullanıcı akışları ve arayüz tasarımı.',
+    tags: ['Keşif', 'UX', 'UI'],
     accent: 'cyan',
   },
   {
     number: '02',
     icon: Globe2,
-    title: 'Web Uygulamaları',
-    text: 'Hızlı, erişilebilir ve ölçeklenebilir kurumsal sitelerden karmaşık SaaS platformlarına kadar web ürünleri geliştiririz.',
-    tags: ['React', 'SaaS', 'E-ticaret'],
+    title: 'Web Geliştirme',
+    text: 'Kurumsal siteler, web uygulamaları ve yönetim panelleri.',
+    tags: ['React', 'API', 'E-ticaret'],
     accent: 'violet',
   },
   {
     number: '03',
     icon: Smartphone,
     title: 'Mobil Uygulamalar',
-    text: 'iOS ve Android için tutarlı deneyime, güçlü performansa ve sürdürülebilir kod tabanına sahip uygulamalar üretiriz.',
-    tags: ['iOS & Android', 'Cross-platform', 'API'],
+    text: 'iOS ve Android için mobil uygulama geliştirme.',
+    tags: ['iOS', 'Android', 'Cross-platform'],
     accent: 'blue',
   },
   {
     number: '04',
     icon: Blocks,
     title: 'Özel Yazılım & Oyun',
-    text: 'İşinize özel yönetim sistemleri, entegrasyonlar ve etkileşimli oyun deneyimlerini uçtan uca hayata geçiririz.',
+    text: 'Özel iş yazılımları, entegrasyonlar ve Unity projeleri.',
     tags: ['Entegrasyon', 'Otomasyon', 'Unity'],
     accent: 'lime',
   },
@@ -75,27 +75,27 @@ const services = [
 const processSteps = [
   {
     number: '01',
-    title: 'Keşif & Strateji',
-    text: 'Hedefi, kullanıcıyı ve iş gereksinimlerini birlikte netleştirir; doğru kapsamı oluştururuz.',
-    output: 'Ürün kapsamı + yol haritası',
+    title: 'Kapsam',
+    text: 'Gereksinimleri ve öncelikleri belirleriz.',
+    output: 'Kapsam + plan',
   },
   {
     number: '02',
-    title: 'Tasarım & Prototip',
-    text: 'Akışları görünür hâle getirir, arayüzü tasarlar ve ürünü kod yazmadan önce doğrularız.',
-    output: 'Prototip + tasarım sistemi',
+    title: 'Tasarım',
+    text: 'Akışları ve arayüzü prototipleriz.',
+    output: 'Prototip',
   },
   {
     number: '03',
-    title: 'Geliştirme & Test',
-    text: 'Sprintler hâlinde geliştirir, çalışan sürümleri düzenli paylaşır ve kalite kontrollerini yürütürüz.',
-    output: 'Test edilmiş ürün sürümü',
+    title: 'Geliştirme',
+    text: 'Ürünü geliştirir ve test ederiz.',
+    output: 'Test sürümü',
   },
   {
     number: '04',
-    title: 'Yayın & İyileştirme',
-    text: 'Yayın sürecini yönetir; gerçek kullanım verileri ve geri bildirimlerle ürünü geliştirmeye devam ederiz.',
-    output: 'Canlı ürün + gelişim planı',
+    title: 'Yayın',
+    text: 'Ürünü yayınlar, gerektiğinde bakımını sürdürürüz.',
+    output: 'Canlı ürün',
   },
 ]
 
@@ -105,29 +105,24 @@ const technologyList = ['React', 'TypeScript', 'Node.js', 'Cloud', '.NET', 'Unit
 
 const faqs = [
   {
-    question: 'Hangi tür projelerde çalışıyorsunuz?',
-    answer:
-      'Web uygulamaları, mobil ürünler, şirket içi yönetim sistemleri, API ve üçüncü parti entegrasyonlar ile oyun projelerinde çalışıyoruz. Yeni bir ürünün sıfırdan geliştirilmesini de mevcut bir ürünün iyileştirilmesini de üstlenebiliriz.',
+    question: 'Hangi projelerde çalışıyorsunuz?',
+    answer: 'Web, mobil, özel yazılım ve oyun projelerinde çalışıyoruz.',
   },
   {
     question: 'Süreç nasıl başlıyor?',
-    answer:
-      'Kısa bir keşif görüşmesiyle hedeflerinizi ve mevcut durumunuzu dinliyoruz. Ardından kapsam, yaklaşım ve sonraki adımları içeren net bir çalışma planı hazırlıyoruz.',
+    answer: 'Kısa bir görüşmeden sonra kapsam ve çalışma planı hazırlanır.',
   },
   {
     question: 'Mevcut bir projeyi devralabilir misiniz?',
-    answer:
-      'Evet. Önce kod tabanı, mimari, tasarım ve iş ihtiyaçlarını inceleriz. Teknik riskleri görünür hâle getirip güvenli bir devir ve iyileştirme planı oluştururuz.',
+    answer: 'Evet. Önce kod ve tasarım yapısını inceler, ardından devir planı hazırlarız.',
   },
   {
     question: 'Yayın sonrasında destek veriyor musunuz?',
-    answer:
-      'Ürünün ihtiyacına göre bakım, performans iyileştirme, yeni özellik geliştirme ve teknik danışmanlık kapsamında birlikte çalışmaya devam edebiliriz.',
+    answer: 'İhtiyaca göre bakım, iyileştirme ve yeni özellik desteği veriyoruz.',
   },
   {
-    question: 'Proje bütçesi nasıl belirleniyor?',
-    answer:
-      'Bütçe; kapsam, teknik karmaşıklık, entegrasyonlar ve hedef takvime göre şekillenir. Keşif sonrasında öncelikleri ve teslim aşamalarını görünür kılan şeffaf bir teklif sunarız.',
+    question: 'Bütçe nasıl belirleniyor?',
+    answer: 'Bütçe; kapsam, teknik gereksinimler ve takvime göre belirlenir.',
   },
 ]
 
@@ -253,10 +248,6 @@ function Header({ currentPage = 'home' }) {
               </a>
             ))}
           </div>
-          <a className="button button--small nav-cta" href="/iletisim/" onClick={() => setMenuOpen(false)}>
-            Projenizi konuşalım
-            <ArrowUpRight size={16} />
-          </a>
           <div className="mobile-nav-meta">
             <a href="mailto:info@tionstudios.com">info@tionstudios.com</a>
             <span>İstanbul · Türkiye</span>
@@ -281,7 +272,7 @@ function Header({ currentPage = 'home' }) {
 
 function HeroVisual() {
   return (
-    <div className="hero-visual" aria-label="TION ürün geliştirme paneli görselleştirmesi">
+    <div className="hero-visual" aria-label="TION yazılım geliştirme paneli görselleştirmesi">
       <div className="hero-orbit hero-orbit--one" />
       <div className="hero-orbit hero-orbit--two" />
       <div className="build-window">
@@ -291,8 +282,8 @@ function HeroVisual() {
             <span />
             <span />
           </div>
-          <span className="window-address">studio.tion / build</span>
-          <span className="window-secure"><ShieldCheck size={13} /> Live</span>
+          <span className="window-address">tionstudios.com</span>
+          <span className="window-secure"><ShieldCheck size={13} /> Online</span>
         </div>
         <div className="window-body">
           <aside className="window-sidebar" aria-hidden="true">
@@ -306,16 +297,16 @@ function HeroVisual() {
           <div className="window-content">
             <div className="window-heading">
               <div>
-                <span className="micro-label">DIGITAL PRODUCT / 001</span>
-                <h3>Product cockpit</h3>
+                <span className="micro-label">TION STUDIOS</span>
+                <h3>Development</h3>
               </div>
-              <span className="status-pill"><span /> System ready</span>
+              <span className="status-pill"><span /> Ready</span>
             </div>
 
             <div className="metric-grid">
               <div className="metric-card metric-card--primary">
-                <span>Product flow</span>
-                <strong>Idea → Impact</strong>
+                <span>Services</span>
+                <strong>Web · Mobile · Game</strong>
                 <div className="flow-line">
                   <i />
                   <i />
@@ -324,34 +315,34 @@ function HeroVisual() {
                 </div>
               </div>
               <div className="metric-card">
-                <span>Current sprint</span>
-                <strong>Build 02</strong>
-                <small><CircleCheck size={13} /> On track</small>
+                <span>Process</span>
+                <strong>Design + Code</strong>
+                <small><CircleCheck size={13} /> Tested</small>
               </div>
             </div>
 
             <div className="code-panel">
               <div className="code-panel-head">
-                <span>product.tsx</span>
+                <span>services.ts</span>
                 <span>● ● ●</span>
               </div>
-              <div className="code-row"><em>01</em><code><b>const</b> product = <i>{'{'}</i></code></div>
-              <div className="code-row"><em>02</em><code>&nbsp;&nbsp;strategy: <span>&apos;clear&apos;</span>,</code></div>
-              <div className="code-row"><em>03</em><code>&nbsp;&nbsp;experience: <span>&apos;simple&apos;</span>,</code></div>
-              <div className="code-row"><em>04</em><code>&nbsp;&nbsp;technology: <span>&apos;scalable&apos;</span>,</code></div>
-              <div className="code-row"><em>05</em><code><i>{'}'}</i></code></div>
+              <div className="code-row"><em>01</em><code><b>const</b> services = <i>[</i></code></div>
+              <div className="code-row"><em>02</em><code>&nbsp;&nbsp;<span>&apos;web&apos;</span>,</code></div>
+              <div className="code-row"><em>03</em><code>&nbsp;&nbsp;<span>&apos;mobile&apos;</span>,</code></div>
+              <div className="code-row"><em>04</em><code>&nbsp;&nbsp;<span>&apos;game&apos;</span>,</code></div>
+              <div className="code-row"><em>05</em><code><i>]</i></code></div>
             </div>
           </div>
         </div>
       </div>
       <div className="floating-card floating-card--top">
         <span className="floating-icon"><Zap size={15} /></span>
-        <div><strong>Build complete</strong><small>Ready to ship</small></div>
+        <div><strong>Build & Test</strong><small>Web / Mobile</small></div>
         <CircleCheck size={18} />
       </div>
       <div className="floating-card floating-card--bottom">
         <div className="avatar-stack" aria-hidden="true"><span>UX</span><span>DEV</span><span>QA</span></div>
-        <div><strong>Tek ürün ekibi</strong><small>Stratejiden yayına</small></div>
+        <div><strong>Design + Code</strong><small>TION Studios</small></div>
       </div>
     </div>
   )
@@ -367,36 +358,36 @@ function Hero() {
         <div className="hero-copy">
           <div className="eyebrow hero-eyebrow">
             <span className="eyebrow-dot" />
-            İstanbul’dan dijital ürünler
+            TION Studios · İstanbul
           </div>
           <h1>
-            Fikrinizi <span className="text-accent">çalışan</span> bir dijital ürüne dönüştürüyoruz.
+            Web, mobil ve <span className="text-accent">oyun</span> geliştiriyoruz.
           </h1>
           <p className="hero-description">
-            Strateji, tasarım ve yazılımı tek ekipte buluşturuyor; web, mobil ve özel yazılım ürünlerini fikirden yayına taşıyoruz.
+            TION Studios, yazılım ve oyun geliştirme stüdyosudur.
           </p>
           <div className="hero-actions">
-            <a className="button" href="/iletisim/">
-              Projenizi anlatın
+            <a className="button" href="/hizmetler/">
+              Hizmetler
               <ArrowRight size={18} />
             </a>
             <a className="text-link" href="/oyunlar/">
-              Seçili işleri incele
+              Oyunlar
               <ArrowUpRight size={17} />
             </a>
           </div>
           <div className="hero-proof" aria-label="Hizmet kapsamı">
-            <div><Check size={15} /><span>Uçtan uca ürün geliştirme</span></div>
-            <div><Check size={15} /><span>Şeffaf ve çevik süreç</span></div>
-            <div><Check size={15} /><span>Sürdürülebilir teknoloji</span></div>
+            <div><Check size={15} /><span>Web geliştirme</span></div>
+            <div><Check size={15} /><span>Mobil uygulama</span></div>
+            <div><Check size={15} /><span>Oyun geliştirme</span></div>
           </div>
         </div>
         <HeroVisual />
       </div>
       <div className="container hero-bottom">
-        <span className="hero-bottom-label">Tasarım + mühendislik</span>
+        <span className="hero-bottom-label">TION Studios</span>
         <div className="hero-bottom-line" />
-        <a href="#yaklasim">Aşağı kaydır <span>↓</span></a>
+        <a href="#hizmetler">Aşağı kaydır <span>↓</span></a>
       </div>
     </section>
   )
@@ -435,11 +426,11 @@ function Services() {
         <Reveal>
           <div className="section-intro-grid">
             <SectionHeading
-              eyebrow="Neler yapıyoruz"
-              title={<>Ürünün ihtiyaç duyduğu <span className="text-accent">tek ekip.</span></>}
+              eyebrow="Hizmetler"
+              title={<>Çalışma <span className="text-accent">alanları.</span></>}
             />
             <p className="section-lead">
-              Sadece kod yazmıyoruz. İş hedefini, kullanıcı deneyimini ve teknik sürdürülebilirliği aynı masada çözüyoruz.
+              Web, mobil, özel yazılım ve oyun geliştirme.
             </p>
           </div>
         </Reveal>
@@ -460,7 +451,7 @@ function Services() {
                     {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
                   </div>
                   <a href="/iletisim/" aria-label={`${service.title} hakkında konuşalım`}>
-                    Birlikte çalışalım <ArrowUpRight size={17} />
+                    İletişim <ArrowUpRight size={17} />
                   </a>
                 </article>
               </Reveal>
@@ -479,30 +470,30 @@ function FeaturedProject() {
         <div className="featured-project-image">
           <img src="/images/projects/real-driver.jpg" alt="Real Driver: Legend of the City oyunundan kırmızı spor otomobil" />
           <div className="image-shade" />
-          <span className="project-index">01 / 04</span>
+          <span className="project-index">01 / 07</span>
           <span className="project-platform">App Store · iOS</span>
         </div>
         <div className="featured-project-content">
           <div className="featured-project-head">
-            <span className="project-kicker"><span /> TION ORIGINALS</span>
-            <span className="published-pill">Yayınlanmış ürün</span>
+            <span className="project-kicker"><span /> TION OYUNLARI</span>
+            <span className="published-pill">Yayında</span>
           </div>
           <div>
             <h3>Real Driver</h3>
             <p className="project-subtitle">Legend of the City</p>
           </div>
           <p className="project-description">
-            Mobil platformlar için geliştirilen şehir ve sürüş simülasyonu. Oyun mekaniğinden 3D dünyaya, mobil performanstan mağaza yayınına uzanan uçtan uca bir ürün deneyimi.
+            Mobil şehir ve sürüş simülasyonu.
           </p>
           <div className="project-capabilities">
-            <span>Ürün geliştirme</span>
-            <span>Oyun tasarımı</span>
-            <span>3D deneyim</span>
-            <span>Mobil yayın</span>
+            <span>Mobil</span>
+            <span>3D</span>
+            <span>Sürüş</span>
+            <span>Unity</span>
           </div>
           <div className="project-actions">
             <a href="https://apps.apple.com/us/app/real-driver-legend-of-the-city/id1607564621" target="_blank" rel="noreferrer">
-              App Store <ExternalLink size={15} />
+              <img className="store-badge" src="/images/badges/app-store.png" alt="App Store’da görüntüle" />
             </a>
           </div>
         </div>
@@ -519,12 +510,12 @@ function Projects() {
         <Reveal>
           <div className="section-intro-grid section-intro-grid--projects">
             <SectionHeading
-              eyebrow="Seçili işler"
-              title={<>Üretilen fikirler,<br /><span className="text-accent">gerçek deneyimler.</span></>}
+              eyebrow="Oyunlar"
+              title={<>TION <span className="text-accent">oyunları.</span></>}
             />
             <div className="section-side-copy">
-              <p>Ürün üretme kültürümüz oyun dünyasında başladı. Bugün aynı merakı ve teknik disiplini farklı dijital deneyimlere taşıyoruz.</p>
-              <span><Gamepad2 size={16} /> TION ürün arşivi</span>
+              <p>Yedi mobil oyun projesi.</p>
+              <span><Gamepad2 size={16} /> Oyun arşivi</span>
             </div>
           </div>
         </Reveal>
@@ -550,7 +541,7 @@ function Projects() {
         </div>
         <Reveal className="projects-all-row">
           <a className="button button--outline-light" href="/oyunlar/">
-            7 oyunun tamamını incele <ArrowRight size={17} />
+            Tüm oyunlar <ArrowRight size={17} />
           </a>
         </Reveal>
       </div>
@@ -564,9 +555,9 @@ function Process() {
       <div className="container">
         <Reveal>
           <SectionHeading
-            eyebrow="Çalışma şeklimiz"
-            title={<>Belirsizliği azaltan,<br /><span className="text-accent">ilerlemeyi görünür kılan</span> süreç.</>}
-            description="Her aşamada ne yaptığımızı, neden yaptığımızı ve sırada ne olduğunu bilirsiniz."
+            eyebrow="Süreç"
+            title={<>Çalışma <span className="text-accent">süreci.</span></>}
+            description="Kapsam, tasarım, geliştirme ve yayın."
             align="center"
           />
         </Reveal>
@@ -595,23 +586,23 @@ function About() {
   const principles = [
     {
       icon: Layers3,
-      title: 'Bütünsel ürün bakışı',
-      text: 'Tasarım ve teknoloji kararlarını iş hedefinden ayrı düşünmeyiz.',
+      title: 'Tasarım ve geliştirme',
+      text: 'Tasarım ve yazılım aynı süreçte yürütülür.',
     },
     {
       icon: Code2,
-      title: 'Sürdürülebilir mühendislik',
-      text: 'Bugünü çözerken ürünün yarın büyüyeceği alanı da planlarız.',
+      title: 'Teknik yapı',
+      text: 'Bakımı yapılabilir sistemler geliştiririz.',
     },
     {
       icon: MonitorSmartphone,
-      title: 'Sürekli görünürlük',
-      text: 'Çalışan sürümleri ve kararları süreç boyunca açıkça paylaşırız.',
+      title: 'Düzenli paylaşım',
+      text: 'Çalışan sürümleri süreç boyunca paylaşırız.',
     },
     {
       icon: ShieldCheck,
-      title: 'Uzun vadeli sahiplenme',
-      text: 'Teslimi bir bitiş değil, ürünün yeni döneminin başlangıcı sayarız.',
+      title: 'Destek',
+      text: 'Yayın sonrasında bakım desteği verebiliriz.',
     },
   ]
 
@@ -619,12 +610,12 @@ function About() {
     <section className="section about-section" id="hakkimizda">
       <div className="container about-grid">
         <Reveal className="about-sticky">
-          <span className="eyebrow"><Sparkles size={14} />Neden TION?</span>
-          <h2>Ajans çevikliği.<br />Ürün ekibi <span className="text-accent">sahiplenmesi.</span></h2>
+          <span className="eyebrow"><Sparkles size={14} />Hakkımızda</span>
+          <h2>TION <span className="text-accent">Studios.</span></h2>
           <p>
-            TION Studios, İstanbul merkezli bir dijital ürün ve yazılım stüdyosu. Karmaşık fikirleri anlaşılır deneyimlere ve sağlam ürünlere dönüştürmek için tasarımcı ve geliştirici bakışını bir araya getiriyoruz.
+            İstanbul merkezli yazılım ve oyun geliştirme stüdyosuyuz.
           </p>
-          <div className="location-chip"><MapPin size={16} />41.0082° N · 28.9784° E</div>
+          <div className="location-chip"><MapPin size={16} />İstanbul, Türkiye</div>
         </Reveal>
 
         <div className="principles-grid">
@@ -655,9 +646,8 @@ function Faq() {
       <div className="container faq-grid">
         <Reveal>
           <SectionHeading
-            eyebrow="Merak edilenler"
-            title={<>Başlamadan önce<br /><span className="text-accent">kısa cevaplar.</span></>}
-            description="Aklınızdaki başka bir soru için bize doğrudan yazabilirsiniz."
+            eyebrow="SSS"
+            title={<>Sık sorulan <span className="text-accent">sorular.</span></>}
           />
           <a className="text-link faq-mail-link" href="mailto:info@tionstudios.com">
             info@tionstudios.com <ArrowUpRight size={16} />
@@ -704,7 +694,6 @@ function Contact() {
       `E-posta: ${data.get('email')}`,
       `Şirket: ${data.get('company') || '-'}`,
       `Proje tipi: ${data.get('projectType')}`,
-      `Bütçe aralığı: ${data.get('budget')}`,
       '',
       'Proje hakkında:',
       data.get('message'),
@@ -719,9 +708,9 @@ function Contact() {
       <div className="contact-glow" aria-hidden="true" />
       <div className="container contact-grid">
         <Reveal className="contact-copy">
-          <span className="eyebrow eyebrow--light"><Sparkles size={14} />Bir fikriniz mi var?</span>
-          <h2>Bir sonraki dijital ürününüzü <span>birlikte tasarlayalım.</span></h2>
-          <p>İhtiyacınızı birkaç cümleyle anlatın. Doğru yaklaşımı, kapsamı ve ilk adımı birlikte netleştirelim.</p>
+          <span className="eyebrow eyebrow--light"><Sparkles size={14} />İletişim</span>
+          <h2>Projeniz için <span>bize yazın.</span></h2>
+          <p>Kısa bir bilgi bırakın veya doğrudan e-posta gönderin.</p>
           <div className="contact-direct">
             <a href="mailto:info@tionstudios.com"><span><Mail size={18} /></span><div><small>Doğrudan yazın</small><strong>info@tionstudios.com</strong></div></a>
             <div><span><MapPin size={18} /></span><div><small>Konum</small><strong>İstanbul, Türkiye</strong></div></div>
@@ -730,8 +719,8 @@ function Contact() {
 
         <Reveal className="contact-form-wrap" delay={100}>
           <div className="form-heading">
-            <div><span>PROJECT BRIEF</span><strong>Projenizi anlatın</strong></div>
-            <span className="form-step">01 — 05</span>
+            <div><span>İLETİŞİM</span><strong>Proje bilgileri</strong></div>
+            <span className="form-step">E-POSTA</span>
           </div>
           <form className="contact-form" onSubmit={handleSubmit} onChange={() => setSubmitted(false)}>
             <div className="form-row">
@@ -748,101 +737,30 @@ function Contact() {
               <span>Şirket / marka</span>
               <input name="company" type="text" placeholder="Varsa şirketinizin adı" autoComplete="organization" maxLength={120} />
             </label>
-            <div className="form-row">
-              <label>
-                <span>Proje tipi *</span>
-                <select name="projectType" defaultValue="" required>
-                  <option value="" disabled>Seçiniz</option>
-                  <option>Web uygulaması</option>
-                  <option>Mobil uygulama</option>
-                  <option>Özel yazılım</option>
-                  <option>Oyun projesi</option>
-                  <option>UX/UI tasarım</option>
-                  <option>Diğer</option>
-                </select>
-              </label>
-              <label>
-                <span>Yaklaşık bütçe *</span>
-                <select name="budget" defaultValue="" required>
-                  <option value="" disabled>Seçiniz</option>
-                  <option>Henüz net değil</option>
-                  <option>₺100K — ₺250K</option>
-                  <option>₺250K — ₺500K</option>
-                  <option>₺500K — ₺1M</option>
-                  <option>₺1M+</option>
-                </select>
-              </label>
-            </div>
+            <label>
+              <span>Proje tipi *</span>
+              <select name="projectType" defaultValue="" required>
+                <option value="" disabled>Seçiniz</option>
+                <option>Web uygulaması</option>
+                <option>Mobil uygulama</option>
+                <option>Özel yazılım</option>
+                <option>Oyun projesi</option>
+                <option>UX/UI tasarım</option>
+                <option>Diğer</option>
+              </select>
+            </label>
             <label>
               <span>Kısaca projeniz *</span>
               <textarea name="message" rows="4" placeholder="Hedefiniz, ihtiyacınız ve varsa hedef takviminiz..." maxLength={700} required />
             </label>
             <button className="button button--dark form-submit" type="submit">
-              E-posta taslağını oluştur <Send size={17} />
+              E-posta oluştur <Send size={17} />
             </button>
             <p className={`form-note${submitted ? ' is-active' : ''}`} aria-live="polite">
               {submitted ? 'Taslak hazırlandı. E-posta uygulamanız açılmazsa info@tionstudios.com adresine doğrudan yazabilirsiniz.' : 'Form, bilgilerinizi e-posta uygulamanızda hazır bir taslağa dönüştürür.'}
             </p>
           </form>
         </Reveal>
-      </div>
-    </section>
-  )
-}
-
-function StudioMethod() {
-  const methodItems = [
-    {
-      number: '01',
-      icon: MonitorSmartphone,
-      title: 'İhtiyacı anlıyoruz',
-      text: 'Teknolojiyi konuşmadan önce kullanıcıyı, iş hedefini ve çözülmesi gereken gerçek ihtiyacı netleştiriyoruz.',
-    },
-    {
-      number: '02',
-      icon: Layers3,
-      title: 'Gereksizi çıkarıyoruz',
-      text: 'Karmaşıklığı ürüne taşımıyor; en fazla değer üreten akışları sade, anlaşılır bir deneyime dönüştürüyoruz.',
-    },
-    {
-      number: '03',
-      icon: CircleCheck,
-      title: 'Çalışan ürünü büyütüyoruz',
-      text: 'İlk sürümü bir son değil başlangıç kabul ediyor; geri bildirimle ölçüyor, öğreniyor ve iyileştiriyoruz.',
-    },
-  ]
-
-  return (
-    <section className="section method-section" id="yaklasim">
-      <div className="container">
-        <Reveal>
-          <div className="section-intro-grid method-intro">
-            <SectionHeading
-              eyebrow="Ürün yaklaşımımız"
-              title={<>Önce ihtiyaç.<br /><span className="text-accent">Sonra doğru ürün.</span></>}
-            />
-            <p className="section-lead">
-              Ürün odaklı netliği, TION’un tasarım ve mühendislik kültürüyle birleştiriyor; her adımı gerçek ihtiyaca göre şekillendiriyoruz.
-            </p>
-          </div>
-        </Reveal>
-        <div className="method-grid">
-          {methodItems.map((item, index) => {
-            const Icon = item.icon
-            return (
-              <Reveal key={item.number} delay={index * 90}>
-                <article className="method-card">
-                  <div className="method-card-head">
-                    <span className="method-icon"><Icon size={22} strokeWidth={1.7} /></span>
-                    <span>{item.number}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </article>
-              </Reveal>
-            )
-          })}
-        </div>
       </div>
     </section>
   )
@@ -875,14 +793,14 @@ function PageHero({ eyebrow, title, accent, description, facts = [], image, imag
             <>
               <img src={image} alt={imageAlt} />
               <div className="page-hero-image-overlay" />
-              <span className="page-hero-image-label"><span /> TION PRODUCT ARCHIVE</span>
+              <span className="page-hero-image-label"><span /> TION STUDIOS</span>
             </>
           ) : (
             <div className="page-hero-system" aria-hidden="true">
-              <div className="page-system-top"><span>TION / PRODUCT SYSTEM</span><i /></div>
+              <div className="page-system-top"><span>TION STUDIOS</span><i /></div>
               <div className="page-system-mark"><BrandMark compact /></div>
               <div className="page-system-lines"><span /><span /><span /></div>
-              <div className="page-system-bottom"><span>Strategy</span><span>Design</span><span>Build</span></div>
+              <div className="page-system-bottom"><span>Web</span><span>Mobile</span><span>Game</span></div>
             </div>
           )}
         </div>
@@ -891,7 +809,7 @@ function PageHero({ eyebrow, title, accent, description, facts = [], image, imag
   )
 }
 
-function PageCta({ eyebrow = 'Birlikte üretelim', title, text, primaryLabel = 'Projenizi anlatın', primaryHref = '/iletisim/', secondaryLabel, secondaryHref }) {
+function PageCta({ eyebrow = 'İletişim', title, text, primaryLabel = 'Bize yazın', primaryHref = '/iletisim/', secondaryLabel, secondaryHref }) {
   return (
     <section className="section page-cta-section">
       <div className="container">
@@ -923,13 +841,11 @@ function GamesCatalog() {
           <div className="section-intro-grid games-catalog-intro">
             <SectionHeading
               eyebrow="Tüm oyunlar"
-              title={<>Yedi fikir.<br /><span className="text-accent">Yedi farklı oyun dünyası.</span></>}
+              title={<>Oyun <span className="text-accent">arşivi.</span></>}
             />
             <div className="catalog-side-copy">
-              <p>
-                Yayından prototipe uzanan bu seçki, TION’un oyun üretme geçmişini ve farklı oynanış fikirleriyle kurduğu deneyimi bir araya getiriyor.
-              </p>
-              <span><ShieldCheck size={15} /> Durum bilgileri açıkça etiketlenmiştir</span>
+              <p>Yedi mobil oyun projesi.</p>
+              <span><ShieldCheck size={15} /> Yayın ve arşiv durumları belirtilmiştir</span>
             </div>
           </div>
         </Reveal>
@@ -954,7 +870,9 @@ function GamesCatalog() {
                   </div>
                   <div className="game-card-footer">
                     {game.storeUrl ? (
-                      <a href={game.storeUrl} target="_blank" rel="noreferrer">App Store’da incele <ExternalLink size={15} /></a>
+                      <a href={game.storeUrl} target="_blank" rel="noreferrer">
+                        <img className="store-badge store-badge--small" src="/images/badges/app-store.png" alt="App Store’da görüntüle" />
+                      </a>
                     ) : (
                       <span><Gamepad2 size={15} /> TION stüdyo arşivi</span>
                     )}
@@ -967,7 +885,7 @@ function GamesCatalog() {
 
         <Reveal>
           <p className="games-archive-note">
-            <strong>Arşiv notu:</strong> Bazı oyunların geçmiş mağaza yayınları artık aktif değildir. Bu projeler ürün geliştirme yolculuğumuzun doğrulanmış kayıtları olarak sunulur; aktif olmayan mağaza bağlantıları özellikle paylaşılmamıştır.
+            <strong>Not:</strong> Aktif olmayan eski mağaza bağlantıları paylaşılmamıştır.
           </p>
         </Reveal>
       </div>
@@ -977,10 +895,10 @@ function GamesCatalog() {
 
 function GameCapabilities() {
   const capabilities = [
-    { icon: Gamepad2, title: 'Oyun ve mekanik tasarımı', text: 'Temel döngüden seviye akışına kadar oynanış fikrini test edilebilir sistemlere dönüştürürüz.' },
-    { icon: Palette, title: 'Görsel dünya üretimi', text: 'Karakter, çevre ve arayüz kararlarını oyunun hissini destekleyen tek bir dilde buluştururuz.' },
-    { icon: Code2, title: 'Unity geliştirme', text: 'Mobil performansı, kontrol hissini ve sürdürülebilir oyun kodunu birlikte ele alırız.' },
-    { icon: Zap, title: 'Yayın ve iyileştirme', text: 'Mağaza hazırlığından geri bildirim döngüsüne kadar ürünün yayın sürecini sahipleniriz.' },
+    { icon: Gamepad2, title: 'Oyun tasarımı', text: 'Mekanik ve seviye tasarımı.' },
+    { icon: Palette, title: 'Görsel tasarım', text: 'Karakter, çevre ve arayüz.' },
+    { icon: Code2, title: 'Unity geliştirme', text: 'Mobil oyun geliştirme ve test.' },
+    { icon: Zap, title: 'Yayın', text: 'Mağaza hazırlığı ve bakım.' },
   ]
 
   return (
@@ -989,8 +907,8 @@ function GameCapabilities() {
         <Reveal>
           <SectionHeading
             eyebrow="Oyun geliştirme"
-            title={<>Fikirden oynanabilir<br /><span className="text-accent">deneyime.</span></>}
-            description="Oyun projelerinde tasarım, teknoloji ve yayın bilgisini aynı ürün bakışında birleştiriyoruz."
+            title={<>Oyun geliştirme <span className="text-accent">hizmetleri.</span></>}
+            description="Tasarım, Unity geliştirme ve yayın."
           />
         </Reveal>
         <div className="game-capabilities-grid">
@@ -1017,14 +935,12 @@ function HomePage() {
     <>
       <Hero />
       <TechnologyStrip />
-      <StudioMethod />
       <Services />
       <Projects />
-      <About />
       <PageCta
-        title="Bir sonraki dijital ürününüz için ilk adımı atalım."
-        text="İhtiyacınızı dinleyelim, doğru kapsamı birlikte oluşturalım ve fikrinizi çalışan bir ürüne dönüştürelim."
-        secondaryLabel="Hizmetleri incele"
+        title="Bir projeniz mi var?"
+        text="Kısa bilgi için bize yazın."
+        secondaryLabel="Hizmetler"
         secondaryHref="/hizmetler/"
       />
     </>
@@ -1036,23 +952,18 @@ function ServicesPage() {
     <>
       <PageHero
         eyebrow="Hizmetler"
-        title="Karmaşık ihtiyaçlar için"
-        accent="sade ve güçlü ürünler."
-        description="Ürün stratejisi, tasarım ve mühendisliği tek ekipte birleştirerek web, mobil, özel yazılım ve oyun projeleri geliştiriyoruz."
-        facts={[
-          { label: 'Kapsam', value: 'Uçtan uca' },
-          { label: 'Model', value: 'Tek ürün ekibi' },
-          { label: 'Yaklaşım', value: 'İhtiyaç odaklı' },
-        ]}
+        title="Web, mobil ve oyun"
+        accent="geliştirme."
+        description="Ürün tasarımı, yazılım geliştirme ve bakım."
       >
-        <a className="button" href="/iletisim/">Projenizi konuşalım <ArrowRight size={17} /></a>
+        <a className="button" href="/iletisim/">İletişim <ArrowRight size={17} /></a>
       </PageHero>
       <Services />
       <Process />
       <TechnologyStrip />
       <PageCta
-        title="İhtiyacınıza uygun çalışma modelini birlikte kuralım."
-        text="Yeni bir ürün, mevcut sistemin modernizasyonu veya belirli bir geliştirme ihtiyacı için doğru ekibi oluşturalım."
+        title="Projeniz için bize yazın."
+        text="Kapsam ve takvim görüşmede belirlenir."
       />
     </>
   )
@@ -1062,17 +973,12 @@ function GamesPage() {
   return (
     <>
       <PageHero
-        eyebrow="TION oyunları"
-        title="Oyunlar, ürün geliştirme"
-        accent="kültürümüzün başlangıcı."
-        description="Farklı mekanikleri, görsel dünyaları ve mobil deneyimleri keşfettiğimiz yedi oyun projesini tek bir arşivde bir araya getirdik."
+        eyebrow="Oyunlar"
+        title="TION"
+        accent="oyunları."
+        description="Yedi mobil oyun projesi."
         image={featuredGame.wideImage}
-        imageAlt="Real Driver şehir içi yarış sahnesi"
-        facts={[
-          { label: 'Arşiv', value: `${games.length} oyun` },
-          { label: 'Deneyim', value: 'Mobil platformlar' },
-          { label: 'Üretim', value: 'Tasarım + Unity' },
-        ]}
+        imageAlt="Real Driver oyunundan kırmızı spor otomobil"
       >
         <a className="button" href="#tum-oyunlar">Tüm oyunları gör <ArrowRight size={17} /></a>
         <a className="text-link" href={featuredGame.storeUrl} target="_blank" rel="noreferrer">Real Driver’ı incele <ExternalLink size={15} /></a>
@@ -1080,10 +986,9 @@ function GamesPage() {
       <GamesCatalog />
       <GameCapabilities />
       <PageCta
-        eyebrow="Bir oyun fikriniz mi var?"
-        title="Birlikte oynanabilir bir dünyaya dönüştürelim."
-        text="Mekanik, görsel yön ve teknoloji kararlarını aynı ürün hedefinde buluşturalım."
-        secondaryLabel="Diğer hizmetler"
+        title="Oyun projesi için bize yazın."
+        text="Tasarım ve geliştirme desteği veriyoruz."
+        secondaryLabel="Hizmetler"
         secondaryHref="/hizmetler/"
       />
     </>
@@ -1095,20 +1000,19 @@ function AboutPage() {
     <>
       <PageHero
         eyebrow="Hakkımızda"
-        title="Merak eden, üreten ve"
-        accent="ürünü sahiplenen bir stüdyo."
-        description="TION Studios; tasarım, yazılım ve oyun geliştirme deneyimini kullanıcıların gerçekten kullanabileceği dijital ürünlerde buluşturur."
+        title="TION"
+        accent="Studios."
+        description="İstanbul merkezli yazılım ve oyun geliştirme stüdyosu."
         facts={[
-          { label: 'Merkez', value: 'İstanbul' },
-          { label: 'Disiplin', value: 'Tasarım + Teknoloji' },
-          { label: 'Odak', value: 'Dijital ürünler' },
+          { label: 'Konum', value: 'İstanbul' },
+          { label: 'Alanlar', value: 'Web · Mobil · Oyun' },
         ]}
       />
       <About />
       <Process />
       <PageCta
-        title="Ürün bakışımızın projenize nasıl değer katacağını konuşalım."
-        text="Kısa bir keşif görüşmesiyle hedefinizi, mevcut durumunuzu ve doğru sonraki adımı birlikte değerlendirelim."
+        title="İletişim"
+        text="Yeni bir proje için bize yazabilirsiniz."
       />
     </>
   )
@@ -1119,15 +1023,14 @@ function ContactPage() {
     <>
       <PageHero
         eyebrow="İletişim"
-        title="İyi ürünler, doğru bir"
-        accent="konuşmayla başlar."
-        description="Yeni bir ürün fikriniz, geliştirilmesi gereken mevcut bir sisteminiz veya teknik bir ihtiyacınız varsa bize anlatın."
+        title="Projeniz için"
+        accent="bize yazın."
+        description="info@tionstudios.com"
         facts={[
-          { label: 'E-posta', value: 'info@tionstudios.com' },
           { label: 'Konum', value: 'İstanbul, Türkiye' },
         ]}
       >
-        <a className="button" href="mailto:info@tionstudios.com">Doğrudan e-posta gönder <Mail size={17} /></a>
+        <a className="button" href="mailto:info@tionstudios.com">E-posta gönder <Mail size={17} /></a>
       </PageHero>
       <Contact />
       <Faq />
@@ -1141,7 +1044,7 @@ function NotFoundPage() {
       eyebrow="404 / Sayfa bulunamadı"
       title="Aradığınız sayfa"
       accent="burada değil."
-      description="Bağlantı değişmiş veya sayfa kaldırılmış olabilir. Ana sayfaya dönerek TION Studios’u keşfetmeye devam edebilirsiniz."
+      description="Bağlantı değişmiş veya sayfa kaldırılmış olabilir."
     >
       <a className="button" href="/">Ana sayfaya dön <ArrowRight size={17} /></a>
     </PageHero>
@@ -1154,7 +1057,7 @@ function Footer() {
       <div className="container footer-main">
         <div className="footer-brand-column">
           <a href="/" className="brand" aria-label="TION Studios ana sayfa"><BrandMark /></a>
-          <p>Fikirleri kullanıcıların sevdiği, işletmelerin büyütebildiği dijital ürünlere dönüştürüyoruz.</p>
+          <p>Yazılım ve oyun geliştirme stüdyosu.</p>
           <div className="footer-socials">
             <a href="https://www.linkedin.com/company/tion-studios" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
             <a href="https://github.com/tionstudios" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={18} /></a>
@@ -1172,14 +1075,14 @@ function Footer() {
           <a href="/app-ads.txt">App Ads</a>
         </div>
         <div className="footer-contact-column">
-          <span>Yeni bir proje</span>
+          <span>İletişim</span>
           <a href="mailto:info@tionstudios.com">info@tionstudios.com <ArrowUpRight size={17} /></a>
           <p>İstanbul · Türkiye</p>
         </div>
       </div>
       <div className="container footer-bottom">
         <p>© {new Date().getFullYear()} TION Studios. Tüm hakları saklıdır.</p>
-        <p>Strateji · Tasarım · Teknoloji</p>
+        <p>Web · Mobil · Oyun</p>
         <a href="#top">Yukarı dön <span>↑</span></a>
       </div>
     </footer>
