@@ -1434,13 +1434,15 @@ p {
 }
 
 .store-badge {
-  width: 132px;
-  height: auto;
+  width: auto;
+  height: 45px;
   display: block;
+  object-fit: contain;
 }
 
 .store-badge--small {
-  width: 108px;
+  width: auto;
+  height: 36px;
 }
 
 .project-archive-grid {
@@ -2981,6 +2983,10 @@ p {
 }
 
 .game-card-footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-top: 22px;
   padding-top: 18px;
   border-top: 1px solid var(--line);
@@ -3011,60 +3017,6 @@ p {
 
 .games-archive-note strong {
   color: var(--text);
-}
-
-.game-capabilities-section {
-  background: #ebf1fa;
-}
-
-.game-capabilities-section .section-heading {
-  margin-bottom: 65px;
-}
-
-.game-capabilities-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.game-capabilities-grid article {
-  min-height: 290px;
-  display: flex;
-  flex-direction: column;
-  padding: 27px;
-  border: 1px solid rgba(65, 62, 102, 0.1);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.38);
-  transition: transform 320ms var(--ease), background 220ms ease;
-}
-
-.game-capabilities-grid article:hover {
-  background: rgba(255, 255, 255, 0.7);
-  transform: translateY(-5px);
-}
-
-.game-capabilities-grid article > span {
-  width: 47px;
-  height: 47px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  color: var(--accent-deep);
-  background: rgba(10, 152, 192, 0.09);
-}
-
-.game-capabilities-grid h3 {
-  margin: auto 0 11px;
-  font-size: 19px;
-  font-weight: 640;
-  letter-spacing: -0.03em;
-}
-
-.game-capabilities-grid p {
-  margin: 0;
-  color: #696592;
-  font-size: 12px;
-  line-height: 1.7;
 }
 
 /* --------------------------------------------------------------------------
@@ -3761,9 +3713,6 @@ p {
     grid-column: span 2;
   }
 
-  .game-capabilities-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 720px) {
@@ -3857,14 +3806,6 @@ p {
 
   .game-catalog-card.is-featured .game-card-body h2 {
     font-size: 30px;
-  }
-
-  .game-capabilities-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .game-capabilities-grid article {
-    min-height: 250px;
   }
 
   .projects-all-row {

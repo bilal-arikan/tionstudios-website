@@ -8,7 +8,6 @@ import {
   ChevronDown,
   CircleCheck,
   Code2,
-  ExternalLink,
   Gamepad2,
   Github,
   Globe2,
@@ -495,6 +494,9 @@ function FeaturedProject() {
             <a href="https://apps.apple.com/us/app/real-driver-legend-of-the-city/id1607564621" target="_blank" rel="noreferrer">
               <img className="store-badge" src="/images/badges/app-store.png" alt="App Store’da görüntüle" />
             </a>
+            <a href="https://play.google.com/store/apps/details?id=com.arikan.realdriver" target="_blank" rel="noreferrer">
+              <img className="store-badge store-badge--google" src="/images/badges/google-play.png" alt="Google Play’den indirin" />
+            </a>
           </div>
         </div>
       </article>
@@ -870,9 +872,16 @@ function GamesCatalog() {
                   </div>
                   <div className="game-card-footer">
                     {game.storeUrl ? (
-                      <a href={game.storeUrl} target="_blank" rel="noreferrer">
-                        <img className="store-badge store-badge--small" src="/images/badges/app-store.png" alt="App Store’da görüntüle" />
-                      </a>
+                      <>
+                        <a href={game.storeUrl} target="_blank" rel="noreferrer">
+                          <img className="store-badge store-badge--small" src="/images/badges/app-store.png" alt="App Store’da görüntüle" />
+                        </a>
+                        {game.googlePlayUrl && (
+                          <a href={game.googlePlayUrl} target="_blank" rel="noreferrer">
+                            <img className="store-badge store-badge--small store-badge--google" src="/images/badges/google-play.png" alt="Google Play’den indirin" />
+                          </a>
+                        )}
+                      </>
                     ) : (
                       <span><Gamepad2 size={15} /> TION stüdyo arşivi</span>
                     )}
@@ -888,43 +897,6 @@ function GamesCatalog() {
             <strong>Not:</strong> Aktif olmayan eski mağaza bağlantıları paylaşılmamıştır.
           </p>
         </Reveal>
-      </div>
-    </section>
-  )
-}
-
-function GameCapabilities() {
-  const capabilities = [
-    { icon: Gamepad2, title: 'Oyun tasarımı', text: 'Mekanik ve seviye tasarımı.' },
-    { icon: Palette, title: 'Görsel tasarım', text: 'Karakter, çevre ve arayüz.' },
-    { icon: Code2, title: 'Unity geliştirme', text: 'Mobil oyun geliştirme ve test.' },
-    { icon: Zap, title: 'Yayın', text: 'Mağaza hazırlığı ve bakım.' },
-  ]
-
-  return (
-    <section className="section game-capabilities-section">
-      <div className="container">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Oyun geliştirme"
-            title={<>Oyun geliştirme <span className="text-accent">hizmetleri.</span></>}
-            description="Tasarım, Unity geliştirme ve yayın."
-          />
-        </Reveal>
-        <div className="game-capabilities-grid">
-          {capabilities.map((capability, index) => {
-            const Icon = capability.icon
-            return (
-              <Reveal key={capability.title} delay={index * 70}>
-                <article>
-                  <span><Icon size={21} strokeWidth={1.7} /></span>
-                  <h3>{capability.title}</h3>
-                  <p>{capability.text}</p>
-                </article>
-              </Reveal>
-            )
-          })}
-        </div>
       </div>
     </section>
   )
@@ -981,10 +953,9 @@ function GamesPage() {
         imageAlt="Real Driver oyunundan kırmızı spor otomobil"
       >
         <a className="button" href="#tum-oyunlar">Tüm oyunları gör <ArrowRight size={17} /></a>
-        <a className="text-link" href={featuredGame.storeUrl} target="_blank" rel="noreferrer">Real Driver’ı incele <ExternalLink size={15} /></a>
+        <a className="text-link" href="#real-driver">Real Driver <ArrowRight size={15} /></a>
       </PageHero>
       <GamesCatalog />
-      <GameCapabilities />
       <PageCta
         title="Oyun projesi için bize yazın."
         text="Tasarım ve geliştirme desteği veriyoruz."
