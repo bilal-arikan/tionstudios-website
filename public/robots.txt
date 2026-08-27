@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tionstudios.com/sitemap.xml
