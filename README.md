@@ -59,8 +59,7 @@ Mevcut Türkçe URL'ler değişmedi — eski bağlantılar ve arama sıralaması
 Metinler `src/i18n/translations/<kod>.js` içindedir. `tr.js` referanstır;
 diğer dosyalar aynı anahtar yapısını taşır.
 
-**Şu an `en`, `es`, `ar`, `ru`, `zh` dosyalarındaki değerler Türkçe
-yer tutucudur.** Çeviri yapılırken:
+Beş dilin çevirisi tamamlanmıştır. Metinleri düzenlerken:
 
 - Anahtarları (`hero.titleAccent` gibi) değiştirmeyin, yalnızca değerleri çevirin.
 - `{name}`, `{title}`, `{year}` gibi süslü parantezleri olduğu gibi bırakın.
