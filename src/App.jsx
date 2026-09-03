@@ -26,103 +26,51 @@ import {
   Zap,
 } from 'lucide-react'
 import { BrandMark } from './components/BrandMark'
+import { LanguageSwitcher } from './components/LanguageSwitcher'
+import { currentLocale, locales, pathFor, translator } from './i18n'
 import { featuredGame, games } from './data/games'
 
-const navigation = [
-  { label: 'Hizmetler', href: '/hizmetler/', page: 'services' },
-  { label: 'Oyunlar', href: '/oyunlar/', page: 'games' },
-  { label: 'Hakkımızda', href: '/hakkimizda/', page: 'about' },
-  { label: 'İletişim', href: '/iletisim/', page: 'contact' },
-]
+const NAV_PAGES = ['services', 'games', 'about', 'contact']
 
-const services = [
-  {
-    number: '01',
-    icon: Palette,
-    title: 'Ürün Tasarımı',
-    text: 'Ürün kapsamı, kullanıcı akışları ve arayüz tasarımı.',
-    tags: ['Keşif', 'UX', 'UI'],
-    accent: 'cyan',
-  },
-  {
-    number: '02',
-    icon: Globe2,
-    title: 'Web Geliştirme',
-    text: 'Kurumsal siteler, web uygulamaları ve yönetim panelleri.',
-    tags: ['React', 'API', 'E-ticaret'],
-    accent: 'violet',
-  },
-  {
-    number: '03',
-    icon: Smartphone,
-    title: 'Mobil Uygulamalar',
-    text: 'iOS ve Android için mobil uygulama geliştirme.',
-    tags: ['iOS', 'Android', 'Cross-platform'],
-    accent: 'blue',
-  },
-  {
-    number: '04',
-    icon: Blocks,
-    title: 'Özel Yazılım & Oyun',
-    text: 'Özel iş yazılımları, entegrasyonlar ve Unity projeleri.',
-    tags: ['Entegrasyon', 'Otomasyon', 'Unity'],
-    accent: 'lime',
-  },
-]
-
-const processSteps = [
-  {
-    number: '01',
-    title: 'Kapsam',
-    text: 'Gereksinimleri ve öncelikleri belirleriz.',
-    output: 'Kapsam + plan',
-  },
-  {
-    number: '02',
-    title: 'Tasarım',
-    text: 'Akışları ve arayüzü prototipleriz.',
-    output: 'Prototip',
-  },
-  {
-    number: '03',
-    title: 'Geliştirme',
-    text: 'Ürünü geliştirir ve test ederiz.',
-    output: 'Test sürümü',
-  },
-  {
-    number: '04',
-    title: 'Yayın',
-    text: 'Ürünü yayınlar, gerektiğinde bakımını sürdürürüz.',
-    output: 'Canlı ürün',
-  },
-]
+const SERVICE_ICONS = [Palette, Globe2, Smartphone, Blocks]
+const SERVICE_ACCENTS = ['cyan', 'violet', 'blue', 'lime']
+const PRINCIPLE_ICONS = [Layers3, Code2, MonitorSmartphone, ShieldCheck]
 
 const projectArchive = games.filter((game) => !game.featured).slice(0, 3)
 
 const technologyList = ['React', 'TypeScript', 'Node.js', 'Cloud', '.NET', 'Unity', 'PostgreSQL', 'REST API']
 
-const faqs = [
-  {
-    question: 'Hangi projelerde çalışıyorsunuz?',
-    answer: 'Web, mobil, özel yazılım ve oyun projelerinde çalışıyoruz.',
-  },
-  {
-    question: 'Süreç nasıl başlıyor?',
-    answer: 'Kısa bir görüşmeden sonra kapsam ve çalışma planı hazırlanır.',
-  },
-  {
-    question: 'Mevcut bir projeyi devralabilir misiniz?',
-    answer: 'Evet. Önce kod ve tasarım yapısını inceler, ardından devir planı hazırlarız.',
-  },
-  {
-    question: 'Yayın sonrasında destek veriyor musunuz?',
-    answer: 'İhtiyaca göre bakım, iyileştirme ve yeni özellik desteği veriyoruz.',
-  },
-  {
-    question: 'Bütçe nasıl belirleniyor?',
-    answer: 'Bütçe; kapsam, teknik gereksinimler ve takvime göre belirlenir.',
-  },
-]
+/** Content arrays are built from the dictionary so they follow the active locale. */
+function buildServices(t) {
+  return (t('services.items') || []).map((item, index) => ({
+    ...item,
+    number: String(index + 1).padStart(2, '0'),
+    icon: SERVICE_ICONS[index] ?? SERVICE_ICONS[0],
+    accent: SERVICE_ACCENTS[index] ?? SERVICE_ACCENTS[0],
+  }))
+}
+
+function buildProcessSteps(t) {
+  return (t('process.steps') || []).map((step, index) => ({
+    ...step,
+    number: String(index + 1).padStart(2, '0'),
+  }))
+}
+
+function buildPrinciples(t) {
+  return (t('about.principles') || []).map((item, index) => ({
+    ...item,
+    icon: PRINCIPLE_ICONS[index] ?? PRINCIPLE_ICONS[0],
+  }))
+}
+
+function buildNavigation(t, locale) {
+  return NAV_PAGES.map((page) => ({
+    page,
+    label: t(`nav.${page}`),
+    href: pathFor(page, locale),
+  }))
+}
 
 function Reveal({ children, className = '', delay = 0, as: Element = 'div' }) {
   const elementRef = useRef(null)
@@ -157,7 +105,7 @@ function Reveal({ children, className = '', delay = 0, as: Element = 'div' }) {
   )
 }
 
-function Header({ currentPage = 'home' }) {
+function Header({ currentPage = 'home', t, locale }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const navigationRef = useRef(null)
@@ -217,7 +165,7 @@ function Header({ currentPage = 'home' }) {
   return (
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="container header-inner">
-        <a className="brand" href="/" aria-label="TION Studios ana sayfa" onClick={() => setMenuOpen(false)}>
+        <a className="brand" href={pathFor('home', locale)} aria-label={t('nav.home')} onClick={() => setMenuOpen(false)}>
           <BrandMark />
         </a>
 
@@ -225,16 +173,16 @@ function Header({ currentPage = 'home' }) {
           ref={navigationRef}
           id="main-navigation"
           className={`main-navigation${menuOpen ? ' is-open' : ''}`}
-          aria-label="Ana menü"
+          aria-label={t('nav.mainNav')}
         >
           <div className="mobile-nav-label">
-            <span>Menü</span>
-            <button ref={closeButtonRef} type="button" onClick={() => setMenuOpen(false)} aria-label="Menüyü kapat">
+            <span>{t('nav.menu')}</span>
+            <button ref={closeButtonRef} type="button" onClick={() => setMenuOpen(false)} aria-label={t('nav.closeMenu')}>
               <X size={22} />
             </button>
           </div>
           <div className="nav-links">
-            {navigation.map((item) => (
+            {buildNavigation(t, locale).map((item) => (
               <a
                 key={item.href}
                 className={currentPage === item.page ? 'is-active' : undefined}
@@ -248,15 +196,17 @@ function Header({ currentPage = 'home' }) {
           </div>
           <div className="mobile-nav-meta">
             <a href="mailto:info@tionstudios.com">info@tionstudios.com</a>
-            <span>İstanbul · Türkiye</span>
+            <span>{t('about.location')}</span>
           </div>
         </nav>
+
+        <LanguageSwitcher locale={locale} page={currentPage} t={t} />
 
         <button
           ref={menuButtonRef}
           className="menu-toggle"
           type="button"
-          aria-label={menuOpen ? 'Menüyü kapat' : 'Menüyü aç'}
+          aria-label={menuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
           aria-controls="main-navigation"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((current) => !current)}
@@ -268,7 +218,7 @@ function Header({ currentPage = 'home' }) {
   )
 }
 
-function HeroVisual() {
+function HeroVisual({ t }) {
   const shipped = games.filter((game) => game.status === 'Yayında')
 
   return (
@@ -276,7 +226,7 @@ function HeroVisual() {
       <div className="hero-orbit hero-orbit--one" aria-hidden="true" />
       <div className="hero-orbit hero-orbit--two" aria-hidden="true" />
 
-      <div className="readout" aria-label="TION Studios yayın durumu">
+      <div className="readout" aria-label={t('readout.label')}>
         <div className="readout-bar">
           <span className="readout-path">~/tion/{featuredGame.slug}</span>
           <span className="readout-env">PROD</span>
@@ -284,52 +234,52 @@ function HeroVisual() {
 
         <dl className="readout-body">
           <div className="readout-line">
-            <dt>proje</dt>
+            <dt>{t('readout.project')}</dt>
             <dd>{featuredGame.title} — <b>{featuredGame.subtitle}</b></dd>
           </div>
           <div className="readout-line">
-            <dt>platform</dt>
+            <dt>{t('readout.platform')}</dt>
             <dd>{featuredGame.platform}</dd>
           </div>
           <div className="readout-line">
-            <dt>tür</dt>
+            <dt>{t('readout.type')}</dt>
             <dd>{featuredGame.category}</dd>
           </div>
           <div className="readout-line">
-            <dt>odak</dt>
+            <dt>{t('readout.focus')}</dt>
             <dd>{featuredGame.focus.join(' · ')}</dd>
           </div>
           <div className="readout-line">
-            <dt>durum</dt>
+            <dt>{t('readout.status')}</dt>
             <dd className="is-live">
               <span className="live-dot" aria-hidden="true" />
-              İki mağazada yayında
+              {t('readout.live')}
             </dd>
           </div>
         </dl>
 
         <div className="readout-foot">
-          <span className="readout-foot-label">STÜDYO</span>
-          <span className="readout-foot-val"><b>{games.length}</b> oyun</span>
-          <span className="readout-foot-val"><b>{shipped.length}</b> yayında</span>
+          <span className="readout-foot-label">{t('readout.studio')}</span>
+          <span className="readout-foot-val"><b>{games.length}</b> {t('readout.gamesCount')}</span>
+          <span className="readout-foot-val"><b>{shipped.length}</b> {t('readout.shippedCount')}</span>
           <span className="readout-foot-val">Unity · React</span>
         </div>
       </div>
 
       <div className="floating-card floating-card--top">
         <span className="floating-icon"><Zap size={15} /></span>
-        <div><strong>Tasarım + kod</strong><small>Tek ekip</small></div>
+        <div><strong>{t('readout.designCode')}</strong><small>{t('readout.oneTeam')}</small></div>
         <CircleCheck size={18} />
       </div>
       <div className="floating-card floating-card--bottom">
         <div className="avatar-stack" aria-hidden="true"><span>UX</span><span>DEV</span><span>QA</span></div>
-        <div><strong>İstanbul</strong><small>TION Studios</small></div>
+        <div><strong>{t('readout.location')}</strong><small>TION Studios</small></div>
       </div>
     </div>
   )
 }
 
-function Hero() {
+function Hero({ t, locale }) {
   return (
     <section className="hero" id="top">
       <div className="hero-grid-overlay" aria-hidden="true" />
@@ -339,36 +289,36 @@ function Hero() {
         <div className="hero-copy">
           <div className="eyebrow hero-eyebrow">
             <span className="eyebrow-dot" />
-            TION Studios · İstanbul
+            {t('hero.eyebrow')}
           </div>
           <h1>
-            Web, mobil ve <span className="text-accent">oyun</span> geliştiriyoruz.
+            {t('hero.titleBefore')} <span className="text-accent">{t('hero.titleAccent')}</span> {t('hero.titleAfter')}
           </h1>
           <p className="hero-description">
-            TION Studios, yazılım ve oyun geliştirme stüdyosudur.
+            {t('hero.description')}
           </p>
           <div className="hero-actions">
-            <a className="button" href="/hizmetler/">
-              Hizmetler
+            <a className="button" href={pathFor('services', locale)}>
+              {t('hero.ctaPrimary')}
               <ArrowRight size={18} />
             </a>
-            <a className="text-link" href="/oyunlar/">
-              Oyunlar
+            <a className="text-link" href={pathFor('games', locale)}>
+              {t('hero.ctaSecondary')}
               <ArrowUpRight size={17} />
             </a>
           </div>
-          <div className="hero-proof" aria-label="Hizmet kapsamı">
-            <div><Check size={15} /><span>Web geliştirme</span></div>
-            <div><Check size={15} /><span>Mobil uygulama</span></div>
-            <div><Check size={15} /><span>Oyun geliştirme</span></div>
+          <div className="hero-proof">
+            <div><Check size={15} /><span>{t('hero.proofWeb')}</span></div>
+            <div><Check size={15} /><span>{t('hero.proofMobile')}</span></div>
+            <div><Check size={15} /><span>{t('hero.proofGame')}</span></div>
           </div>
         </div>
-        <HeroVisual />
+        <HeroVisual t={t} />
       </div>
       <div className="container hero-bottom">
         <span className="hero-bottom-label">TION Studios</span>
         <div className="hero-bottom-line" />
-        <a href="#hizmetler">Aşağı kaydır <span>↓</span></a>
+        <a href="#hizmetler">{t('hero.scroll')} <span>↓</span></a>
       </div>
     </section>
   )
@@ -400,18 +350,20 @@ function SectionHeading({ eyebrow, title, description, align = 'left' }) {
   )
 }
 
-function Services() {
+function Services({ t, locale }) {
+  const services = buildServices(t)
+
   return (
     <section className="section services-section" id="hizmetler">
       <div className="container">
         <Reveal>
           <div className="section-intro-grid">
             <SectionHeading
-              eyebrow="Hizmetler"
-              title={<>Çalışma <span className="text-accent">alanları.</span></>}
+              eyebrow={t('services.eyebrow')}
+              title={<>{t('services.titleBefore')} <span className="text-accent">{t('services.titleAccent')}</span></>}
             />
             <p className="section-lead">
-              Web, mobil, özel yazılım ve oyun geliştirme.
+              {t('services.lead')}
             </p>
           </div>
         </Reveal>
@@ -431,8 +383,8 @@ function Services() {
                   <div className="service-tags">
                     {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
                   </div>
-                  <a href="/iletisim/" aria-label={`${service.title} hakkında konuşalım`}>
-                    İletişim <ArrowUpRight size={17} />
+                  <a href={pathFor('contact', locale)} aria-label={t('services.talkAbout', { title: service.title })}>
+                    {t('services.contactCta')} <ArrowUpRight size={17} />
                   </a>
                 </article>
               </Reveal>
@@ -444,40 +396,37 @@ function Services() {
   )
 }
 
-function FeaturedProject() {
+function FeaturedProject({ t }) {
   return (
     <Reveal>
       <article className="featured-project">
         <div className="featured-project-image">
-          <img src="/images/projects/real-driver.jpg" alt="Real Driver: Legend of the City oyunundan kırmızı spor otomobil" />
+          <img src="/images/projects/real-driver.jpg" alt={t('projects.featuredAlt')} />
           <div className="image-shade" />
-          <span className="project-index">01 / 07</span>
+          <span className="project-index">01 / {String(games.length).padStart(2, '0')}</span>
           <span className="project-platform">App Store · iOS</span>
         </div>
         <div className="featured-project-content">
           <div className="featured-project-head">
-            <span className="project-kicker"><span /> TION OYUNLARI</span>
-            <span className="published-pill">Yayında</span>
+            <span className="project-kicker"><span /> {t('projects.kicker')}</span>
+            <span className="published-pill">{t('projects.published')}</span>
           </div>
           <div>
-            <h3>Real Driver</h3>
-            <p className="project-subtitle">Legend of the City</p>
+            <h3>{featuredGame.title}</h3>
+            <p className="project-subtitle">{featuredGame.subtitle}</p>
           </div>
           <p className="project-description">
-            Mobil şehir ve sürüş simülasyonu.
+            {t('projects.featuredDescription')}
           </p>
           <div className="project-capabilities">
-            <span>Mobil</span>
-            <span>3D</span>
-            <span>Sürüş</span>
-            <span>Unity</span>
+            {(t('projects.capabilities') || []).map((item) => <span key={item}>{item}</span>)}
           </div>
           <div className="project-actions">
-            <a href="https://apps.apple.com/us/app/real-driver-legend-of-the-city/id1607564621" target="_blank" rel="noreferrer">
-              <img className="store-badge" src="/images/badges/app-store.png" alt="App Store’da görüntüle" />
+            <a href={featuredGame.storeUrl} target="_blank" rel="noreferrer">
+              <img className="store-badge" src="/images/badges/app-store.png" alt={t('projects.appStoreAlt')} />
             </a>
-            <a href="https://play.google.com/store/apps/details?id=com.arikan.realdriver" target="_blank" rel="noreferrer">
-              <img className="store-badge store-badge--google" src="/images/badges/google-play.png" alt="Google Play’den indirin" />
+            <a href={featuredGame.googlePlayUrl} target="_blank" rel="noreferrer">
+              <img className="store-badge store-badge--google" src="/images/badges/google-play.png" alt={t('projects.googlePlayAlt')} />
             </a>
           </div>
         </div>
@@ -486,7 +435,7 @@ function FeaturedProject() {
   )
 }
 
-function Projects() {
+function Projects({ t, locale }) {
   return (
     <section className="section projects-section" id="projeler">
       <div className="projects-glow" aria-hidden="true" />
@@ -494,24 +443,28 @@ function Projects() {
         <Reveal>
           <div className="section-intro-grid section-intro-grid--projects">
             <SectionHeading
-              eyebrow="Oyunlar"
-              title={<>TION <span className="text-accent">oyunları.</span></>}
+              eyebrow={t('projects.eyebrow')}
+              title={<>{t('projects.titleBefore')} <span className="text-accent">{t('projects.titleAccent')}</span></>}
             />
             <div className="section-side-copy">
-              <p>Yedi mobil oyun projesi.</p>
-              <span><Gamepad2 size={16} /> Oyun arşivi</span>
+              <p>{t('projects.sideCopy')}</p>
+              <span><Gamepad2 size={16} /> {t('projects.archiveLabel')}</span>
             </div>
           </div>
         </Reveal>
 
-        <FeaturedProject />
+        <FeaturedProject t={t} />
 
         <div className="project-archive-grid">
           {projectArchive.map((project, index) => (
             <Reveal key={project.title} delay={index * 90}>
               <article className="archive-card">
                 <div className="archive-image">
-                  <img src={project.image} alt={`${project.title} ${project.subtitle} kapak görseli`} loading="lazy" />
+                  <img
+                    src={project.image}
+                    alt={t('projects.coverAlt', { title: project.title, subtitle: project.subtitle })}
+                    loading="lazy"
+                  />
                   <span className="archive-arrow" aria-hidden="true"><Gamepad2 size={18} /></span>
                 </div>
                 <div className="archive-content">
@@ -524,8 +477,8 @@ function Projects() {
           ))}
         </div>
         <Reveal className="projects-all-row">
-          <a className="button button--outline-light" href="/oyunlar/">
-            Tüm oyunlar <ArrowRight size={17} />
+          <a className="button button--outline-light" href={pathFor('games', locale)}>
+            {t('projects.allGames')} <ArrowRight size={17} />
           </a>
         </Reveal>
       </div>
@@ -533,15 +486,17 @@ function Projects() {
   )
 }
 
-function Process() {
+function Process({ t }) {
+  const processSteps = buildProcessSteps(t)
+
   return (
     <section className="section process-section" id="yaklasim">
       <div className="container">
         <Reveal>
           <SectionHeading
-            eyebrow="Süreç"
-            title={<>Çalışma <span className="text-accent">süreci.</span></>}
-            description="Kapsam, tasarım, geliştirme ve yayın."
+            eyebrow={t('process.eyebrow')}
+            title={<>{t('process.titleBefore')} <span className="text-accent">{t('process.titleAccent')}</span></>}
+            description={t('process.description')}
             align="center"
           />
         </Reveal>
@@ -566,40 +521,19 @@ function Process() {
   )
 }
 
-function About() {
-  const principles = [
-    {
-      icon: Layers3,
-      title: 'Tasarım ve geliştirme',
-      text: 'Tasarım ve yazılım aynı süreçte yürütülür.',
-    },
-    {
-      icon: Code2,
-      title: 'Teknik yapı',
-      text: 'Bakımı yapılabilir sistemler geliştiririz.',
-    },
-    {
-      icon: MonitorSmartphone,
-      title: 'Düzenli paylaşım',
-      text: 'Çalışan sürümleri süreç boyunca paylaşırız.',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Destek',
-      text: 'Yayın sonrasında bakım desteği verebiliriz.',
-    },
-  ]
+function About({ t }) {
+  const principles = buildPrinciples(t)
 
   return (
     <section className="section about-section" id="hakkimizda">
       <div className="container about-grid">
         <Reveal className="about-sticky">
-          <span className="eyebrow"><Sparkles size={14} />Hakkımızda</span>
-          <h2>TION <span className="text-accent">Studios.</span></h2>
+          <span className="eyebrow"><Sparkles size={14} />{t('about.eyebrow')}</span>
+          <h2>{t('about.titleBefore')} <span className="text-accent">{t('about.titleAccent')}</span></h2>
           <p>
-            İstanbul merkezli yazılım ve oyun geliştirme stüdyosuyuz.
+            {t('about.description')}
           </p>
-          <div className="location-chip"><MapPin size={16} />İstanbul, Türkiye</div>
+          <div className="location-chip"><MapPin size={16} />{t('about.location')}</div>
         </Reveal>
 
         <div className="principles-grid">
@@ -609,7 +543,7 @@ function About() {
               <Reveal key={principle.title} delay={index * 70}>
                 <article className="principle-card">
                   <span className="principle-icon"><Icon size={23} strokeWidth={1.7} /></span>
-                  <span className="principle-index">0{index + 1}</span>
+                  <span className="principle-index">{String(index + 1).padStart(2, '0')}</span>
                   <h3>{principle.title}</h3>
                   <p>{principle.text}</p>
                 </article>
@@ -622,16 +556,17 @@ function About() {
   )
 }
 
-function Faq() {
+function Faq({ t }) {
   const [openIndex, setOpenIndex] = useState(0)
+  const faqs = t('faq.items') || []
 
   return (
     <section className="section faq-section">
       <div className="container faq-grid">
         <Reveal>
           <SectionHeading
-            eyebrow="SSS"
-            title={<>Sık sorulan <span className="text-accent">sorular.</span></>}
+            eyebrow={t('faq.eyebrow')}
+            title={<>{t('faq.titleBefore')} <span className="text-accent">{t('faq.titleAccent')}</span></>}
           />
           <a className="text-link faq-mail-link" href="mailto:info@tionstudios.com">
             info@tionstudios.com <ArrowUpRight size={16} />
@@ -650,7 +585,7 @@ function Faq() {
                     aria-controls={`faq-answer-${index}`}
                     onClick={() => setOpenIndex(isOpen ? -1 : index)}
                   >
-                    <span><em>0{index + 1}</em>{item.question}</span>
+                    <span><em>{String(index + 1).padStart(2, '0')}</em>{item.question}</span>
                     <ChevronDown size={20} />
                   </button>
                   <div className="faq-answer" id={`faq-answer-${index}`} aria-hidden={!isOpen}>
@@ -666,20 +601,20 @@ function Faq() {
   )
 }
 
-function Contact() {
+function Contact({ t }) {
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    const subject = `Yeni proje talebi — ${data.get('name')}`
+    const subject = t('contact.mailSubject', { name: data.get('name') })
     const body = [
-      `Ad Soyad: ${data.get('name')}`,
-      `E-posta: ${data.get('email')}`,
-      `Şirket: ${data.get('company') || '-'}`,
-      `Proje tipi: ${data.get('projectType')}`,
+      `${t('contact.mailName')}: ${data.get('name')}`,
+      `${t('contact.mailEmail')}: ${data.get('email')}`,
+      `${t('contact.mailCompany')}: ${data.get('company') || '-'}`,
+      `${t('contact.mailProjectType')}: ${data.get('projectType')}`,
       '',
-      'Proje hakkında:',
+      t('contact.mailAbout'),
       data.get('message'),
     ].join('\n')
 
@@ -692,56 +627,57 @@ function Contact() {
       <div className="contact-glow" aria-hidden="true" />
       <div className="container contact-grid">
         <Reveal className="contact-copy">
-          <span className="eyebrow eyebrow--light"><Sparkles size={14} />İletişim</span>
-          <h2>Projeniz için <span>bize yazın.</span></h2>
-          <p>Kısa bir bilgi bırakın veya doğrudan e-posta gönderin.</p>
+          <span className="eyebrow eyebrow--light"><Sparkles size={14} />{t('contact.eyebrow')}</span>
+          <h2>{t('contact.titleBefore')} <span>{t('contact.titleAccent')}</span></h2>
+          <p>{t('contact.description')}</p>
           <div className="contact-direct">
-            <a href="mailto:info@tionstudios.com"><span><Mail size={18} /></span><div><small>Doğrudan yazın</small><strong>info@tionstudios.com</strong></div></a>
-            <div><span><MapPin size={18} /></span><div><small>Konum</small><strong>İstanbul, Türkiye</strong></div></div>
+            <a href="mailto:info@tionstudios.com">
+              <span><Mail size={18} /></span>
+              <div><small>{t('contact.directLabel')}</small><strong>info@tionstudios.com</strong></div>
+            </a>
+            <div>
+              <span><MapPin size={18} /></span>
+              <div><small>{t('contact.locationLabel')}</small><strong>{t('contact.location')}</strong></div>
+            </div>
           </div>
         </Reveal>
 
-        <Reveal className="contact-form-wrap" delay={100}>
+        <Reveal className="contact-form-wrap" delay={90}>
           <div className="form-heading">
-            <div><span>İLETİŞİM</span><strong>Proje bilgileri</strong></div>
-            <span className="form-step">E-POSTA</span>
+            <div><span>{t('contact.eyebrow')}</span><strong>{t('contact.formHeading')}</strong></div>
+            <span className="form-step">{t('contact.formStep')}</span>
           </div>
           <form className="contact-form" onSubmit={handleSubmit} onChange={() => setSubmitted(false)}>
             <div className="form-row">
               <label>
-                <span>Adınız *</span>
-                <input name="name" type="text" placeholder="Ad Soyad" autoComplete="name" maxLength={80} required />
+                <span>{t('contact.fields.name')}</span>
+                <input name="name" type="text" placeholder={t('contact.fields.namePlaceholder')} autoComplete="name" maxLength={80} required />
               </label>
               <label>
-                <span>İş e-postanız *</span>
-                <input name="email" type="email" placeholder="siz@sirket.com" autoComplete="email" maxLength={254} required />
+                <span>{t('contact.fields.email')}</span>
+                <input name="email" type="email" placeholder={t('contact.fields.emailPlaceholder')} autoComplete="email" maxLength={254} required />
               </label>
             </div>
             <label>
-              <span>Şirket / marka</span>
-              <input name="company" type="text" placeholder="Varsa şirketinizin adı" autoComplete="organization" maxLength={120} />
+              <span>{t('contact.fields.company')}</span>
+              <input name="company" type="text" placeholder={t('contact.fields.companyPlaceholder')} autoComplete="organization" maxLength={120} />
             </label>
             <label>
-              <span>Proje tipi *</span>
+              <span>{t('contact.fields.projectType')}</span>
               <select name="projectType" defaultValue="" required>
-                <option value="" disabled>Seçiniz</option>
-                <option>Web uygulaması</option>
-                <option>Mobil uygulama</option>
-                <option>Özel yazılım</option>
-                <option>Oyun projesi</option>
-                <option>UX/UI tasarım</option>
-                <option>Diğer</option>
+                <option value="" disabled>{t('contact.choose')}</option>
+                {(t('contact.projectTypes') || []).map((option) => <option key={option}>{option}</option>)}
               </select>
             </label>
             <label>
-              <span>Kısaca projeniz *</span>
-              <textarea name="message" rows="4" placeholder="Hedefiniz, ihtiyacınız ve varsa hedef takviminiz..." maxLength={700} required />
+              <span>{t('contact.fields.message')}</span>
+              <textarea name="message" rows="4" placeholder={t('contact.fields.messagePlaceholder')} maxLength={700} required />
             </label>
             <button className="button button--dark form-submit" type="submit">
-              E-posta oluştur <Send size={17} />
+              {t('contact.submit')} <Send size={17} />
             </button>
             <p className={`form-note${submitted ? ' is-active' : ''}`} aria-live="polite">
-              {submitted ? 'Taslak hazırlandı. E-posta uygulamanız açılmazsa info@tionstudios.com adresine doğrudan yazabilirsiniz.' : 'Form, bilgilerinizi e-posta uygulamanızda hazır bir taslağa dönüştürür.'}
+              {submitted ? t('contact.noteSent') : t('contact.note')}
             </p>
           </form>
         </Reveal>
@@ -793,19 +729,22 @@ function PageHero({ eyebrow, title, accent, description, facts = [], image, imag
   )
 }
 
-function PageCta({ eyebrow = 'İletişim', title, text, primaryLabel = 'Bize yazın', primaryHref = '/iletisim/', secondaryLabel, secondaryHref }) {
+function PageCta({ t, locale, eyebrow, title, text, primaryLabel, primaryHref, secondaryLabel, secondaryHref }) {
+  const ctaEyebrow = eyebrow ?? t('pages.cta.eyebrow')
+  const ctaPrimary = primaryLabel ?? t('pages.cta.primary')
+  const ctaHref = primaryHref ?? pathFor('contact', locale)
   return (
     <section className="section page-cta-section">
       <div className="container">
         <Reveal>
           <div className="page-cta-card">
             <div>
-              <span className="eyebrow"><Sparkles size={14} />{eyebrow}</span>
+              <span className="eyebrow"><Sparkles size={14} />{ctaEyebrow}</span>
               <h2>{title}</h2>
               <p>{text}</p>
             </div>
             <div className="page-cta-actions">
-              <a className="button" href={primaryHref}>{primaryLabel}<ArrowRight size={17} /></a>
+              <a className="button" href={ctaHref}>{ctaPrimary}<ArrowRight size={17} /></a>
               {secondaryLabel && secondaryHref && (
                 <a className="text-link" href={secondaryHref}>{secondaryLabel}<ArrowUpRight size={16} /></a>
               )}
@@ -817,19 +756,19 @@ function PageCta({ eyebrow = 'İletişim', title, text, primaryLabel = 'Bize yaz
   )
 }
 
-function GamesCatalog() {
+function GamesCatalog({ t }) {
   return (
     <section className="section games-catalog-section" id="tum-oyunlar">
       <div className="container">
         <Reveal>
           <div className="section-intro-grid games-catalog-intro">
             <SectionHeading
-              eyebrow="Tüm oyunlar"
-              title={<>Oyun <span className="text-accent">arşivi.</span></>}
+              eyebrow={t('catalog.eyebrow')}
+              title={<>{t('catalog.titleBefore')} <span className="text-accent">{t('catalog.titleAccent')}</span></>}
             />
             <div className="catalog-side-copy">
-              <p>Yedi mobil oyun projesi.</p>
-              <span><ShieldCheck size={15} /> Yayın ve arşiv durumları belirtilmiştir</span>
+              <p>{t('catalog.sideCopy')}</p>
+              <span><ShieldCheck size={15} /> {t('catalog.statusNote')}</span>
             </div>
           </div>
         </Reveal>
@@ -839,7 +778,7 @@ function GamesCatalog() {
             <Reveal key={game.slug} delay={(index % 4) * 70} className={game.featured ? 'game-card-wrap game-card-wrap--featured' : 'game-card-wrap'}>
               <article className={`game-catalog-card${game.featured ? ' is-featured' : ''}`} id={game.slug}>
                 <div className="game-card-image">
-                  <img src={game.featured ? game.wideImage : game.image} alt={`${game.title} ${game.subtitle} oyun görseli`} loading={game.featured ? 'eager' : 'lazy'} />
+                  <img src={game.featured ? game.wideImage : game.image} alt={t('catalog.gameAlt', { title: game.title, subtitle: game.subtitle })} loading={game.featured ? 'eager' : 'lazy'} />
                   <div className="game-card-shade" />
                   <span className={`game-status${game.featured ? ' is-live' : ''}`}>{game.status}</span>
                   <span className="game-number">{String(index + 1).padStart(2, '0')} / {String(games.length).padStart(2, '0')}</span>
@@ -856,16 +795,16 @@ function GamesCatalog() {
                     {game.storeUrl ? (
                       <>
                         <a href={game.storeUrl} target="_blank" rel="noreferrer">
-                          <img className="store-badge store-badge--small" src="/images/badges/app-store.png" alt="App Store’da görüntüle" />
+                          <img className="store-badge store-badge--small" src="/images/badges/app-store.png" alt={t('projects.appStoreAlt')} />
                         </a>
                         {game.googlePlayUrl && (
                           <a href={game.googlePlayUrl} target="_blank" rel="noreferrer">
-                            <img className="store-badge store-badge--small store-badge--google" src="/images/badges/google-play.png" alt="Google Play’den indirin" />
+                            <img className="store-badge store-badge--small store-badge--google" src="/images/badges/google-play.png" alt={t('projects.googlePlayAlt')} />
                           </a>
                         )}
                       </>
                     ) : (
-                      <span><Gamepad2 size={15} /> TION stüdyo arşivi</span>
+                      <span><Gamepad2 size={15} /> {t('catalog.studioArchive')}</span>
                     )}
                   </div>
                 </div>
@@ -876,7 +815,7 @@ function GamesCatalog() {
 
         <Reveal>
           <p className="games-archive-note">
-            <strong>Not:</strong> Aktif olmayan eski mağaza bağlantıları paylaşılmamıştır.
+            <strong>{t('catalog.noteLabel')}</strong> {t('catalog.noteText')}
           </p>
         </Reveal>
       </div>
@@ -884,133 +823,141 @@ function GamesCatalog() {
   )
 }
 
-function HomePage() {
+function HomePage({ t, locale }) {
   return (
     <>
-      <Hero />
+      <Hero t={t} locale={locale} />
       <TechnologyStrip />
-      <Services />
-      <Projects />
+      <Services t={t} locale={locale} />
+      <Projects t={t} locale={locale} />
       <PageCta
-        title="Bir projeniz mi var?"
-        text="Kısa bilgi için bize yazın."
-        secondaryLabel="Hizmetler"
-        secondaryHref="/hizmetler/"
+        t={t}
+        locale={locale}
+        title={t('pages.home.ctaTitle')}
+        text={t('pages.home.ctaText')}
+        secondaryLabel={t('nav.services')}
+        secondaryHref={pathFor('services', locale)}
       />
     </>
   )
 }
 
-function ServicesPage() {
+function ServicesPage({ t, locale }) {
   return (
     <>
       <PageHero
-        eyebrow="Hizmetler"
-        title="Web, mobil ve oyun"
-        accent="geliştirme."
-        description="Ürün tasarımı, yazılım geliştirme ve bakım."
+        eyebrow={t('services.eyebrow')}
+        title={t('pages.services.title')}
+        accent={t('pages.services.accent')}
+        description={t('pages.services.description')}
       >
-        <a className="button" href="/iletisim/">İletişim <ArrowRight size={17} /></a>
+        <a className="button" href={pathFor('contact', locale)}>{t('nav.contact')} <ArrowRight size={17} /></a>
       </PageHero>
-      <Services />
-      <Process />
+      <Services t={t} locale={locale} />
+      <Process t={t} />
       <TechnologyStrip />
       <PageCta
-        title="Projeniz için bize yazın."
-        text="Kapsam ve takvim görüşmede belirlenir."
+        t={t}
+        locale={locale}
+        title={t('pages.services.ctaTitle')}
+        text={t('pages.services.ctaText')}
       />
     </>
   )
 }
 
-function GamesPage() {
+function GamesPage({ t, locale }) {
   return (
     <>
       <PageHero
-        eyebrow="Oyunlar"
-        title="TION"
-        accent="oyunları."
-        description="Yedi mobil oyun projesi."
+        eyebrow={t('games.eyebrow')}
+        title={t('games.heroTitle')}
+        accent={t('games.heroAccent')}
+        description={t('pages.games.description')}
         image={featuredGame.wideImage}
-        imageAlt="Real Driver oyunundan kırmızı spor otomobil"
+        imageAlt={t('pages.games.heroImageAlt')}
       >
-        <a className="button" href="#tum-oyunlar">Tüm oyunları gör <ArrowRight size={17} /></a>
-        <a className="text-link" href="#real-driver">Real Driver <ArrowRight size={15} /></a>
+        <a className="button" href="#tum-oyunlar">{t('pages.games.seeAll')} <ArrowRight size={17} /></a>
+        <a className="text-link" href={`#${featuredGame.slug}`}>{featuredGame.title} <ArrowRight size={15} /></a>
       </PageHero>
-      <GamesCatalog />
+      <GamesCatalog t={t} />
       <PageCta
-        title="Oyun projesi için bize yazın."
-        text="Tasarım ve geliştirme desteği veriyoruz."
-        secondaryLabel="Hizmetler"
-        secondaryHref="/hizmetler/"
+        t={t}
+        locale={locale}
+        title={t('pages.games.ctaTitle')}
+        text={t('pages.games.ctaText')}
+        secondaryLabel={t('nav.services')}
+        secondaryHref={pathFor('services', locale)}
       />
     </>
   )
 }
 
-function AboutPage() {
+function AboutPage({ t, locale }) {
   return (
     <>
       <PageHero
-        eyebrow="Hakkımızda"
-        title="TION"
-        accent="Studios."
-        description="İstanbul merkezli yazılım ve oyun geliştirme stüdyosu."
+        eyebrow={t('about.eyebrow')}
+        title={t('about.titleBefore')}
+        accent={t('about.titleAccent')}
+        description={t('pages.about.description')}
         facts={[
-          { label: 'Konum', value: 'İstanbul' },
-          { label: 'Alanlar', value: 'Web · Mobil · Oyun' },
+          { label: t('pages.about.factLocation'), value: t('pages.about.factLocationValue') },
+          { label: t('pages.about.factAreas'), value: t('pages.about.factAreasValue') },
         ]}
       />
-      <About />
-      <Process />
+      <About t={t} />
+      <Process t={t} />
       <PageCta
-        title="İletişim"
-        text="Yeni bir proje için bize yazabilirsiniz."
+        t={t}
+        locale={locale}
+        title={t('pages.about.ctaTitle')}
+        text={t('pages.about.ctaText')}
       />
     </>
   )
 }
 
-function ContactPage() {
+function ContactPage({ t }) {
   return (
     <>
       <PageHero
-        eyebrow="İletişim"
-        title="Projeniz için"
-        accent="bize yazın."
+        eyebrow={t('contact.eyebrow')}
+        title={t('contact.titleBefore')}
+        accent={t('contact.titleAccent')}
         description="info@tionstudios.com"
         facts={[
-          { label: 'Konum', value: 'İstanbul, Türkiye' },
+          { label: t('pages.about.factLocation'), value: t('contact.location') },
         ]}
       >
-        <a className="button" href="mailto:info@tionstudios.com">E-posta gönder <Mail size={17} /></a>
+        <a className="button" href="mailto:info@tionstudios.com">{t('pages.contact.sendEmail')} <Mail size={17} /></a>
       </PageHero>
-      <Contact />
-      <Faq />
+      <Contact t={t} />
+      <Faq t={t} />
     </>
   )
 }
 
-function NotFoundPage() {
+function NotFoundPage({ t, locale }) {
   return (
     <PageHero
-      eyebrow="404 / Sayfa bulunamadı"
-      title="Aradığınız sayfa"
-      accent="burada değil."
-      description="Bağlantı değişmiş veya sayfa kaldırılmış olabilir."
+      eyebrow={t('pages.notFound.eyebrow')}
+      title={t('pages.notFound.title')}
+      accent={t('pages.notFound.accent')}
+      description={t('pages.notFound.description')}
     >
-      <a className="button" href="/">Ana sayfaya dön <ArrowRight size={17} /></a>
+      <a className="button" href={pathFor('home', locale)}>{t('pages.notFound.cta')} <ArrowRight size={17} /></a>
     </PageHero>
   )
 }
 
-function Footer() {
+function Footer({ t, locale }) {
   return (
     <footer className="site-footer">
       <div className="container footer-main">
         <div className="footer-brand-column">
-          <a href="/" className="brand" aria-label="TION Studios ana sayfa"><BrandMark /></a>
-          <p>Yazılım ve oyun geliştirme stüdyosu.</p>
+          <a href={pathFor('home', locale)} className="brand" aria-label={t('nav.home')}><BrandMark /></a>
+          <p>{t('footerExtra.tagline')}</p>
           <div className="footer-socials">
             <a href="https://www.linkedin.com/company/tion-studios" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
             <a href="https://github.com/tionstudios" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={18} /></a>
@@ -1018,25 +965,25 @@ function Footer() {
           </div>
         </div>
         <div className="footer-links-column">
-          <span>Keşfet</span>
-          {navigation.map((item) => <a key={item.href} href={item.href}>{item.label}</a>) }
+          <span>{t('footer.explore')}</span>
+          {buildNavigation(t, locale).map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
         </div>
         <div className="footer-links-column">
-          <span>Yasal</span>
-          <a href="/privacy-policy.html">Gizlilik Politikası</a>
-          <a href="/terms-of-services.html">Kullanım Koşulları</a>
+          <span>{t('footer.legal')}</span>
+          <a href={pathFor('privacy', locale)}>{t('footer.privacy')}</a>
+          <a href={pathFor('terms', locale)}>{t('footer.terms')}</a>
           <a href="/app-ads.txt">App Ads</a>
         </div>
         <div className="footer-contact-column">
-          <span>İletişim</span>
+          <span>{t('footer.contact')}</span>
           <a href="mailto:info@tionstudios.com">info@tionstudios.com <ArrowUpRight size={17} /></a>
-          <p>İstanbul · Türkiye</p>
+          <p>{t('about.location')}</p>
         </div>
       </div>
       <div className="container footer-bottom">
-        <p>© {new Date().getFullYear()} TION Studios. Tüm hakları saklıdır.</p>
-        <p>Web · Mobil · Oyun</p>
-        <a href="#top">Yukarı dön <span>↑</span></a>
+        <p>{t('footer.rights', { year: new Date().getFullYear() })}</p>
+        <p>{t('footer.tagline')}</p>
+        <a href="#top">{t('footer.backToTop')} <span>↑</span></a>
       </div>
     </footer>
   )
@@ -1053,14 +1000,24 @@ const pageComponents = {
 
 function App({ page = 'home' }) {
   const Page = pageComponents[page] || NotFoundPage
+  const locale = currentLocale()
+  const t = translator(locale)
+
+  // Keep the document in sync with the locale it is actually rendering, so
+  // screen readers and the browser's own text handling get it right.
+  useEffect(() => {
+    const { htmlLang, dir } = locales[locale]
+    document.documentElement.lang = htmlLang
+    document.documentElement.dir = dir
+  }, [locale])
 
   return (
     <div className="site-shell">
-      <Header currentPage={page} />
+      <Header currentPage={page} t={t} locale={locale} />
       <main id="main-content">
-        <Page />
+        <Page t={t} locale={locale} />
       </main>
-      <Footer />
+      <Footer t={t} locale={locale} />
     </div>
   )
 }

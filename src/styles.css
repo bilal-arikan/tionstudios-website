@@ -3694,3 +3694,113 @@ p {
     transform: none;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Language switcher
+   -------------------------------------------------------------------------- */
+
+.language-switcher {
+  position: relative;
+  margin-inline-start: auto;
+}
+
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  transition: border-color 200ms ease, background 200ms ease, color 200ms ease;
+}
+
+.language-toggle:hover {
+  border-color: var(--line-strong);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  color: var(--accent);
+}
+
+.language-menu {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 8px);
+  inset-inline-end: 0;
+  min-width: 168px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--ink-2) 96%, transparent);
+  box-shadow: var(--shadow-dark);
+  backdrop-filter: blur(14px);
+}
+
+.language-menu a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 11px;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.language-menu a:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.language-menu a.is-active {
+  color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   RTL — Arabic. Logical properties handle most of it; these are the cases
+   where a physical direction was baked in.
+   -------------------------------------------------------------------------- */
+
+[dir='rtl'] .hero-bottom a span,
+[dir='rtl'] .footer-bottom a span {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+[dir='rtl'] .button svg,
+[dir='rtl'] .text-link svg,
+[dir='rtl'] .service-card a svg,
+[dir='rtl'] .page-cta-actions svg,
+[dir='rtl'] .faq-mail-link svg,
+[dir='rtl'] .footer-contact-column a svg {
+  transform: scaleX(-1);
+}
+
+[dir='rtl'] .readout,
+[dir='rtl'] .readout-body,
+[dir='rtl'] .readout-bar,
+[dir='rtl'] .readout-foot {
+  /* Terminal output stays LTR: paths, versions and platform names read
+     left-to-right even in an RTL page. */
+  direction: ltr;
+  text-align: left;
+}
+
+[dir='rtl'] .hero-copy,
+[dir='rtl'] .section-heading,
+[dir='rtl'] .contact-copy {
+  text-align: right;
+}
+
+[dir='rtl'] .process-item:hover {
+  padding-inline: 18px;
+}

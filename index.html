@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="tr">
+<html lang="tr" dir="ltr" data-locale="tr" data-page="home">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +7,14 @@
     <title>TION Studios — Dijital Ürün ve Yazılım Stüdyosu</title>
     <meta name="description" content="TION Studios, İstanbul merkezli web, mobil ve oyun geliştirme stüdyosudur." />
     <meta name="keywords" content="yazılım geliştirme, web uygulama, mobil uygulama, özel yazılım, oyun geliştirme, İstanbul" />
+
+    <link rel="alternate" hreflang="tr" href="https://tionstudios.com/" />
+    <link rel="alternate" hreflang="en" href="https://tionstudios.com/en/" />
+    <link rel="alternate" hreflang="es" href="https://tionstudios.com/es/" />
+    <link rel="alternate" hreflang="ar" href="https://tionstudios.com/ar/" />
+    <link rel="alternate" hreflang="ru" href="https://tionstudios.com/ru/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://tionstudios.com/zh/" />
+    <link rel="alternate" hreflang="x-default" href="https://tionstudios.com/" />
     <link rel="canonical" href="https://tionstudios.com/" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -14,7 +22,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="tr_TR" />
     <meta property="og:title" content="TION Studios — Dijital Ürün ve Yazılım Stüdyosu" />
-    <meta property="og:description" content="Web, mobil ve oyun geliştirme." />
+    <meta property="og:description" content="TION Studios, İstanbul merkezli web, mobil ve oyun geliştirme stüdyosudur." />
     <meta property="og:url" content="https://tionstudios.com/" />
     <meta property="og:image" content="https://tionstudios.com/images/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -130,6 +138,53 @@
       </span>
       <span class="tion-splash-bar" role="status" aria-label="Yükleniyor"><span></span></span>
     </div>
+    <script>
+      // Send first-time visitors to their own language. The page still SERVES
+      // Turkish to everyone (crawlers included), so the Turkish URLs keep their
+      // own indexing; only real browsers are forwarded, and only once.
+      (function () {
+        try {
+          var SUPPORTED = ['tr', 'en', 'es', 'ar', 'ru', 'zh'];
+          var ROUTES = {
+            en: { services: 'services',  games: 'games',   about: 'about',      contact: 'contact' },
+            es: { services: 'servicios', games: 'juegos',  about: 'nosotros',   contact: 'contacto' },
+            ar: { services: 'khadamat',  games: 'alaab',   about: 'man-nahnu',  contact: 'ittasil-bina' },
+            ru: { services: 'uslugi',    games: 'igry',    about: 'o-nas',      contact: 'kontakty' },
+            zh: { services: 'fuwu',      games: 'youxi',   about: 'guanyu',     contact: 'lianxi' }
+          };
+          if (/bot|crawl|spider|slurp|bingpreview|facebookexternalhit|embedly|quora|pinterest|vkshare|whatsapp|telegram|lighthouse|headless/i.test(navigator.userAgent)) return;
+          if (sessionStorage.getItem('tion-redirected')) return;
+
+          var stored = null;
+          try { stored = localStorage.getItem('tion-locale'); } catch (e) {}
+
+          var target = null;
+          if (stored && SUPPORTED.indexOf(stored) !== -1) {
+            target = stored;
+          } else {
+            var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
+            for (var i = 0; i < langs.length; i++) {
+              if (!langs[i]) continue;
+              var base = String(langs[i]).toLowerCase().split('-')[0];
+              if (SUPPORTED.indexOf(base) !== -1) { target = base; break; }
+            }
+          }
+
+          if (!target || target === 'tr') return;
+
+          var page = document.documentElement.getAttribute('data-page') ||
+                     (document.body && document.body.getAttribute('data-page')) || 'home';
+          var segment = page === 'home' ? '' : ((ROUTES[target] && ROUTES[target][page]) || '');
+          var dest = '/' + target + (segment ? '/' + segment + '/' : '/');
+
+          if (dest === location.pathname) return;
+          sessionStorage.setItem('tion-redirected', '1');
+          location.replace(dest + location.hash);
+        } catch (e) {
+          // Never let a redirect failure block the page.
+        }
+      })();
+    </script>
     <script>
       // Splash timing origin, plus a last-resort clear that runs even if the
       // app bundle never loads — the splash must never trap the page.

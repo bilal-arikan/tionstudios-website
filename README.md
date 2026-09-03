@@ -35,6 +35,77 @@ Kurallar:
 
 Tüm sayfalar WCAG 2.1 AA kontrast eşiğini geçer (normal metin 4.5:1, büyük metin 3:1).
 
+## Çok Dilli Destek (i18n)
+
+Site altı dilde yayınlanır: **Türkçe** (varsayılan), İngilizce, İspanyolca,
+Arapça, Rusça ve Çince.
+
+### URL yapısı
+
+Türkçe kökte kalır, diğer diller kendi klasöründe ve yol adları da çevrilidir:
+
+| Sayfa | tr | en | es | ar | ru | zh |
+| --- | --- | --- | --- | --- | --- | --- |
+| Ana sayfa | `/` | `/en/` | `/es/` | `/ar/` | `/ru/` | `/zh/` |
+| Hizmetler | `/hizmetler/` | `/en/services/` | `/es/servicios/` | `/ar/khadamat/` | `/ru/uslugi/` | `/zh/fuwu/` |
+| Oyunlar | `/oyunlar/` | `/en/games/` | `/es/juegos/` | `/ar/alaab/` | `/ru/igry/` | `/zh/youxi/` |
+| Hakkımızda | `/hakkimizda/` | `/en/about/` | `/es/nosotros/` | `/ar/man-nahnu/` | `/ru/o-nas/` | `/zh/guanyu/` |
+| İletişim | `/iletisim/` | `/en/contact/` | `/es/contacto/` | `/ar/ittasil-bina/` | `/ru/kontakty/` | `/zh/lianxi/` |
+
+Mevcut Türkçe URL'ler değişmedi — eski bağlantılar ve arama sıralaması korunur.
+
+### Çeviri dosyaları
+
+Metinler `src/i18n/translations/<kod>.js` içindedir. `tr.js` referanstır;
+diğer dosyalar aynı anahtar yapısını taşır.
+
+**Şu an `en`, `es`, `ar`, `ru`, `zh` dosyalarındaki değerler Türkçe
+yer tutucudur.** Çeviri yapılırken:
+
+- Anahtarları (`hero.titleAccent` gibi) değiştirmeyin, yalnızca değerleri çevirin.
+- `{name}`, `{title}`, `{year}` gibi süslü parantezleri olduğu gibi bırakın.
+- Dizi uzunluklarını koruyun (`services.items` 4, `faq.items` 5 vb.).
+- Marka adlarını çevirmeyin: TION Studios, Real Driver, Unity, React, iOS.
+
+Eksik bırakılan anahtar otomatik olarak Türkçe'ye düşer; dosyayı kısmi
+doldurmak güvenlidir.
+
+### Sayfa üretimi
+
+HTML dosyaları elle yazılmaz. Türkçe sayfalar şablondur; diğerleri üretilir:
+
+```bash
+npm run gen:pages
+```
+
+`npm run build` bunu zaten otomatik çalıştırır. Üretilen şeyler:
+
+- 30 HTML sayfası (6 dil × 5 sayfa)
+- Her sayfada `hreflang` alternatifleri + `x-default`
+- Dile göre `lang`, `dir`, `canonical`, Open Graph etiketleri
+- `public/sitemap.xml` (32 URL, tam alternatif kümesiyle)
+
+Türkçe bir sayfanın yapısını değiştirdiğinizde bu komutu yeniden çalıştırın.
+
+### Dil yönlendirmesi
+
+Kök sayfalarda (`/`, `/hizmetler/` vb.) tarayıcı diline göre yönlendirme yapılır.
+SEO'yu korumak için kasıtlı olarak sınırlıdır:
+
+- **Arama motorları yönlendirilmez** — Googlebot Türkçe içeriği görür ve indeksler.
+- Kullanıcının menüden seçtiği dil `localStorage`'a yazılır ve tarayıcı dilini ezer.
+- Oturum başına yalnızca bir kez çalışır; döngü oluşmaz.
+- `location.replace` kullanılır, böylece geri tuşu siteden çıkar.
+- Yalnızca Türkçe sayfalarda bulunur — çevrili sayfalara kopyalanmaz.
+
+### RTL (Arapça)
+
+Arapça sayfalar `dir="rtl"` ile yayınlanır. Düzen büyük ölçüde CSS mantıksal
+özellikleriyle (`margin-inline`, `inset-inline`) kendiliğinden döner.
+
+Bilinçli istisna: **terminal okuma paneli (`.readout`) LTR kalır.** Dosya yolları,
+sürüm numaraları ve platform adları Arapça sayfada da soldan sağa okunur.
+
 ## Açılış Ekranı (Splash)
 
 React yüklenene kadar geçen boş anı kapatmak için her HTML sayfasında satır içi
