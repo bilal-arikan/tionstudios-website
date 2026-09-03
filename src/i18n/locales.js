@@ -9,7 +9,8 @@ export const locales = {
   es: { code: 'es', label: 'Español',  english: 'Spanish', htmlLang: 'es', dir: 'ltr', ogLocale: 'es_ES' },
   ar: { code: 'ar', label: 'العربية',  english: 'Arabic',  htmlLang: 'ar', dir: 'rtl', ogLocale: 'ar_AR' },
   ru: { code: 'ru', label: 'Русский',  english: 'Russian', htmlLang: 'ru', dir: 'ltr', ogLocale: 'ru_RU' },
-  zh: { code: 'zh', label: '中文',      english: 'Chinese', htmlLang: 'zh-Hans', dir: 'ltr', ogLocale: 'zh_CN' },
+  // wordSpacing:false — Chinese does not separate words with spaces.
+  zh: { code: 'zh', label: '中文',      english: 'Chinese', htmlLang: 'zh-Hans', dir: 'ltr', ogLocale: 'zh_CN', wordSpacing: false },
 }
 
 export const localeCodes = Object.keys(locales)

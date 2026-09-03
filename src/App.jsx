@@ -41,6 +41,24 @@ const projectArchive = games.filter((game) => !game.featured).slice(0, 3)
 const technologyList = ['React', 'TypeScript', 'Node.js', 'Cloud', '.NET', 'Unity', 'PostgreSQL', 'REST API']
 
 /** Content arrays are built from the dictionary so they follow the active locale. */
+/**
+ * Joins a split headline around its highlighted span.
+ *
+ * Most languages need a space between the parts; Chinese and Japanese do not
+ * write spaces between words, so a literal space would show as a visible gap.
+ */
+function SplitTitle({ before, accent, after, locale, accentClass = 'text-accent' }) {
+  const gap = locales[locale]?.wordSpacing === false ? null : ' '
+  return (
+    <>
+      {before}
+      {gap}
+      <span className={accentClass}>{accent}</span>
+      {after ? <>{gap}{after}</> : null}
+    </>
+  )
+}
+
 function buildServices(t) {
   return (t('services.items') || []).map((item, index) => ({
     ...item,
@@ -292,7 +310,7 @@ function Hero({ t, locale }) {
             {t('hero.eyebrow')}
           </div>
           <h1>
-            {t('hero.titleBefore')} <span className="text-accent">{t('hero.titleAccent')}</span> {t('hero.titleAfter')}
+            <SplitTitle locale={locale} before={t('hero.titleBefore')} accent={t('hero.titleAccent')} after={t('hero.titleAfter')} />
           </h1>
           <p className="hero-description">
             {t('hero.description')}
@@ -360,7 +378,7 @@ function Services({ t, locale }) {
           <div className="section-intro-grid">
             <SectionHeading
               eyebrow={t('services.eyebrow')}
-              title={<>{t('services.titleBefore')} <span className="text-accent">{t('services.titleAccent')}</span></>}
+              title={<SplitTitle locale={locale} before={t('services.titleBefore')} accent={t('services.titleAccent')} />}
             />
             <p className="section-lead">
               {t('services.lead')}
@@ -444,7 +462,7 @@ function Projects({ t, locale }) {
           <div className="section-intro-grid section-intro-grid--projects">
             <SectionHeading
               eyebrow={t('projects.eyebrow')}
-              title={<>{t('projects.titleBefore')} <span className="text-accent">{t('projects.titleAccent')}</span></>}
+              title={<SplitTitle locale={locale} before={t('projects.titleBefore')} accent={t('projects.titleAccent')} />}
             />
             <div className="section-side-copy">
               <p>{t('projects.sideCopy')}</p>
@@ -486,7 +504,7 @@ function Projects({ t, locale }) {
   )
 }
 
-function Process({ t }) {
+function Process({ t, locale }) {
   const processSteps = buildProcessSteps(t)
 
   return (
@@ -495,7 +513,7 @@ function Process({ t }) {
         <Reveal>
           <SectionHeading
             eyebrow={t('process.eyebrow')}
-            title={<>{t('process.titleBefore')} <span className="text-accent">{t('process.titleAccent')}</span></>}
+            title={<SplitTitle locale={locale} before={t('process.titleBefore')} accent={t('process.titleAccent')} />}
             description={t('process.description')}
             align="center"
           />
@@ -521,7 +539,7 @@ function Process({ t }) {
   )
 }
 
-function About({ t }) {
+function About({ t, locale }) {
   const principles = buildPrinciples(t)
 
   return (
@@ -529,7 +547,7 @@ function About({ t }) {
       <div className="container about-grid">
         <Reveal className="about-sticky">
           <span className="eyebrow"><Sparkles size={14} />{t('about.eyebrow')}</span>
-          <h2>{t('about.titleBefore')} <span className="text-accent">{t('about.titleAccent')}</span></h2>
+          <h2><SplitTitle locale={locale} before={t('about.titleBefore')} accent={t('about.titleAccent')} /></h2>
           <p>
             {t('about.description')}
           </p>
@@ -556,7 +574,7 @@ function About({ t }) {
   )
 }
 
-function Faq({ t }) {
+function Faq({ t, locale }) {
   const [openIndex, setOpenIndex] = useState(0)
   const faqs = t('faq.items') || []
 
@@ -566,7 +584,7 @@ function Faq({ t }) {
         <Reveal>
           <SectionHeading
             eyebrow={t('faq.eyebrow')}
-            title={<>{t('faq.titleBefore')} <span className="text-accent">{t('faq.titleAccent')}</span></>}
+            title={<SplitTitle locale={locale} before={t('faq.titleBefore')} accent={t('faq.titleAccent')} />}
           />
           <a className="text-link faq-mail-link" href="mailto:info@tionstudios.com">
             info@tionstudios.com <ArrowUpRight size={16} />
@@ -601,7 +619,7 @@ function Faq({ t }) {
   )
 }
 
-function Contact({ t }) {
+function Contact({ t, locale }) {
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (event) => {
@@ -628,7 +646,7 @@ function Contact({ t }) {
       <div className="container contact-grid">
         <Reveal className="contact-copy">
           <span className="eyebrow eyebrow--light"><Sparkles size={14} />{t('contact.eyebrow')}</span>
-          <h2>{t('contact.titleBefore')} <span>{t('contact.titleAccent')}</span></h2>
+          <h2><SplitTitle locale={locale} before={t('contact.titleBefore')} accent={t('contact.titleAccent')} accentClass="" /></h2>
           <p>{t('contact.description')}</p>
           <div className="contact-direct">
             <a href="mailto:info@tionstudios.com">
@@ -686,7 +704,7 @@ function Contact({ t }) {
   )
 }
 
-function PageHero({ eyebrow, title, accent, description, facts = [], image, imageAlt, children }) {
+function PageHero({ eyebrow, title, accent, description, facts = [], image, imageAlt, locale, children }) {
   return (
     <section className={`page-hero${image ? ' page-hero--with-image' : ''}`} id="top">
       <div className="page-hero-grid" aria-hidden="true" />
@@ -694,7 +712,7 @@ function PageHero({ eyebrow, title, accent, description, facts = [], image, imag
       <div className="container page-hero-inner">
         <div className="page-hero-copy">
           <span className="eyebrow page-hero-eyebrow"><Sparkles size={14} />{eyebrow}</span>
-          <h1>{title} {accent && <span>{accent}</span>}</h1>
+          <h1>{accent ? <SplitTitle locale={locale} before={title} accent={accent} accentClass="" /> : title}</h1>
           <p>{description}</p>
           {children && <div className="page-hero-actions">{children}</div>}
           {facts.length > 0 && (
@@ -756,7 +774,7 @@ function PageCta({ t, locale, eyebrow, title, text, primaryLabel, primaryHref, s
   )
 }
 
-function GamesCatalog({ t }) {
+function GamesCatalog({ t, locale }) {
   return (
     <section className="section games-catalog-section" id="tum-oyunlar">
       <div className="container">
@@ -764,7 +782,7 @@ function GamesCatalog({ t }) {
           <div className="section-intro-grid games-catalog-intro">
             <SectionHeading
               eyebrow={t('catalog.eyebrow')}
-              title={<>{t('catalog.titleBefore')} <span className="text-accent">{t('catalog.titleAccent')}</span></>}
+              title={<SplitTitle locale={locale} before={t('catalog.titleBefore')} accent={t('catalog.titleAccent')} />}
             />
             <div className="catalog-side-copy">
               <p>{t('catalog.sideCopy')}</p>
@@ -846,6 +864,7 @@ function ServicesPage({ t, locale }) {
   return (
     <>
       <PageHero
+        locale={locale}
         eyebrow={t('services.eyebrow')}
         title={t('pages.services.title')}
         accent={t('pages.services.accent')}
@@ -854,7 +873,7 @@ function ServicesPage({ t, locale }) {
         <a className="button" href={pathFor('contact', locale)}>{t('nav.contact')} <ArrowRight size={17} /></a>
       </PageHero>
       <Services t={t} locale={locale} />
-      <Process t={t} />
+      <Process t={t} locale={locale} />
       <TechnologyStrip />
       <PageCta
         t={t}
@@ -870,6 +889,7 @@ function GamesPage({ t, locale }) {
   return (
     <>
       <PageHero
+        locale={locale}
         eyebrow={t('games.eyebrow')}
         title={t('games.heroTitle')}
         accent={t('games.heroAccent')}
@@ -880,7 +900,7 @@ function GamesPage({ t, locale }) {
         <a className="button" href="#tum-oyunlar">{t('pages.games.seeAll')} <ArrowRight size={17} /></a>
         <a className="text-link" href={`#${featuredGame.slug}`}>{featuredGame.title} <ArrowRight size={15} /></a>
       </PageHero>
-      <GamesCatalog t={t} />
+      <GamesCatalog t={t} locale={locale} />
       <PageCta
         t={t}
         locale={locale}
@@ -897,6 +917,7 @@ function AboutPage({ t, locale }) {
   return (
     <>
       <PageHero
+        locale={locale}
         eyebrow={t('about.eyebrow')}
         title={t('about.titleBefore')}
         accent={t('about.titleAccent')}
@@ -906,8 +927,8 @@ function AboutPage({ t, locale }) {
           { label: t('pages.about.factAreas'), value: t('pages.about.factAreasValue') },
         ]}
       />
-      <About t={t} />
-      <Process t={t} />
+      <About t={t} locale={locale} />
+      <Process t={t} locale={locale} />
       <PageCta
         t={t}
         locale={locale}
@@ -918,10 +939,11 @@ function AboutPage({ t, locale }) {
   )
 }
 
-function ContactPage({ t }) {
+function ContactPage({ t, locale }) {
   return (
     <>
       <PageHero
+        locale={locale}
         eyebrow={t('contact.eyebrow')}
         title={t('contact.titleBefore')}
         accent={t('contact.titleAccent')}
@@ -932,8 +954,8 @@ function ContactPage({ t }) {
       >
         <a className="button" href="mailto:info@tionstudios.com">{t('pages.contact.sendEmail')} <Mail size={17} /></a>
       </PageHero>
-      <Contact t={t} />
-      <Faq t={t} />
+      <Contact t={t} locale={locale} />
+      <Faq t={t} locale={locale} />
     </>
   )
 }
@@ -941,6 +963,7 @@ function ContactPage({ t }) {
 function NotFoundPage({ t, locale }) {
   return (
     <PageHero
+      locale={locale}
       eyebrow={t('pages.notFound.eyebrow')}
       title={t('pages.notFound.title')}
       accent={t('pages.notFound.accent')}
