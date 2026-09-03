@@ -3,7 +3,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   Blocks,
-  Braces,
   Check,
   ChevronDown,
   CircleCheck,
@@ -270,78 +269,61 @@ function Header({ currentPage = 'home' }) {
 }
 
 function HeroVisual() {
+  const shipped = games.filter((game) => game.status === 'Yayında')
+
   return (
-    <div className="hero-visual" aria-label="TION yazılım geliştirme paneli görselleştirmesi">
-      <div className="hero-orbit hero-orbit--one" />
-      <div className="hero-orbit hero-orbit--two" />
-      <div className="build-window">
-        <div className="window-bar">
-          <div className="window-dots" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </div>
-          <span className="window-address">tionstudios.com</span>
-          <span className="window-secure"><ShieldCheck size={13} /> Online</span>
+    <div className="hero-visual">
+      <div className="hero-orbit hero-orbit--one" aria-hidden="true" />
+      <div className="hero-orbit hero-orbit--two" aria-hidden="true" />
+
+      <div className="readout" aria-label="TION Studios yayın durumu">
+        <div className="readout-bar">
+          <span className="readout-path">~/tion/{featuredGame.slug}</span>
+          <span className="readout-env">PROD</span>
         </div>
-        <div className="window-body">
-          <aside className="window-sidebar" aria-hidden="true">
-            <span className="sidebar-brand"><Braces size={19} /></span>
-            <span className="sidebar-item is-active" />
-            <span className="sidebar-item" />
-            <span className="sidebar-item" />
-            <span className="sidebar-item" />
-            <span className="sidebar-avatar">T</span>
-          </aside>
-          <div className="window-content">
-            <div className="window-heading">
-              <div>
-                <span className="micro-label">TION STUDIOS</span>
-                <h3>Development</h3>
-              </div>
-              <span className="status-pill"><span /> Ready</span>
-            </div>
 
-            <div className="metric-grid">
-              <div className="metric-card metric-card--primary">
-                <span>Services</span>
-                <strong>Web · Mobile · Game</strong>
-                <div className="flow-line">
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                </div>
-              </div>
-              <div className="metric-card">
-                <span>Process</span>
-                <strong>Design + Code</strong>
-                <small><CircleCheck size={13} /> Tested</small>
-              </div>
-            </div>
-
-            <div className="code-panel">
-              <div className="code-panel-head">
-                <span>services.ts</span>
-                <span>● ● ●</span>
-              </div>
-              <div className="code-row"><em>01</em><code><b>const</b> services = <i>[</i></code></div>
-              <div className="code-row"><em>02</em><code>&nbsp;&nbsp;<span>&apos;web&apos;</span>,</code></div>
-              <div className="code-row"><em>03</em><code>&nbsp;&nbsp;<span>&apos;mobile&apos;</span>,</code></div>
-              <div className="code-row"><em>04</em><code>&nbsp;&nbsp;<span>&apos;game&apos;</span>,</code></div>
-              <div className="code-row"><em>05</em><code><i>]</i></code></div>
-            </div>
+        <dl className="readout-body">
+          <div className="readout-line">
+            <dt>proje</dt>
+            <dd>{featuredGame.title} — <b>{featuredGame.subtitle}</b></dd>
           </div>
+          <div className="readout-line">
+            <dt>platform</dt>
+            <dd>{featuredGame.platform}</dd>
+          </div>
+          <div className="readout-line">
+            <dt>tür</dt>
+            <dd>{featuredGame.category}</dd>
+          </div>
+          <div className="readout-line">
+            <dt>odak</dt>
+            <dd>{featuredGame.focus.join(' · ')}</dd>
+          </div>
+          <div className="readout-line">
+            <dt>durum</dt>
+            <dd className="is-live">
+              <span className="live-dot" aria-hidden="true" />
+              İki mağazada yayında
+            </dd>
+          </div>
+        </dl>
+
+        <div className="readout-foot">
+          <span className="readout-foot-label">STÜDYO</span>
+          <span className="readout-foot-val"><b>{games.length}</b> oyun</span>
+          <span className="readout-foot-val"><b>{shipped.length}</b> yayında</span>
+          <span className="readout-foot-val">Unity · React</span>
         </div>
       </div>
+
       <div className="floating-card floating-card--top">
         <span className="floating-icon"><Zap size={15} /></span>
-        <div><strong>Build & Test</strong><small>Web / Mobile</small></div>
+        <div><strong>Tasarım + kod</strong><small>Tek ekip</small></div>
         <CircleCheck size={18} />
       </div>
       <div className="floating-card floating-card--bottom">
         <div className="avatar-stack" aria-hidden="true"><span>UX</span><span>DEV</span><span>QA</span></div>
-        <div><strong>Design + Code</strong><small>TION Studios</small></div>
+        <div><strong>İstanbul</strong><small>TION Studios</small></div>
       </div>
     </div>
   )

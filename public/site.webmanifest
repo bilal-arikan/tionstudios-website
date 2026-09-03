@@ -4,8 +4,8 @@
   "description": "Web, mobil ve oyun geliştirme stüdyosu",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f8fd",
-  "theme_color": "#413e66",
+  "background_color": "#0B1020",
+  "theme_color": "#0B1020",
   "icons": [
     {
       "src": "/apple-touch-icon.png",

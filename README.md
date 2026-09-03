@@ -7,9 +7,54 @@ TION Studios için React + Vite ile geliştirilen modern kurumsal web sitesi.
 - React 19
 - Vite 7
 - Lucide Icons
-- Manrope Variable Font
+- Archivo Variable (başlık/gövde) + JetBrains Mono Variable (etiket/veri)
 - Saf CSS animasyonları ve responsive tasarım
-- İlk TION sitesinden korunan lacivert/cyan renk paleti, logo ve mağaza rozeti
+
+## Tasarım Yönü — "Gece Vardiyası"
+
+Site, stüdyoyu *çalışırken* gösteren koyu bir tasarım yönü kullanır.
+
+| Rol | Token | Değer |
+| --- | --- | --- |
+| Zemin | `--ink` | `#0B1020` |
+| Panel | `--ink-2` | `#121A31` |
+| Metin | `--text` | `#E6EDFB` |
+| İkincil metin | `--muted` | `#7E8DB0` |
+| Vurgu (tek sıcak renk) | `--accent` | `#5CE6A8` |
+| Veri rengi | `--cyan` | `#39C2F3` |
+
+Kurallar:
+
+- **Vurgu rengi yalnızca CTA ve durum göstergelerinde** kullanılır; geniş yüzeylerde
+  zemin rengi olarak kullanılmaz.
+- **`--cyan` yalnızca veri/okuma değerleri** içindir, buton veya bağlantı için değil.
+- Tüm renkler token üzerinden verilir; CSS içinde sabit hex değeri bulunmaz.
+- Etiketler, sayaçlar ve teknik veriler `--font-mono` ile yazılır.
+- Ana sayfadaki `.readout` bileşeni, `src/data/games.js` içindeki gerçek veriden
+  beslenir — sabit metin içermez.
+
+Tüm sayfalar WCAG 2.1 AA kontrast eşiğini geçer (normal metin 4.5:1, büyük metin 3:1).
+
+## Açılış Ekranı (Splash)
+
+React yüklenene kadar geçen boş anı kapatmak için her HTML sayfasında satır içi
+bir açılış ekranı bulunur (`#tion-splash`).
+
+- CSS **satır içidir** — harici stylesheet ilk kareye yetişemeyeceği için.
+- React ilk render'ı tamamlayınca `body.tion-ready` sınıfı eklenir ve ekran solar.
+- En az `620ms` görünür kalır; aksi halde hızlı yüklemede göz kırpması gibi görünür.
+
+Güvenlik ağı (ekranın sayfayı kilitlememesi için):
+
+| Katman | Süre | Kapsam |
+| --- | --- | --- |
+| Normal yol | ~620ms | React render'ı tamamlar |
+| Uygulama içi yedek | 4s | Uygulama yüklendi ama render takıldı |
+| Satır içi yedek | 8s | Uygulama paketi hiç yüklenmedi |
+
+> Kapatma işlemi yalnızca `requestAnimationFrame`'e bağlanmaz — arka plandaki
+> sekmelerde rAF durdurulur ve ekran açık kalırdı. Bu yüzden rAF ile bir zamanlayıcı
+> birlikte yarışır.
 
 ## Kurulum
 
