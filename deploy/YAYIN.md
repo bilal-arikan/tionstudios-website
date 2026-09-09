@@ -4,8 +4,8 @@
 - Ana adres: https://tionport.com.
 - Sunucu: MyHermes (`100.101.118.70` yönetim, `212.108.107.194` genel adres).
 - Yayın kökü: `/var/www/tionport/current`.
-- Güncel sürüm: `/var/www/tionport/releases/20260910-003048`.
-- Önceki sürüm: `/var/www/tionport/releases/20260910-002404`.
+- Güncel sürüm: `/var/www/tionport/releases/20260910-003548`.
+- Önceki sürüm: `/var/www/tionport/releases/20260910-003515`.
 - İlk Caddy yedeği: `/home/hermes/stack/caddy/Caddyfile.before-tionport-20260909-192845`.
 - Yerel başlangıç yedeği: `C:/Users/Bilal/.codex/backups/tionport-20260909`.
 
@@ -121,3 +121,6 @@ Kameraya yaklaşma, etkileşim sırasında büyüme ve parlaklık artışı kald
 Galaksinin fareye yönelmesi kaldırıldı, sabit eğimde kendi etrafındaki dönüşü
 korundu. Tarayıcıda yana açılma ve eski dağılıma dönüş kontrol edildi; yayın
 denetimleri başarılıdır ve canlı galaksi yüklenmektedir.
+
+Son yayında daha yumuşak dağılma ayarı da aktarılmıştır. Canlı ana sayfa paketi
+ve galaksi çizim dosyasının SHA-256 özeti son kaynak derlemesiyle eşleşmektedir.
