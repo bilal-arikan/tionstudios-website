@@ -54,7 +54,7 @@ export function createGalaxyScene(host, canvas, onStatus) {
     uniforms.uPointer.value.lerp(pointer, damping)
     uniforms.uInfluence.value += ((hovering ? 1 : 0) - uniforms.uInfluence.value) * damping
     uniforms.uTime.value = elapsed
-    galaxy.rotation.set(0.86 + tilt.y * 0.18, tilt.x * 0.2, -0.3 + tilt.x * 0.06)
+    galaxy.rotation.set(-1.05 + tilt.y * 0.18, tilt.x * 0.2, -0.3 + tilt.x * 0.06)
     renderer.render(scene, camera)
   }
 
@@ -82,6 +82,7 @@ export function createGalaxyScene(host, canvas, onStatus) {
     renderer.setSize(width, height, false)
     camera.aspect = width / height
     camera.position.z = camera.aspect < 1 ? 9 / camera.aspect : 9
+    camera.zoom = camera.aspect > 1.4 ? 1.4 : 1.12
     camera.updateProjectionMatrix()
     uniforms.uPixelRatio.value = ratio
     uniforms.uScale.value = Math.min(width / 560, 1.3)

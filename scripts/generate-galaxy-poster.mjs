@@ -6,8 +6,10 @@ const width = 720
 const height = 640
 const camera = new PerspectiveCamera(44, width / height, 0.1, 30)
 camera.position.z = 9
+camera.zoom = 1.12
+camera.updateProjectionMatrix()
 camera.updateMatrixWorld()
-const rotation = new Matrix4().makeRotationFromEuler(new Euler(0.86, 0, -0.3))
+const rotation = new Matrix4().makeRotationFromEuler(new Euler(-1.05, 0, -0.3))
 const data = createGalaxyParticles(4200)
 const stars = []
 

@@ -12,6 +12,13 @@
 .galaxy-caption > span svg { color: var(--accent); }
 .galaxy-caption button { width: 36px; height: 36px; flex-shrink: 0; display: grid; place-items: center; background: transparent; border: 1px solid var(--border); border-radius: 50%; color: var(--muted); }
 .galaxy-caption button:hover { border-color: var(--accent); color: var(--accent); }
+@media (min-width: 1181px) {
+  .hero > .container { width: min(1640px, calc(100% - 96px)); }
+  .hero-topline { margin-bottom: 28px; }
+  .hero-inner { grid-template-columns: minmax(0, .82fr) minmax(0, 1.35fr); gap: 36px; }
+  .galaxy-stage { aspect-ratio: 1.62; }
+  .galaxy-poster { transform: scale(1.25); }
+}
 @media (max-width: 900px) and (min-width: 641px) {
   .galaxy-stage { aspect-ratio: .9; }
   .galaxy-heading { font-size: 8px; letter-spacing: .03em; }

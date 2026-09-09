@@ -4,8 +4,8 @@
 - Ana adres: https://tionport.com.
 - Sunucu: MyHermes (`100.101.118.70` yönetim, `212.108.107.194` genel adres).
 - Yayın kökü: `/var/www/tionport/current`.
-- Güncel sürüm: `/var/www/tionport/releases/20260910-000829`.
-- Önceki sürüm: `/var/www/tionport/releases/20260909-232438`.
+- Güncel sürüm: `/var/www/tionport/releases/20260910-001636`.
+- Önceki sürüm: `/var/www/tionport/releases/20260910-000829`.
 - İlk Caddy yedeği: `/home/hermes/stack/caddy/Caddyfile.before-tionport-20260909-192845`.
 - Yerel başlangıç yedeği: `C:/Users/Bilal/.codex/backups/tionport-20260909`.
 
@@ -87,3 +87,12 @@ Dar ve dokunmatik ekranlarda parçacık sayısı ve çizim çözünürlüğü az
   İngilizce, Arapça ve Rusça örneklerinde yatay taşma görülmedi.
 - Canlı sitede 32 URL yeni CSS'yi kullanıyor. CSS, ana JavaScript, galaksi çizim
   paketi ve sabit görsel dosyalarının SHA-256 değerleri yerel yayınla eşleşiyor.
+
+### Galaksi boyutu ve eğimi
+
+Kullanıcı isteğiyle masaüstündeki açılış bölümü 1640 piksele kadar genişletildi;
+galaksiye daha geniş bir sütun ayrıldı ve kamera yakınlaştırıldı. Dikey eğim
+ters çevrilerek yukarıya bakan bir görünüm verildi. Sabit galaksi görseli de
+yeni açıya göre üretildi. Masaüstü, 1280 piksel dizüstü ve 390 piksel mobil
+görünümleri kontrol edildi. Yayın kontrolleri geçti; altı ana sayfanın ve canlı
+animasyon dosyalarının yeni sürümle eşleştiği doğrulandı.
