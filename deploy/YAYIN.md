@@ -4,8 +4,8 @@
 - Ana adres: https://tionport.com.
 - Sunucu: MyHermes (`100.101.118.70` yönetim, `212.108.107.194` genel adres).
 - Yayın kökü: `/var/www/tionport/current`.
-- Güncel sürüm: `/var/www/tionport/releases/20260910-003548`.
-- Önceki sürüm: `/var/www/tionport/releases/20260910-003515`.
+- Güncel sürüm: `/var/www/tionport/releases/20260910-004540`.
+- Önceki sürüm: `/var/www/tionport/releases/20260910-003548`.
 - İlk Caddy yedeği: `/home/hermes/stack/caddy/Caddyfile.before-tionport-20260909-192845`.
 - Yerel başlangıç yedeği: `C:/Users/Bilal/.codex/backups/tionport-20260909`.
 
@@ -124,3 +124,12 @@ denetimleri başarılıdır ve canlı galaksi yüklenmektedir.
 
 Son yayında daha yumuşak dağılma ayarı da aktarılmıştır. Canlı ana sayfa paketi
 ve galaksi çizim dosyasının SHA-256 özeti son kaynak derlemesiyle eşleşmektedir.
+
+### Galaksi odak çizgisinin düzeltilmesi
+
+Ekranı kaplayan lime çizginin, iki kat büyütülmüş galaksi tuvalinin klavye odak
+çerçevesi olduğu tarayıcıda yeniden oluşturularak doğrulandı. Yalnızca tuvalin
+çerçevesi kaldırıldı; klavye odağı başlığın yanındaki küçük noktada gösterilir.
+Bağlantıların odak çerçeveleri korunur. Yerel ve canlı sayfada odak sırasında
+tuval çerçevesinin kaldırıldığı ve küçük odak işaretinin göründüğü doğrulandı.
+Yayın denetimleri başarılıdır.
