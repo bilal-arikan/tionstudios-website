@@ -4,8 +4,8 @@
 - Ana adres: https://tionport.com.
 - Sunucu: MyHermes (`100.101.118.70` yönetim, `212.108.107.194` genel adres).
 - Yayın kökü: `/var/www/tionport/current`.
-- Güncel sürüm: `/var/www/tionport/releases/20260910-004540`.
-- Önceki sürüm: `/var/www/tionport/releases/20260910-003548`.
+- Güncel sürüm: `/var/www/tionport/releases/20260910-010450`.
+- Önceki sürüm: `/var/www/tionport/releases/20260910-004540`.
 - İlk Caddy yedeği: `/home/hermes/stack/caddy/Caddyfile.before-tionport-20260909-192845`.
 - Yerel başlangıç yedeği: `C:/Users/Bilal/.codex/backups/tionport-20260909`.
 
@@ -133,3 +133,12 @@ Ekranı kaplayan lime çizginin, iki kat büyütülmüş galaksi tuvalinin klavy
 Bağlantıların odak çerçeveleri korunur. Yerel ve canlı sayfada odak sırasında
 tuval çerçevesinin kaldırıldığı ve küçük odak işaretinin göründüğü doğrulandı.
 Yayın denetimleri başarılıdır.
+
+### Geometrik T simgesi
+
+Referanstaki eğimli T simgesi site paletine uyarlanarak yeniden çizildi. Uzun
+eğik kenarlar paraleldir; gövde kalınlıkları, aralıkları ve alt hizaları tutarlıdır.
+Üst ve alt menü, favicon, telefon simgeleri ve paylaşım kartı güncellendi.
+Masaüstü ve mobilde kare oranı ile görsellerin yüklenmesi doğrulandı. Yayın
+denetimleri geçti; altı dildeki canlı sayfalar yeni simge adreslerini kullanır.
+Canlı SVG, telefon simgesi ve paylaşım görseli yerel dosyalarla birebir eşleşir.

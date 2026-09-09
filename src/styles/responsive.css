@@ -62,7 +62,7 @@
 @media (max-width: 640px) {
   .container { width: calc(100% - 40px); }
   .brand-word { font-size: 26px; }
-  .brand-symbol { width: 29px; height: 32px; font-size: 23px; }
+  .brand-symbol { width: 32px; height: 32px; }
   .brand-lockup { gap: 8px; }
   .header-inner { gap: 9px; }
   .language-toggle { padding-inline: 9px; gap: 6px; min-height: 39px; }

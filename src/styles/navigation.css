@@ -3,7 +3,7 @@
 .header-inner { height: var(--header-height); display: flex; align-items: center; gap: 30px; }
 .brand, .brand-lockup { display: inline-flex; align-items: center; flex-shrink: 0; }
 .brand-lockup { gap: 10px; }
-.brand-symbol { display: grid; place-items: center; width: 34px; height: 36px; color: var(--accent-ink); background: var(--accent); border-radius: 7px; font-size: 26px; font-weight: 750; line-height: 1; letter-spacing: -.07em; }
+.brand-symbol { display: block; width: 36px; height: 36px; flex-shrink: 0; }
 .brand-word { font-size: 29px; font-weight: 680; letter-spacing: -.065em; line-height: 1; }
 .brand-word > span { color: var(--accent); }
 .main-navigation { margin-inline: auto; }

@@ -1,8 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#101319"/>
   <rect x="30" y="30" width="1140" height="570" rx="20" fill="none" stroke="#292f3a"/>
-  <rect x="70" y="70" width="48" height="50" rx="10" fill="#bcf578"/>
-  <path d="M81 81h26v7H97v23h-8V88h-8z" fill="#1e3012"/>
+  <!-- Keep this mark in sync with public/favicon.svg. -->
+  <g transform="translate(70 70) scale(.625)">
+    <rect width="80" height="80" rx="24" fill="#bcf578"/>
+    <g fill="#1e3012">
+      <path d="M21 22H61L55 34H41L29 58H17L29 34H15Z"/>
+      <path d="M49 42L65 34L53 58H41Z" opacity=".6"/>
+    </g>
+  </g>
   <g font-family="Segoe UI,Arial,sans-serif">
     <text x="132" y="107" font-size="37" font-weight="700" letter-spacing="-2" fill="#e9edf4">tionport<tspan fill="#bcf578">.</tspan></text>
     <text x="70" y="284" font-size="91" font-weight="500" letter-spacing="-5" fill="#e9edf4">Web. Mobile.</text>

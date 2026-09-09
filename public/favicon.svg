@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#bcf578"/>
-  <path d="M16 16h32v8H36v27h-9V24H16z" fill="#1e3012"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <title>Tionport icon</title>
+  <rect width="80" height="80" rx="24" fill="#bcf578"/>
+  <g fill="#1e3012">
+    <path d="M21 22H61L55 34H41L29 58H17L29 34H15Z"/>
+    <path d="M49 42L65 34L53 58H41Z" opacity=".6"/>
+  </g>
 </svg>

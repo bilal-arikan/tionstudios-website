@@ -77,6 +77,13 @@ desteklenir. Marka simgesi `public/favicon.svg`, paylaşım görselinin vektör
 kaynağı `public/images/og-card.svg` dosyasıdır; yayın görseli
 `public/images/og-tionport.png` olarak kullanılır.
 
+Simge, eğimli T ve sağındaki ikincil parçadan oluşur. 80 × 80 vektör ızgarasında
+tüm uzun eğik kenarlar 1:2 oranında paraleldir. İki gövdenin yatay kalınlığı ve
+aralarındaki boşluk 12 birimdir; alt uçları aynı çizgide biter. Üst ve alt menü
+aynı SVG dosyasını kare oranını koruyarak kullanır. `favicon.png` 32 × 32,
+`brand-icon.png` ve `apple-touch-icon.png` 180 × 180 olarak bu SVG'den üretilir.
+Paylaşım kartındaki simge de aynı geometriyi kullanır.
+
 ### Galaksi animasyonu
 
 Dala referansındaki geometrik parçacık hissi, özgün bir spiral galaksiye
