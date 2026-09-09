@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tionstudios.com/sitemap.xml
+Sitemap: https://tionport.com/sitemap.xml

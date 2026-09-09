@@ -1,29 +1,29 @@
 // Spanish (Español).
 //
 // Mirrors the key shape of tr.js exactly. Brand and product names are left
-// untranslated on purpose: TION Studios, Real Driver, Unity, React, iOS.
+// untranslated on purpose: Tionport, Real Driver, Unity, React, iOS.
 
 export default {
   meta: {
     home: {
-      title: 'TION Studios — Estudio de Producto Digital y Software',
-      description: 'TION Studios es un estudio de desarrollo web, móvil y de videojuegos con sede en Estambul.',
+      title: 'Tionport — Estudio de Producto Digital y Software',
+      description: 'Tionport es un estudio de desarrollo web, móvil y de videojuegos con sede en Estambul.',
     },
     services: {
-      title: 'Servicios — TION Studios',
+      title: 'Servicios — Tionport',
       description: 'Desarrollo web, aplicaciones móviles, software a medida y desarrollo de videojuegos.',
     },
     games: {
-      title: 'Juegos — Archivo de Juegos de TION Studios',
-      description: 'Proyectos de juegos móviles desarrollados por TION Studios.',
+      title: 'Juegos — Archivo de Juegos de Tionport',
+      description: 'Proyectos de juegos móviles desarrollados por Tionport.',
     },
     about: {
-      title: 'Nosotros — TION Studios',
+      title: 'Nosotros — Tionport',
       description: 'Estudio de desarrollo de software y videojuegos con sede en Estambul.',
     },
     contact: {
-      title: 'Contacto — TION Studios',
-      description: 'Ponte en contacto con TION Studios para hablar de tu proyecto.',
+      title: 'Contacto — Tionport',
+      description: 'Ponte en contacto con Tionport para hablar de tu proyecto.',
     },
   },
 
@@ -36,18 +36,18 @@ export default {
     openMenu: 'Abrir menú',
     closeMenu: 'Cerrar menú',
     mainNav: 'Navegación principal',
-    home: 'Inicio de TION Studios',
+    home: 'Inicio de Tionport',
     skipToContent: 'Ir al contenido principal',
     language: 'Idioma',
     selectLanguage: 'Seleccionar idioma',
   },
 
   hero: {
-    eyebrow: 'TION Studios · Estambul',
+    eyebrow: 'Tionport · Estambul',
     titleBefore: 'Desarrollamos web, móvil y',
     titleAccent: 'videojuegos',
     titleAfter: 'a medida.',
-    description: 'TION Studios es un estudio de desarrollo de software y videojuegos.',
+    description: 'Tionport es un estudio de desarrollo de software y videojuegos.',
     ctaPrimary: 'Servicios',
     ctaSecondary: 'Juegos',
     proofWeb: 'Desarrollo web',
@@ -57,7 +57,7 @@ export default {
   },
 
   readout: {
-    label: 'Estado de publicación de TION Studios',
+    label: 'Estado de publicación de Tionport',
     project: 'proyecto',
     platform: 'plataforma',
     type: 'tipo',
@@ -136,7 +136,7 @@ export default {
   about: {
     eyebrow: 'Nosotros',
     titleBefore: 'TION',
-    titleAccent: 'Studios.',
+    titleAccent: 'Port.',
     description: 'Somos un estudio de desarrollo de software y videojuegos con sede en Estambul.',
     location: 'Estambul, Türkiye',
     principles: [
@@ -185,7 +185,7 @@ export default {
     projectTypes: ['Aplicación web', 'Aplicación móvil', 'Software a medida', 'Proyecto de juego', 'Diseño UX/UI', 'Otro'],
     submit: 'Redactar correo',
     note: 'El formulario convierte tus datos en un borrador listo en tu aplicación de correo.',
-    noteSent: 'Borrador listo. Si tu aplicación de correo no se abre, escribe directamente a info@tionstudios.com.',
+    noteSent: 'Borrador listo. Si tu aplicación de correo no se abre, escribe directamente a info@tionport.com.',
     mailSubject: 'Nueva consulta de proyecto — {name}',
     mailName: 'Nombre',
     mailEmail: 'Correo',
@@ -201,7 +201,7 @@ export default {
     contact: 'Contacto',
     privacy: 'Política de Privacidad',
     terms: 'Términos del Servicio',
-    rights: '© {year} TION Studios. Todos los derechos reservados.',
+    rights: '© {year} Tionport. Todos los derechos reservados.',
     backToTop: 'Volver arriba',
   },
 

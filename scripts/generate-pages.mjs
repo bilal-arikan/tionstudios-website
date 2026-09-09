@@ -16,7 +16,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 const here = dirname(fileURLToPath(import.meta.url))
 const root = join(here, '..')
 
-const SITE = 'https://tionstudios.com'
+const SITE = 'https://tionport.com'
 
 const { DEFAULT_LOCALE, localeCodes, locales, pathFor } =
   await import(pathToFileURL(join(root, 'src/i18n/locales.js')).href)

@@ -4,24 +4,24 @@
 export default {
   meta: {
     home: {
-      title: 'TION Studios — Dijital Ürün ve Yazılım Stüdyosu',
-      description: 'TION Studios, İstanbul merkezli web, mobil ve oyun geliştirme stüdyosudur.',
+      title: 'Tionport — Dijital Ürün ve Yazılım Stüdyosu',
+      description: 'Tionport, İstanbul merkezli web, mobil ve oyun geliştirme stüdyosudur.',
     },
     services: {
-      title: 'Hizmetler — TION Studios',
+      title: 'Hizmetler — Tionport',
       description: 'Web geliştirme, mobil uygulama, özel yazılım ve oyun geliştirme hizmetleri.',
     },
     games: {
-      title: 'Oyunlar — TION Studios Oyun Arşivi',
-      description: 'TION Studios tarafından geliştirilen mobil oyun projeleri.',
+      title: 'Oyunlar — Tionport Oyun Arşivi',
+      description: 'Tionport tarafından geliştirilen mobil oyun projeleri.',
     },
     about: {
-      title: 'Hakkımızda — TION Studios',
+      title: 'Hakkımızda — Tionport',
       description: 'İstanbul merkezli yazılım ve oyun geliştirme stüdyosu.',
     },
     contact: {
-      title: 'İletişim — TION Studios',
-      description: 'Projeniz için TION Studios ile iletişime geçin.',
+      title: 'İletişim — Tionport',
+      description: 'Projeniz için Tionport ile iletişime geçin.',
     },
   },
 
@@ -34,18 +34,18 @@ export default {
     openMenu: 'Menüyü aç',
     closeMenu: 'Menüyü kapat',
     mainNav: 'Ana menü',
-    home: 'TION Studios ana sayfa',
+    home: 'Tionport ana sayfa',
     skipToContent: 'Ana içeriğe geç',
     language: 'Dil',
     selectLanguage: 'Dil seçin',
   },
 
   hero: {
-    eyebrow: 'TION Studios · İstanbul',
+    eyebrow: 'Tionport · İstanbul',
     titleBefore: 'Web, mobil ve',
     titleAccent: 'oyun',
     titleAfter: 'geliştiriyoruz.',
-    description: 'TION Studios, yazılım ve oyun geliştirme stüdyosudur.',
+    description: 'Tionport, yazılım ve oyun geliştirme stüdyosudur.',
     ctaPrimary: 'Hizmetler',
     ctaSecondary: 'Oyunlar',
     proofWeb: 'Web geliştirme',
@@ -55,7 +55,7 @@ export default {
   },
 
   readout: {
-    label: 'TION Studios yayın durumu',
+    label: 'Tionport yayın durumu',
     project: 'proje',
     platform: 'platform',
     type: 'tür',
@@ -134,7 +134,7 @@ export default {
   about: {
     eyebrow: 'Hakkımızda',
     titleBefore: 'TION',
-    titleAccent: 'Studios.',
+    titleAccent: 'Port.',
     description: 'İstanbul merkezli yazılım ve oyun geliştirme stüdyosuyuz.',
     location: 'İstanbul, Türkiye',
     principles: [
@@ -183,7 +183,7 @@ export default {
     projectTypes: ['Web uygulaması', 'Mobil uygulama', 'Özel yazılım', 'Oyun projesi', 'UX/UI tasarım', 'Diğer'],
     submit: 'E-posta oluştur',
     note: 'Form, bilgilerinizi e-posta uygulamanızda hazır bir taslağa dönüştürür.',
-    noteSent: 'Taslak hazırlandı. E-posta uygulamanız açılmazsa info@tionstudios.com adresine doğrudan yazabilirsiniz.',
+    noteSent: 'Taslak hazırlandı. E-posta uygulamanız açılmazsa info@tionport.com adresine doğrudan yazabilirsiniz.',
     mailSubject: 'Yeni proje talebi — {name}',
     mailName: 'Ad Soyad',
     mailEmail: 'E-posta',
@@ -199,7 +199,7 @@ export default {
     contact: 'İletişim',
     privacy: 'Gizlilik Politikası',
     terms: 'Kullanım Koşulları',
-    rights: '© {year} TION Studios. Tüm hakları saklıdır.',
+    rights: '© {year} Tionport. Tüm hakları saklıdır.',
     backToTop: 'Yukarı dön',
   },
 

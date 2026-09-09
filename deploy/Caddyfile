@@ -1,0 +1,39 @@
+# Included in the existing public Caddy configuration on the VPS.
+(tionport_tls) {
+    tls {
+        issuer acme {
+            dir https://acme-v02.api.letsencrypt.org/directory
+        }
+    }
+}
+
+tionport.com {
+    import tionport_tls
+    encode zstd gzip
+    root * /var/www/tionport/current
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy strict-origin-when-cross-origin
+        -Server
+    }
+    @documents not path /assets/*
+    header @documents Cache-Control "no-cache"
+    @assets path /assets/*
+    header @assets Cache-Control "public, max-age=31536000, immutable"
+    file_server
+    handle_errors {
+        rewrite * /404.html
+        file_server
+    }
+}
+
+www.tionport.com {
+    import tionport_tls
+    redir https://tionport.com{uri} 308
+}
+
+tionstudios.com, www.tionstudios.com {
+    import tionport_tls
+    redir https://tionport.com{uri} 308
+}

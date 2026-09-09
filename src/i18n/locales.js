@@ -44,7 +44,7 @@ export function pathFor(pageId, locale = DEFAULT_LOCALE) {
   const prefix = locale === DEFAULT_LOCALE ? '' : `/${locale}`
 
   if (pageId in legalRoutes) {
-    return `${prefix}/${legalRoutes[pageId]}`
+    return `/${legalRoutes[pageId]}`
   }
 
   const segment = routes[locale]?.[pageId] ?? routes[DEFAULT_LOCALE][pageId]

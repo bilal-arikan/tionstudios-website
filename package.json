@@ -1,5 +1,5 @@
 {
-  "name": "tionstudios-website",
+  "name": "tionport-website",
   "private": true,
   "version": "2.0.0",
   "type": "module",
@@ -8,7 +8,9 @@
     "build": "node scripts/generate-pages.mjs && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "check": "npm run lint && npm run build",
+    "check": "npm run lint && npm run build && npm run verify",
+    "verify": "node scripts/verify-site.mjs",
+    "deploy": "powershell -NoProfile -File scripts/deploy.ps1",
     "gen:pages": "node scripts/generate-pages.mjs"
   },
   "dependencies": {

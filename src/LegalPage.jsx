@@ -6,13 +6,13 @@ const legalConfig = {
   privacy: {
     eyebrow: 'LEGAL / PRIVACY',
     title: 'Privacy Policy',
-    description: 'How TION Studios collects, uses and protects personal information across its products and services.',
+    description: 'How Tionport collects, uses and protects personal information across its products and services.',
     source: '/legal/privacy-source.html',
   },
   terms: {
     eyebrow: 'LEGAL / TERMS',
     title: 'Terms of Service',
-    description: 'The terms that govern the use of TION Studios products, software, games and related services.',
+    description: 'The terms that govern the use of Tionport products, software, games and related services.',
     source: '/legal/terms-source.html',
   },
 }
@@ -68,7 +68,7 @@ function LegalPage({ type }) {
     <div className="legal-shell">
       <header className="legal-header">
         <div className="container legal-header-inner">
-          <a className="brand" href="/" aria-label="TION Studios home">
+          <a className="brand" href="/" aria-label="Tionport home">
             <BrandMark />
           </a>
           <a className="legal-back-link" href="/">
@@ -96,14 +96,14 @@ function LegalPage({ type }) {
             <span>Document</span>
             <strong>{config.title}</strong>
             <p>Questions about this document?</p>
-            <a href="mailto:info@tionstudios.com"><Mail size={15} />info@tionstudios.com</a>
+            <a href="mailto:info@tionport.com"><Mail size={15} />info@tionport.com</a>
           </aside>
           <article className="legal-content">
             {!content && !loadFailed && <div className="legal-loading"><span />Loading document…</div>}
             {loadFailed && (
               <div className="legal-error">
                 <h2>Document unavailable</h2>
-                <p>Please contact us at <a href="mailto:info@tionstudios.com">info@tionstudios.com</a> to request a copy.</p>
+                <p>Please contact us at <a href="mailto:info@tionport.com">info@tionport.com</a> to request a copy.</p>
               </div>
             )}
             {content && <div dangerouslySetInnerHTML={{ __html: content }} />}
@@ -113,8 +113,8 @@ function LegalPage({ type }) {
 
       <footer className="legal-footer">
         <div className="container">
-          <p>© {new Date().getFullYear()} TION Studios</p>
-          <a href="mailto:info@tionstudios.com">Contact <ArrowUpRight size={15} /></a>
+          <p>© {new Date().getFullYear()} Tionport</p>
+          <a href="mailto:info@tionport.com">Contact <ArrowUpRight size={15} /></a>
         </div>
       </footer>
     </div>

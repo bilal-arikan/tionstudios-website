@@ -1,30 +1,30 @@
 // Chinese, Simplified (中文).
 //
 // Mirrors the key shape of tr.js exactly. Brand and product names are left
-// untranslated on purpose: TION Studios, Real Driver, Unity, React, iOS.
+// untranslated on purpose: Tionport, Real Driver, Unity, React, iOS.
 // Chinese copy is kept short: the layout was built around compact labels.
 
 export default {
   meta: {
     home: {
-      title: 'TION Studios — 数字产品与软件工作室',
-      description: 'TION Studios 是一家位于伊斯坦布尔的网页、移动与游戏开发工作室。',
+      title: 'Tionport — 数字产品与软件工作室',
+      description: 'Tionport 是一家位于伊斯坦布尔的网页、移动与游戏开发工作室。',
     },
     services: {
-      title: '服务 — TION Studios',
+      title: '服务 — Tionport',
       description: '网页开发、移动应用、定制软件与游戏开发服务。',
     },
     games: {
-      title: '游戏 — TION Studios 游戏档案',
-      description: 'TION Studios 开发的移动游戏项目。',
+      title: '游戏 — Tionport 游戏档案',
+      description: 'Tionport 开发的移动游戏项目。',
     },
     about: {
-      title: '关于我们 — TION Studios',
+      title: '关于我们 — Tionport',
       description: '位于伊斯坦布尔的软件与游戏开发工作室。',
     },
     contact: {
-      title: '联系我们 — TION Studios',
-      description: '就您的项目联系 TION Studios。',
+      title: '联系我们 — Tionport',
+      description: '就您的项目联系 Tionport。',
     },
   },
 
@@ -37,18 +37,18 @@ export default {
     openMenu: '打开菜单',
     closeMenu: '关闭菜单',
     mainNav: '主导航',
-    home: 'TION Studios 首页',
+    home: 'Tionport 首页',
     skipToContent: '跳到主要内容',
     language: '语言',
     selectLanguage: '选择语言',
   },
 
   hero: {
-    eyebrow: 'TION Studios · 伊斯坦布尔',
+    eyebrow: 'Tionport · 伊斯坦布尔',
     titleBefore: '我们开发网页、移动与',
     titleAccent: '游戏',
     titleAfter: '产品。',
-    description: 'TION Studios 是一家软件与游戏开发工作室。',
+    description: 'Tionport 是一家软件与游戏开发工作室。',
     ctaPrimary: '服务',
     ctaSecondary: '游戏',
     proofWeb: '网页开发',
@@ -58,7 +58,7 @@ export default {
   },
 
   readout: {
-    label: 'TION Studios 发布状态',
+    label: 'Tionport 发布状态',
     project: '项目',
     platform: '平台',
     type: '类型',
@@ -137,7 +137,7 @@ export default {
   about: {
     eyebrow: '关于我们',
     titleBefore: 'TION',
-    titleAccent: 'Studios.',
+    titleAccent: 'Port.',
     description: '我们是一家位于伊斯坦布尔的软件与游戏开发工作室。',
     location: '土耳其，伊斯坦布尔',
     principles: [
@@ -186,7 +186,7 @@ export default {
     projectTypes: ['网页应用', '移动应用', '定制软件', '游戏项目', 'UX/UI 设计', '其他'],
     submit: '生成邮件',
     note: '表单会将您填写的信息整理成邮件草稿。',
-    noteSent: '草稿已生成。若邮件应用未打开，请直接发送至 info@tionstudios.com。',
+    noteSent: '草稿已生成。若邮件应用未打开，请直接发送至 info@tionport.com。',
     mailSubject: '新项目咨询 — {name}',
     mailName: '姓名',
     mailEmail: '邮箱',
@@ -202,7 +202,7 @@ export default {
     contact: '联系我们',
     privacy: '隐私政策',
     terms: '服务条款',
-    rights: '© {year} TION Studios. 保留所有权利。',
+    rights: '© {year} Tionport. 保留所有权利。',
     backToTop: '返回顶部',
   },
 

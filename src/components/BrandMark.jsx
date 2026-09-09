@@ -4,7 +4,7 @@ export function BrandMark({ compact = false }) {
       <img className="brand-symbol brand-symbol--original" src="/apple-touch-icon.png" alt="" aria-hidden="true" />
       <span className="brand-copy">
         <strong>TION</strong>
-        <small>STUDIOS</small>
+        <small>PORT</small>
       </span>
     </span>
   )

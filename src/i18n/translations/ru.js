@@ -1,29 +1,29 @@
 // Russian (Русский).
 //
 // Mirrors the key shape of tr.js exactly. Brand and product names are left
-// untranslated on purpose: TION Studios, Real Driver, Unity, React, iOS.
+// untranslated on purpose: Tionport, Real Driver, Unity, React, iOS.
 
 export default {
   meta: {
     home: {
-      title: 'TION Studios — студия цифровых продуктов и разработки',
-      description: 'TION Studios — студия веб-, мобильной и игровой разработки из Стамбула.',
+      title: 'Tionport — студия цифровых продуктов и разработки',
+      description: 'Tionport — студия веб-, мобильной и игровой разработки из Стамбула.',
     },
     services: {
-      title: 'Услуги — TION Studios',
+      title: 'Услуги — Tionport',
       description: 'Веб-разработка, мобильные приложения, заказное ПО и разработка игр.',
     },
     games: {
-      title: 'Игры — архив игр TION Studios',
-      description: 'Мобильные игровые проекты, разработанные TION Studios.',
+      title: 'Игры — архив игр Tionport',
+      description: 'Мобильные игровые проекты, разработанные Tionport.',
     },
     about: {
-      title: 'О нас — TION Studios',
+      title: 'О нас — Tionport',
       description: 'Студия разработки программного обеспечения и игр из Стамбула.',
     },
     contact: {
-      title: 'Контакты — TION Studios',
-      description: 'Свяжитесь с TION Studios, чтобы обсудить ваш проект.',
+      title: 'Контакты — Tionport',
+      description: 'Свяжитесь с Tionport, чтобы обсудить ваш проект.',
     },
   },
 
@@ -36,18 +36,18 @@ export default {
     openMenu: 'Открыть меню',
     closeMenu: 'Закрыть меню',
     mainNav: 'Основная навигация',
-    home: 'Главная страница TION Studios',
+    home: 'Главная страница Tionport',
     skipToContent: 'Перейти к основному содержанию',
     language: 'Язык',
     selectLanguage: 'Выбрать язык',
   },
 
   hero: {
-    eyebrow: 'TION Studios · Стамбул',
+    eyebrow: 'Tionport · Стамбул',
     titleBefore: 'Разрабатываем веб, мобильные',
     titleAccent: 'и игровые',
     titleAfter: 'продукты.',
-    description: 'TION Studios — студия разработки программного обеспечения и игр.',
+    description: 'Tionport — студия разработки программного обеспечения и игр.',
     ctaPrimary: 'Услуги',
     ctaSecondary: 'Игры',
     proofWeb: 'Веб-разработка',
@@ -57,7 +57,7 @@ export default {
   },
 
   readout: {
-    label: 'Статус публикации TION Studios',
+    label: 'Статус публикации Tionport',
     project: 'проект',
     platform: 'платформа',
     type: 'жанр',
@@ -136,7 +136,7 @@ export default {
   about: {
     eyebrow: 'О нас',
     titleBefore: 'TION',
-    titleAccent: 'Studios.',
+    titleAccent: 'Port.',
     description: 'Мы студия разработки программного обеспечения и игр из Стамбула.',
     location: 'Стамбул, Türkiye',
     principles: [
@@ -185,7 +185,7 @@ export default {
     projectTypes: ['Веб-приложение', 'Мобильное приложение', 'Заказное ПО', 'Игровой проект', 'UX/UI дизайн', 'Другое'],
     submit: 'Создать письмо',
     note: 'Форма превращает ваши данные в готовый черновик в почтовом приложении.',
-    noteSent: 'Черновик готов. Если почтовое приложение не открылось, напишите напрямую на info@tionstudios.com.',
+    noteSent: 'Черновик готов. Если почтовое приложение не открылось, напишите напрямую на info@tionport.com.',
     mailSubject: 'Новый запрос по проекту — {name}',
     mailName: 'Имя',
     mailEmail: 'E-mail',
@@ -201,7 +201,7 @@ export default {
     contact: 'Контакты',
     privacy: 'Политика конфиденциальности',
     terms: 'Условия использования',
-    rights: '© {year} TION Studios. Все права защищены.',
+    rights: '© {year} Tionport. Все права защищены.',
     backToTop: 'Наверх',
   },
 

@@ -1,29 +1,29 @@
 // English (English).
 //
 // Mirrors the key shape of tr.js exactly. Brand and product names are left
-// untranslated on purpose: TION Studios, Real Driver, Unity, React, iOS.
+// untranslated on purpose: Tionport, Real Driver, Unity, React, iOS.
 
 export default {
   meta: {
     home: {
-      title: 'TION Studios — Digital Product and Software Studio',
-      description: 'TION Studios is an Istanbul-based web, mobile and game development studio.',
+      title: 'Tionport — Digital Product and Software Studio',
+      description: 'Tionport is an Istanbul-based web, mobile and game development studio.',
     },
     services: {
-      title: 'Services — TION Studios',
+      title: 'Services — Tionport',
       description: 'Web development, mobile apps, custom software and game development services.',
     },
     games: {
-      title: 'Games — TION Studios Game Archive',
-      description: 'Mobile game projects developed by TION Studios.',
+      title: 'Games — Tionport Game Archive',
+      description: 'Mobile game projects developed by Tionport.',
     },
     about: {
-      title: 'About — TION Studios',
+      title: 'About — Tionport',
       description: 'An Istanbul-based software and game development studio.',
     },
     contact: {
-      title: 'Contact — TION Studios',
-      description: 'Get in touch with TION Studios about your project.',
+      title: 'Contact — Tionport',
+      description: 'Get in touch with Tionport about your project.',
     },
   },
 
@@ -36,18 +36,18 @@ export default {
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     mainNav: 'Main navigation',
-    home: 'TION Studios home',
+    home: 'Tionport home',
     skipToContent: 'Skip to main content',
     language: 'Language',
     selectLanguage: 'Select language',
   },
 
   hero: {
-    eyebrow: 'TION Studios · Istanbul',
+    eyebrow: 'Tionport · Istanbul',
     titleBefore: 'We build web, mobile and',
     titleAccent: 'game',
     titleAfter: 'products.',
-    description: 'TION Studios is a software and game development studio.',
+    description: 'Tionport is a software and game development studio.',
     ctaPrimary: 'Services',
     ctaSecondary: 'Games',
     proofWeb: 'Web development',
@@ -57,7 +57,7 @@ export default {
   },
 
   readout: {
-    label: 'TION Studios release status',
+    label: 'Tionport release status',
     project: 'project',
     platform: 'platform',
     type: 'type',
@@ -136,7 +136,7 @@ export default {
   about: {
     eyebrow: 'About',
     titleBefore: 'TION',
-    titleAccent: 'Studios.',
+    titleAccent: 'Port.',
     description: 'We are an Istanbul-based software and game development studio.',
     location: 'Istanbul, Türkiye',
     principles: [
@@ -185,7 +185,7 @@ export default {
     projectTypes: ['Web application', 'Mobile app', 'Custom software', 'Game project', 'UX/UI design', 'Other'],
     submit: 'Compose email',
     note: 'The form turns your details into a ready draft in your email app.',
-    noteSent: 'Draft ready. If your email app did not open, write to info@tionstudios.com directly.',
+    noteSent: 'Draft ready. If your email app did not open, write to info@tionport.com directly.',
     mailSubject: 'New project enquiry — {name}',
     mailName: 'Name',
     mailEmail: 'Email',
@@ -201,7 +201,7 @@ export default {
     contact: 'Contact',
     privacy: 'Privacy Policy',
     terms: 'Terms of Service',
-    rights: '© {year} TION Studios. All rights reserved.',
+    rights: '© {year} Tionport. All rights reserved.',
     backToTop: 'Back to top',
   },
 

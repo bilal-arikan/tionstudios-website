@@ -1,7 +1,7 @@
 // Arabic (العربية) — renders right-to-left (dir="rtl").
 //
 // Mirrors the key shape of tr.js exactly. Brand and product names are left in
-// Latin script on purpose: TION Studios, Real Driver, Unity, React, iOS.
+// Latin script on purpose: Tionport, Real Driver, Unity, React, iOS.
 //
 // Note on the hero: Arabic reads right-to-left, so `titleBefore` is the part
 // that appears FIRST when reading (i.e. rightmost on screen).
@@ -9,24 +9,24 @@
 export default {
   meta: {
     home: {
-      title: 'TION Studios — استوديو المنتجات الرقمية والبرمجيات',
-      description: 'TION Studios استوديو لتطوير الويب وتطبيقات الهاتف والألعاب، مقره إسطنبول.',
+      title: 'Tionport — استوديو المنتجات الرقمية والبرمجيات',
+      description: 'Tionport استوديو لتطوير الويب وتطبيقات الهاتف والألعاب، مقره إسطنبول.',
     },
     services: {
-      title: 'الخدمات — TION Studios',
+      title: 'الخدمات — Tionport',
       description: 'تطوير الويب، تطبيقات الهاتف، البرمجيات المخصصة وتطوير الألعاب.',
     },
     games: {
-      title: 'الألعاب — أرشيف ألعاب TION Studios',
-      description: 'مشاريع ألعاب الهاتف التي طورها استوديو TION Studios.',
+      title: 'الألعاب — أرشيف ألعاب Tionport',
+      description: 'مشاريع ألعاب الهاتف التي طورها استوديو Tionport.',
     },
     about: {
-      title: 'من نحن — TION Studios',
+      title: 'من نحن — Tionport',
       description: 'استوديو لتطوير البرمجيات والألعاب مقره إسطنبول.',
     },
     contact: {
-      title: 'اتصل بنا — TION Studios',
-      description: 'تواصل مع TION Studios بخصوص مشروعك.',
+      title: 'اتصل بنا — Tionport',
+      description: 'تواصل مع Tionport بخصوص مشروعك.',
     },
   },
 
@@ -39,18 +39,18 @@ export default {
     openMenu: 'فتح القائمة',
     closeMenu: 'إغلاق القائمة',
     mainNav: 'التنقل الرئيسي',
-    home: 'الصفحة الرئيسية لـ TION Studios',
+    home: 'الصفحة الرئيسية لـ Tionport',
     skipToContent: 'الانتقال إلى المحتوى الرئيسي',
     language: 'اللغة',
     selectLanguage: 'اختر اللغة',
   },
 
   hero: {
-    eyebrow: 'TION Studios · إسطنبول',
+    eyebrow: 'Tionport · إسطنبول',
     titleBefore: 'نطوّر الويب والتطبيقات',
     titleAccent: 'والألعاب',
     titleAfter: 'الرقمية.',
-    description: 'TION Studios استوديو لتطوير البرمجيات والألعاب.',
+    description: 'Tionport استوديو لتطوير البرمجيات والألعاب.',
     ctaPrimary: 'الخدمات',
     ctaSecondary: 'الألعاب',
     proofWeb: 'تطوير الويب',
@@ -60,7 +60,7 @@ export default {
   },
 
   readout: {
-    label: 'حالة إصدارات TION Studios',
+    label: 'حالة إصدارات Tionport',
     project: 'المشروع',
     platform: 'المنصة',
     type: 'النوع',
@@ -139,7 +139,7 @@ export default {
   about: {
     eyebrow: 'من نحن',
     titleBefore: 'TION',
-    titleAccent: 'Studios.',
+    titleAccent: 'Port.',
     description: 'نحن استوديو لتطوير البرمجيات والألعاب مقره إسطنبول.',
     location: 'إسطنبول، تركيا',
     principles: [
@@ -188,7 +188,7 @@ export default {
     projectTypes: ['تطبيق ويب', 'تطبيق هاتف', 'برمجيات مخصصة', 'مشروع لعبة', 'تصميم UX/UI', 'أخرى'],
     submit: 'إنشاء رسالة',
     note: 'يحوّل النموذج معلوماتك إلى مسودة جاهزة في تطبيق البريد لديك.',
-    noteSent: 'المسودة جاهزة. إذا لم يفتح تطبيق البريد، راسلنا مباشرة على info@tionstudios.com.',
+    noteSent: 'المسودة جاهزة. إذا لم يفتح تطبيق البريد، راسلنا مباشرة على info@tionport.com.',
     mailSubject: 'طلب مشروع جديد — {name}',
     mailName: 'الاسم',
     mailEmail: 'البريد الإلكتروني',
@@ -204,7 +204,7 @@ export default {
     contact: 'اتصل بنا',
     privacy: 'سياسة الخصوصية',
     terms: 'شروط الاستخدام',
-    rights: '© {year} TION Studios. جميع الحقوق محفوظة.',
+    rights: '© {year} Tionport. جميع الحقوق محفوظة.',
     backToTop: 'العودة للأعلى',
   },
 
