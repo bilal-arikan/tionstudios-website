@@ -6,6 +6,8 @@ export const galaxyVertexShader = /* glsl */ `
   uniform float uPixelRatio;
   uniform float uScale;
   uniform vec2 uPointer;
+  uniform vec2 uViewport;
+  uniform float uPointerRadius;
   uniform float uInfluence;
   varying vec3 vColor;
   varying float vAlpha;
@@ -18,14 +20,21 @@ export const galaxyVertexShader = /* glsl */ `
     star.xy = orbit * star.xy;
     vec4 view = modelViewMatrix * vec4(star, 1.0);
     vec4 projected = projectionMatrix * view;
-    vec2 delta = projected.xy / projected.w - uPointer;
-    float nearPointer = exp(-dot(delta, delta) * 22.0) * uInfluence;
-    view.xy += delta * nearPointer * 0.65;
-    view.z += nearPointer * 0.45;
-    gl_Position = projectionMatrix * view;
-    gl_PointSize = clamp(aSize * uPixelRatio * uScale * (9.0 / -view.z) * (1.0 + nearPointer * 0.65), 1.0, 20.0);
+    vec2 delta = (projected.xy / projected.w - uPointer) * uViewport * 0.5;
+    float distanceToPointer = length(delta);
+    vec2 direction = distanceToPointer > 0.001
+      ? delta / distanceToPointer
+      : vec2(cos(aPhase), sin(aPhase));
+    float falloff = 1.0 - smoothstep(0.0, uPointerRadius, distanceToPointer);
+    float scatter = 0.75 + 0.4 * (0.5 + 0.5 * sin(aPhase * 3.0));
+    float pushDistance = min(32.0, uPointerRadius * 0.28);
+    vec2 displacement = direction * pushDistance * scatter * falloff * uInfluence;
+    // Displace only on the screen plane; keep depth and particle size unchanged.
+    projected.xy += displacement * 2.0 / uViewport * projected.w;
+    gl_Position = projected;
+    gl_PointSize = clamp(aSize * uPixelRatio * uScale * (9.0 / -view.z), 1.0, 20.0);
     vColor = color;
-    vAlpha = (0.64 + 0.18 * sin(uTime * 0.55 + aPhase)) + nearPointer * 0.3;
+    vAlpha = 0.64 + 0.18 * sin(uTime * 0.55 + aPhase);
     vShape = aShape;
   }
 `

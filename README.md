@@ -82,8 +82,10 @@ kaynağı `public/images/og-card.svg` dosyasıdır; yayın görseli
 Dala referansındaki geometrik parçacık hissi, özgün bir spiral galaksiye
 uyarlanmıştır. Three.js yalnızca ana sayfada gerektiğinde yüklenir. Masaüstünde
 26.000, dar veya dokunmatik ekranlarda 13.000 parçacık kullanılır. Tek model
-yavaşça döner; fare ve ok tuşları eğimi, imleç yakınındaki yıldızların hareketini
-değiştirir. Kaydırma konumu modelin biçimini veya kamera açısını değiştirmez.
+yavaşça kendi etrafında döner; fareye doğru eğilmez. Fare ve ok tuşları yalnızca
+imleç yakınındaki yıldızları ekran düzleminde yana dağıtır. Parçacıklar kameraya
+yaklaşmaz veya büyümez; imleç uzaklaşınca yumuşakça yerlerine döner.
+Kaydırma konumu modelin biçimini veya kamera açısını değiştirmez.
 
 Galaksinin altında yazı veya oynatma kontrolü gösterilmez. Sistem hareket
 azaltma tercihi başlangıçta ve değiştiğinde uygulanır. Bölüm

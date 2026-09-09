@@ -10,6 +10,7 @@ export function createGalaxyScene(host, canvas, onStatus) {
   const camera = new PerspectiveCamera(44, 1, 0.1, 30)
   camera.position.z = 9
   const galaxy = new Group()
+  galaxy.rotation.set(-1.05, 0, -0.3)
   scene.add(galaxy)
   const data = createGalaxyParticles(compact ? 13000 : 26000)
   const geometry = new BufferGeometry()
@@ -23,6 +24,8 @@ export function createGalaxyScene(host, canvas, onStatus) {
     uPixelRatio: { value: 1 },
     uScale: { value: 1 },
     uPointer: { value: new Vector2(3, 3) },
+    uViewport: { value: new Vector2(1, 1) },
+    uPointerRadius: { value: 120 },
     uInfluence: { value: 0 },
   }
   const material = new ShaderMaterial({
@@ -32,7 +35,6 @@ export function createGalaxyScene(host, canvas, onStatus) {
   })
   galaxy.add(new Points(geometry, material))
   const pointer = new Vector2(0, 0)
-  const tilt = new Vector2(0, 0)
   let hovering = false
   let playing = !motionPreference.matches
   let visible = true
@@ -50,11 +52,9 @@ export function createGalaxyScene(host, canvas, onStatus) {
   function draw(delta = 0) {
     if (disposed || lost) return
     const damping = 1 - Math.exp(-delta * 4)
-    tilt.lerp(pointer, damping)
-    uniforms.uPointer.value.lerp(pointer, damping)
+    if (hovering) uniforms.uPointer.value.lerp(pointer, 1 - Math.exp(-delta * 18))
     uniforms.uInfluence.value += ((hovering ? 1 : 0) - uniforms.uInfluence.value) * damping
     uniforms.uTime.value = elapsed
-    galaxy.rotation.set(-1.05 + tilt.y * 0.18, tilt.x * 0.2, -0.3 + tilt.x * 0.06)
     renderer.render(scene, camera)
   }
 
@@ -85,6 +85,8 @@ export function createGalaxyScene(host, canvas, onStatus) {
     camera.zoom = camera.aspect > 1.4 ? 1.4 : 1.12
     camera.updateProjectionMatrix()
     uniforms.uPixelRatio.value = ratio
+    uniforms.uViewport.value.set(width, height)
+    uniforms.uPointerRadius.value = Math.min(160, Math.max(90, width * 0.11))
     const visualScale = width / host.clientWidth
     uniforms.uScale.value = Math.min(host.clientWidth / 560, 1.3) * visualScale
     draw()
@@ -94,6 +96,7 @@ export function createGalaxyScene(host, canvas, onStatus) {
     if (!playing) return
     const bounds = host.getBoundingClientRect()
     pointer.set((event.clientX - bounds.left) / width * 2 - 1, 1 - (event.clientY - bounds.top) / height * 2)
+    if (!hovering) uniforms.uPointer.value.copy(pointer)
     hovering = true
   }
 
@@ -112,6 +115,7 @@ export function createGalaxyScene(host, canvas, onStatus) {
     if (!direction || !playing) return
     event.preventDefault()
     pointer.set(Math.max(-1, Math.min(1, pointer.x + direction[0])), Math.max(-1, Math.min(1, pointer.y + direction[1])))
+    if (!hovering) uniforms.uPointer.value.copy(pointer)
     hovering = true
   }
 

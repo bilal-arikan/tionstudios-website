@@ -4,8 +4,8 @@
 - Ana adres: https://tionport.com.
 - Sunucu: MyHermes (`100.101.118.70` yönetim, `212.108.107.194` genel adres).
 - Yayın kökü: `/var/www/tionport/current`.
-- Güncel sürüm: `/var/www/tionport/releases/20260910-002404`.
-- Önceki sürüm: `/var/www/tionport/releases/20260910-001949`.
+- Güncel sürüm: `/var/www/tionport/releases/20260910-003048`.
+- Önceki sürüm: `/var/www/tionport/releases/20260910-002404`.
 - İlk Caddy yedeği: `/home/hermes/stack/caddy/Caddyfile.before-tionport-20260909-192845`.
 - Yerel başlangıç yedeği: `C:/Users/Bilal/.codex/backups/tionport-20260909`.
 
@@ -112,3 +112,12 @@ aşar; metin ve bağlantılar üst katmanda kalır. Masaüstünde ve 390 piksel 
 görünümde iki kat ölçek, kenarlardan taşma, yatay kaydırma çubuğunun oluşmaması
 ve ana bağlantının tıklanabilirliği doğrulandı. Yayın kontrolleri geçti; canlı
 sayfada iki kat ölçek ve çalışan galaksi doğrulandı.
+
+### Yana dağılan parçacıklar ve bağımsız dönüş
+
+İmleç etkisi ekran düzleminde dışarı doğru dağılacak şekilde değiştirildi.
+Kameraya yaklaşma, etkileşim sırasında büyüme ve parlaklık artışı kaldırıldı.
+İmleç uzaklaşınca parçacıklar yerlerine döner; etki galaksinin merkezine kaymaz.
+Galaksinin fareye yönelmesi kaldırıldı, sabit eğimde kendi etrafındaki dönüşü
+korundu. Tarayıcıda yana açılma ve eski dağılıma dönüş kontrol edildi; yayın
+denetimleri başarılıdır ve canlı galaksi yüklenmektedir.
