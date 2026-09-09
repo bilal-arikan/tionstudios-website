@@ -1,11 +1,11 @@
 # Tionport yayın kaydı
 
-- Tarih: 9 Eylül 2026.
+- Son güncelleme: 10 Eylül 2026.
 - Ana adres: https://tionport.com.
 - Sunucu: MyHermes (`100.101.118.70` yönetim, `212.108.107.194` genel adres).
 - Yayın kökü: `/var/www/tionport/current`.
-- Güncel sürüm: `/var/www/tionport/releases/20260909-232438`.
-- Önceki sürüm: `/var/www/tionport/releases/20260909-224555`.
+- Güncel sürüm: `/var/www/tionport/releases/20260910-000829`.
+- Önceki sürüm: `/var/www/tionport/releases/20260909-232438`.
 - İlk Caddy yedeği: `/home/hermes/stack/caddy/Caddyfile.before-tionport-20260909-192845`.
 - Yerel başlangıç yedeği: `C:/Users/Bilal/.codex/backups/tionport-20260909`.
 
@@ -67,3 +67,23 @@ Windows üzerinden `npm run deploy` yeni bir sürüm oluşturur. Her yayında
 `previous` bağlantısı önceki sürümü korur. Geri dönüşte önce bu bağlantının
 hedefini kontrol edin, ardından `current` bağlantısını atomik olarak değiştirin.
 Ayrıntılı kurulum adımları `README.md` dosyasındadır.
+
+## Etkileşimli galaksi — 10 Eylül 2026
+
+Ana sayfanın ilk bölümüne Dala referansından esinlenen, kömür grisi ve lime
+paletinde bir Three.js parçacık galaksisi eklenmiştir. Tek spiral model fare
+ve ok tuşlarıyla etkileşir; kaydırmaya bağlı sahne veya model değişimi yoktur.
+Gerçek oyun görselleri projeler bölümünde korunmuştur.
+
+Duraklatma kontrolü, sistem hareket azaltma tercihi, ekran dışında ve gizli
+sekmede çizimi durdurma, WebGL olmadığında sabit galaksi görseli bulunur.
+Dar ve dokunmatik ekranlarda parçacık sayısı ve çizim çözünürlüğü azaltılır.
+Çizim kodu yalnızca ana sayfada gerektiğinde yüklenir.
+
+- Kod denetimi, üç geometri testi, üretim derlemesi ve 30 sayfa doğrulaması başarılı.
+- Masaüstünde çizim hatası görülmedi; fare ve klavye etkileşimi kontrol edildi.
+- Duraklatılmış sahnenin iki ekran görüntüsü birebir eşleşti.
+- 390 ve 320 piksel mobil görünümleri ile 820 piksel tablet düzeni kontrol edildi;
+  İngilizce, Arapça ve Rusça örneklerinde yatay taşma görülmedi.
+- Canlı sitede 32 URL yeni CSS'yi kullanıyor. CSS, ana JavaScript, galaksi çizim
+  paketi ve sabit görsel dosyalarının SHA-256 değerleri yerel yayınla eşleşiyor.

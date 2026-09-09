@@ -5,6 +5,12 @@
 // Chinese copy is kept short: the layout was built around compact labels.
 
 export default {
+  galaxy: {
+    description: '由青柠绿色粒子组成的三维螺旋星系。',
+    hint: '移动指针或使用方向键探索',
+    pause: '暂停动画',
+    play: '播放动画',
+  },
   meta: {
     home: {
       title: 'Tionport — 数字产品与软件工作室',

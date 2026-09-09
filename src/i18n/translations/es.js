@@ -4,6 +4,12 @@
 // untranslated on purpose: Tionport, Real Driver, Unity, React, iOS.
 
 export default {
+  galaxy: {
+    description: 'Una galaxia espiral tridimensional de partículas verde lima.',
+    hint: 'Explora con el puntero o las flechas',
+    pause: 'Pausar animación',
+    play: 'Reproducir animación',
+  },
   meta: {
     home: {
       title: 'Tionport — Estudio de Producto Digital y Software',

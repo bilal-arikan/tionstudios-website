@@ -2,6 +2,12 @@
 // keys exactly; a missing key falls back to the value here.
 
 export default {
+  galaxy: {
+    description: 'Lime yeşili parçacıklardan oluşan üç boyutlu spiral galaksi.',
+    hint: 'Fareyle veya ok tuşlarıyla keşfet',
+    pause: 'Animasyonu duraklat',
+    play: 'Animasyonu oynat',
+  },
   meta: {
     home: {
       title: 'Tionport — Dijital Ürün ve Yazılım Stüdyosu',

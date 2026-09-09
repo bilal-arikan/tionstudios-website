@@ -4,6 +4,12 @@
 // untranslated on purpose: Tionport, Real Driver, Unity, React, iOS.
 
 export default {
+  galaxy: {
+    description: 'A three-dimensional spiral galaxy made of lime green particles.',
+    hint: 'Move your pointer or use arrow keys',
+    pause: 'Pause animation',
+    play: 'Play animation',
+  },
   meta: {
     home: {
       title: 'Tionport — Digital Product and Software Studio',

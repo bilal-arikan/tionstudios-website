@@ -7,6 +7,12 @@
 // that appears FIRST when reading (i.e. rightmost on screen).
 
 export default {
+  galaxy: {
+    description: 'مجرة حلزونية ثلاثية الأبعاد من جزيئات باللون الأخضر الليموني.',
+    hint: 'استكشف بالمؤشر أو مفاتيح الأسهم',
+    pause: 'إيقاف الحركة مؤقتًا',
+    play: 'تشغيل الحركة',
+  },
   meta: {
     home: {
       title: 'Tionport — استوديو المنتجات الرقمية والبرمجيات',

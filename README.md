@@ -14,7 +14,7 @@ npm run dev
 npm run check
 ```
 
-`check`, kod denetimini, üretim derlemesini ve site doğrulamasını çalıştırır.
+`check`, kod denetimini, galaksi testlerini, üretim derlemesini ve site doğrulamasını çalıştırır.
 Doğrulama 30 dil/sayfa birleşimini React ile oluşturur; ana başlıkları, yerel
 bağlantıları, görselleri, canonical/hreflang etiketlerini, site haritasını ve
 eski marka kalıntılarını kontrol eder. Kullanıcı isteğiyle korunan üç sosyal
@@ -45,6 +45,7 @@ Bulunmayan yollar sunucuda gerçek HTTP 404 yanıtı verir.
 - `src/App.jsx`: Ortak kabuk ve sayfa seçimi.
 - `src/pages/`: Ana sayfa, hizmetler, oyunlar, hakkımızda, iletişim ve 404.
 - `src/components/`: Menü, altbilgi, marka ve ortak bölümler.
+- `src/components/galaxy/`: Galaksi geometrisi, parçacık çizimi, etkileşim ve yaşam döngüsü.
 - `src/data/`: Oyun portföyü, menü, hizmet ve süreç verileri.
 - `src/i18n/`: Dil/yol kayıtları ve çeviri sözlükleri.
 - `src/LegalPage.jsx`: Yasal belge görünümü.
@@ -68,12 +69,31 @@ Tion kontrol merkezinden alınan kömür grisi ve lime yeşili palet kullanılı
 `#e9edf4` metin ve `#bcf578` vurgu. Ana yazı tipi yerel sunulan DM Sans,
 küçük etiketlerde JetBrains Mono'dur.
 
-Ana sayfa gerçek oyun görselini öne çıkarır; hizmetler satırlar halinde,
+Ana sayfanın ilk bölümünde etkileşimli bir parçacık galaksisi bulunur.
+Gerçek oyun görselleri projeler bölümünde korunur; hizmetler satırlar halinde,
 süreç ve ilkeler kartlar halinde sunulur. Mobil menü ve altı dil korunur.
 Açılışı geciktiren splash ekranı kaldırılmıştır. Hareket azaltma tercihi
 desteklenir. Marka simgesi `public/favicon.svg`, paylaşım görselinin vektör
 kaynağı `public/images/og-card.svg` dosyasıdır; yayın görseli
 `public/images/og-tionport.png` olarak kullanılır.
+
+### Galaksi animasyonu
+
+Dala referansındaki geometrik parçacık hissi, özgün bir spiral galaksiye
+uyarlanmıştır. Three.js yalnızca ana sayfada gerektiğinde yüklenir. Masaüstünde
+26.000, dar veya dokunmatik ekranlarda 13.000 parçacık kullanılır. Tek model
+yavaşça döner; fare ve ok tuşları eğimi, imleç yakınındaki yıldızların hareketini
+değiştirir. Kaydırma konumu modelin biçimini veya kamera açısını değiştirmez.
+
+Duraklatma düğmesi hareketi tamamen durdurur. Sistem hareket azaltma tercihi
+başlangıçta ve değiştiğinde uygulanır; kullanıcı isterse oynatabilir. Bölüm
+ekran dışında veya sekme gizliyken çizim durur. Bileşen kapanırken gözlemciler,
+olay dinleyicileri ve grafik kaynakları bırakılır. WebGL kullanılamadığında
+`public/images/galaxy.svg` sabit görünümü kalır.
+
+Parçacık üretimi `npm run test` ile doğrulanır. Geometri değiştiğinde sabit
+görseli `npm run gen:galaxy` ile yeniden üretin. Çizim, fare/klavye etkileşimi,
+duraklatma ve dar ekran görünümü geliştirme sunucusunda tarayıcıyla kontrol edilir.
 
 ## VPS yayını
 

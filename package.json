@@ -8,7 +8,9 @@
     "build": "node scripts/generate-pages.mjs && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "check": "npm run lint && npm run build && npm run verify",
+    "check": "npm run lint && npm run test && npm run build && npm run verify",
+    "test": "node --test scripts/galaxy.test.mjs",
+    "gen:galaxy": "node scripts/generate-galaxy-poster.mjs",
     "verify": "node scripts/verify-site.mjs",
     "deploy": "powershell -NoProfile -File scripts/deploy.ps1",
     "gen:pages": "node scripts/generate-pages.mjs"
@@ -18,7 +20,8 @@
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "lucide-react": "^0.468.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "three": "^0.186.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

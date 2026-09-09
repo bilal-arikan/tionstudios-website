@@ -5,8 +5,6 @@
   .service-card { grid-template-columns: 52px 1fr 1.1fr auto; gap: 20px; padding-inline: 12px; }
   .service-card > a { font-size: 0; }
   .service-card h3 { font-size: 23px; }
-  .showcase-notes > div { padding: 14px; gap: 9px; }
-  .showcase-notes span { font-size: 11px; }
   .process-list { gap: 14px; }
   .process-item { padding: 22px; }
   .about-grid, .contact-grid, .faq-grid { gap: 55px; }
@@ -31,9 +29,6 @@
   .hero-description { font-size: 16px; }
   .hero-actions { gap: 12px; }
   .hero-actions .button { padding-inline: 17px; gap: 15px; }
-  .showcase-notes { grid-template-columns: 1fr; }
-  .showcase-notes > div:last-child { display: none; }
-  .showcase-caption h2 { font-size: 27px; }
   .hero-proof { gap: 20px; flex-wrap: wrap; }
   .hero-bottom > a { display: none; }
   .section { padding-block: 75px; }
@@ -85,14 +80,6 @@
   .hero-proof { gap: 15px; justify-content: space-between; width: 100%; }
   .hero-proof > span { font-size: 10px; gap: 6px; }
   .hero-proof svg { width: 14px; height: 14px; }
-  .showcase-art { aspect-ratio: 1.8; }
-  .showcase-caption { padding: 20px; }
-  .showcase-notes { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .showcase-notes > div:last-child { display: flex; }
-  .showcase-notes > div { padding: 12px; gap: 8px; }
-  .showcase-notes span { font-size: 10px; }
-  .showcase-notes small { font-size: 9px; }
-  .showcase-notes svg { width: 17px; }
   .technology-strip { padding-block: 24px; }
   .technology-track { justify-content: center; gap: 15px 25px; }
   .technology-track span { font-size: 10px; }

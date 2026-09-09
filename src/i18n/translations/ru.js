@@ -4,6 +4,12 @@
 // untranslated on purpose: Tionport, Real Driver, Unity, React, iOS.
 
 export default {
+  galaxy: {
+    description: 'Трёхмерная спиральная галактика из частиц лаймового цвета.',
+    hint: 'Управляйте указателем или стрелками',
+    pause: 'Приостановить анимацию',
+    play: 'Воспроизвести анимацию',
+  },
   meta: {
     home: {
       title: 'Tionport — студия цифровых продуктов и разработки',

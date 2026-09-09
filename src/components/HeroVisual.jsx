@@ -1,24 +1,21 @@
-import { ArrowUpRight, Box, Layers3 } from 'lucide-react'
-import { featuredGame, games } from '../data/games'
-import { pathFor } from '../i18n'
+import { MousePointer2, Pause, Play } from 'lucide-react'
+import { useGalaxy } from './galaxy/useGalaxy.js'
 
-export function HeroVisual({ t, locale }) {
+export function HeroVisual({ t }) {
+  const { hostRef, canvasRef, status, togglePlaying } = useGalaxy()
+
   return (
-    <div className="hero-showcase">
-      <a className="showcase-project" href={`${pathFor('games', locale)}#${featuredGame.slug}`}>
-        <div className="showcase-top"><span>{t('projects.eyebrow')}</span><span>01 / {String(games.length).padStart(2, '0')}</span></div>
-        <div className="showcase-art">
-          <img src={featuredGame.wideImage} alt={t('projects.featuredAlt')} fetchPriority="high" />
-          <span className="showcase-status"><span className="eyebrow-dot" />{t('projects.published')}</span>
-        </div>
-        <div className="showcase-caption">
-          <div><span>iOS / Android</span><h2>{featuredGame.title}</h2><p>{featuredGame.subtitle}</p></div>
-          <span className="showcase-arrow"><ArrowUpRight size={24} /></span>
-        </div>
-      </a>
-      <div className="showcase-notes">
-        <div><Layers3 size={21} /><span>{t('readout.designCode')}<small>{t('readout.oneTeam')}</small></span></div>
-        <div><Box size={21} /><span>Web / Mobile / Games<small>{t('readout.location')}</small></span></div>
+    <div className="galaxy">
+      <div className="galaxy-heading" aria-hidden="true"><span className="eyebrow-dot" />Tionport universe<span>01 — ∞</span></div>
+      <div className="galaxy-stage" ref={hostRef} data-ready={status.ready}>
+        <img className="galaxy-poster" src="/images/galaxy.svg" alt="" width="720" height="640" aria-hidden="true" />
+        <canvas ref={canvasRef} className="galaxy-canvas" role="img" aria-label={t('galaxy.description')} aria-description={status.ready ? t('galaxy.hint') : undefined} tabIndex={status.ready ? 0 : -1} />
+      </div>
+      <div className="galaxy-caption">
+        {status.ready && <span><MousePointer2 size={13} />{t('galaxy.hint')}</span>}
+        {status.ready && <button type="button" onClick={togglePlaying} aria-label={t(status.playing ? 'galaxy.pause' : 'galaxy.play')} title={t(status.playing ? 'galaxy.pause' : 'galaxy.play')}>
+          {status.playing ? <Pause size={14} /> : <Play size={14} />}
+        </button>}
       </div>
     </div>
   )

@@ -1,0 +1,24 @@
+.galaxy { position: relative; min-width: 0; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+.galaxy-heading { position: absolute; inset: 0 0 auto; display: flex; align-items: center; gap: 9px; color: var(--muted); font: 400 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.galaxy-heading > span:last-child { margin-inline-start: auto; color: var(--subtle); }
+.galaxy-stage { position: relative; width: 100%; aspect-ratio: 1.125; margin-block: 22px; isolation: isolate; border-radius: 50%; background: radial-gradient(ellipse at center, #bcf57809 0%, transparent 57%); }
+.galaxy-poster, .galaxy-canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.galaxy-poster { object-fit: contain; transition: opacity .6s; }
+.galaxy-canvas { opacity: 0; transition: opacity .6s; touch-action: pan-y; border-radius: 20px; }
+.galaxy-stage[data-ready='true'] .galaxy-poster { opacity: 0; }
+.galaxy-stage[data-ready='true'] .galaxy-canvas { opacity: 1; }
+.galaxy-caption { position: absolute; inset: auto 0 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 36px; color: var(--subtle); }
+.galaxy-caption > span { display: flex; align-items: center; gap: 8px; font: 400 10px/1.5 var(--font-mono); }
+.galaxy-caption > span svg { color: var(--accent); }
+.galaxy-caption button { width: 36px; height: 36px; flex-shrink: 0; display: grid; place-items: center; background: transparent; border: 1px solid var(--border); border-radius: 50%; color: var(--muted); }
+.galaxy-caption button:hover { border-color: var(--accent); color: var(--accent); }
+@media (max-width: 900px) and (min-width: 641px) {
+  .galaxy-stage { aspect-ratio: .9; }
+  .galaxy-heading { font-size: 8px; letter-spacing: .03em; }
+  .galaxy-caption > span { font-size: 9px; max-width: 180px; }
+}
+@media (max-width: 640px) {
+  .galaxy { margin-top: 8px; }
+  .galaxy-stage { margin-block: 26px; aspect-ratio: 1.2; }
+  .galaxy-heading { font-size: 9px; }
+}
