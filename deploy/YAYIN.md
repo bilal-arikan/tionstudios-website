@@ -4,8 +4,8 @@
 - Ana adres: https://tionport.com.
 - Sunucu: MyHermes (`100.101.118.70` yönetim, `212.108.107.194` genel adres).
 - Yayın kökü: `/var/www/tionport/current`.
-- Güncel sürüm: `/var/www/tionport/releases/20260910-001636`.
-- Önceki sürüm: `/var/www/tionport/releases/20260910-000829`.
+- Güncel sürüm: `/var/www/tionport/releases/20260910-001949`.
+- Önceki sürüm: `/var/www/tionport/releases/20260910-001636`.
 - İlk Caddy yedeği: `/home/hermes/stack/caddy/Caddyfile.before-tionport-20260909-192845`.
 - Yerel başlangıç yedeği: `C:/Users/Bilal/.codex/backups/tionport-20260909`.
 
@@ -96,3 +96,10 @@ ters çevrilerek yukarıya bakan bir görünüm verildi. Sabit galaksi görseli 
 yeni açıya göre üretildi. Masaüstü, 1280 piksel dizüstü ve 390 piksel mobil
 görünümleri kontrol edildi. Yayın kontrolleri geçti; altı ana sayfanın ve canlı
 animasyon dosyalarının yeni sürümle eşleştiği doğrulandı.
+
+### Galaksi alt kontrollerinin kaldırılması
+
+Kullanıcı isteğiyle galaksinin altındaki keşfet yazısı ve durdur/devam et düğmesi
+kaldırıldı. Fare ve klavye etkileşimi ile sistem hareket azaltma tercihi korunur.
+Yayın denetimleri başarılıdır; canlı sayfada alt yazı ve düğmenin bulunmadığı,
+galaksinin yüklenip çalıştığı doğrulanmıştır.

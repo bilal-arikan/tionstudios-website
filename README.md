@@ -85,15 +85,15 @@ uyarlanmıştır. Three.js yalnızca ana sayfada gerektiğinde yüklenir. Masaü
 yavaşça döner; fare ve ok tuşları eğimi, imleç yakınındaki yıldızların hareketini
 değiştirir. Kaydırma konumu modelin biçimini veya kamera açısını değiştirmez.
 
-Duraklatma düğmesi hareketi tamamen durdurur. Sistem hareket azaltma tercihi
-başlangıçta ve değiştiğinde uygulanır; kullanıcı isterse oynatabilir. Bölüm
+Galaksinin altında yazı veya oynatma kontrolü gösterilmez. Sistem hareket
+azaltma tercihi başlangıçta ve değiştiğinde uygulanır. Bölüm
 ekran dışında veya sekme gizliyken çizim durur. Bileşen kapanırken gözlemciler,
 olay dinleyicileri ve grafik kaynakları bırakılır. WebGL kullanılamadığında
 `public/images/galaxy.svg` sabit görünümü kalır.
 
 Parçacık üretimi `npm run test` ile doğrulanır. Geometri değiştiğinde sabit
 görseli `npm run gen:galaxy` ile yeniden üretin. Çizim, fare/klavye etkileşimi,
-duraklatma ve dar ekran görünümü geliştirme sunucusunda tarayıcıyla kontrol edilir.
+hareket azaltma tercihi ve dar ekran görünümü geliştirme sunucusunda tarayıcıyla kontrol edilir.
 
 ## VPS yayını
 

@@ -23,9 +23,5 @@ export function useGalaxy() {
     }
   }, [])
 
-  function togglePlaying() {
-    sceneRef.current?.setPlaying(!status.playing)
-  }
-
-  return { hostRef, canvasRef, status, togglePlaying }
+  return { hostRef, canvasRef, status }
 }
