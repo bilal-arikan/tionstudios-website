@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0B1020" />
+    <meta name="theme-color" content="#101319" />
+    <style>html { background: #101319; color: #e9edf4; }</style>
     <title>Игры — архив игр Tionport</title>
     <meta name="description" content="Мобильные игровые проекты, разработанные Tionport." />
 
@@ -15,8 +16,8 @@
     <link rel="alternate" hreflang="zh-Hans" href="https://tionport.com/zh/youxi/" />
     <link rel="alternate" hreflang="x-default" href="https://tionport.com/oyunlar/" />
     <link rel="canonical" href="https://tionport.com/ru/igry/" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/brand-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
@@ -34,110 +35,11 @@
         "description": "Tionport oyun proje arşivi"
       }
     </script>
-    <style>
-      /* Splash — paints on the first frame, before React loads.
-         Inline on purpose: an external stylesheet would arrive too late. */
-      #tion-splash {
-        position: fixed;
-        inset: 0;
-        z-index: 9999;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 26px;
-        background: #0B1020;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-        transition: opacity 520ms ease, visibility 520ms ease;
-      }
-      #tion-splash[hidden] { display: none; }
-      body.tion-ready #tion-splash {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-      }
-      .tion-splash-mark {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        animation: tion-rise 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
-      }
-      .tion-splash-mark img {
-        width: 46px;
-        height: 46px;
-        object-fit: contain;
-        filter: brightness(0) invert(1);
-        opacity: 0.92;
-      }
-      .tion-splash-word {
-        display: grid;
-        line-height: 1;
-        font-family: 'Archivo Variable', 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      }
-      .tion-splash-word b {
-        color: #E6EDFB;
-        font-size: 21px;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-      }
-      .tion-splash-word i {
-        margin-top: 5px;
-        color: #5CE6A8;
-        font-style: normal;
-        font-size: 8px;
-        font-weight: 700;
-        letter-spacing: 0.5em;
-      }
-      .tion-splash-bar {
-        width: 132px;
-        height: 2px;
-        overflow: hidden;
-        border-radius: 2px;
-        background: rgba(150, 190, 255, 0.16);
-      }
-      .tion-splash-bar span {
-        display: block;
-        width: 40%;
-        height: 100%;
-        border-radius: 2px;
-        background: linear-gradient(90deg, #39C2F3, #5CE6A8);
-        animation: tion-sweep 1.15s cubic-bezier(0.55, 0, 0.35, 1) infinite;
-      }
-      @keyframes tion-rise {
-        from { opacity: 0; transform: translateY(9px); }
-        to   { opacity: 1; transform: none; }
-      }
-      @keyframes tion-sweep {
-        0%   { transform: translateX(-115%); }
-        100% { transform: translateX(365%); }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .tion-splash-mark { animation: none; }
-        .tion-splash-bar span { animation: none; width: 100%; }
-      }
-    </style>
   </head>
   <body data-page="games">
-    <a class="skip-link" href="#main-content">Ana içeriğe geç</a>
+    <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
     <div id="root"></div>
-    <div id="tion-splash">
-      <span class="tion-splash-mark">
-        <img src="/apple-touch-icon.png" alt="" aria-hidden="true" />
-        <span class="tion-splash-word"><b>TION</b><i>PORT</i></span>
-      </span>
-      <span class="tion-splash-bar" role="status" aria-label="Yükleniyor"><span></span></span>
-    </div>
     
-    <script>
-      // Splash timing origin, plus a last-resort clear that runs even if the
-      // app bundle never loads — the splash must never trap the page.
-      window.__tionSplashStart = performance.now();
-      setTimeout(function () {
-        document.body.classList.add('tion-ready');
-        var s = document.getElementById('tion-splash');
-        if (s) setTimeout(function () { s.setAttribute('hidden', ''); }, 560);
-      }, 8000);
-    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

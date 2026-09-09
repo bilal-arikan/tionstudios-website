@@ -1,14 +1,14 @@
 {
   "name": "Tionport",
-  "short_name": "TION",
-  "description": "Web, mobil ve oyun geliştirme stüdyosu",
+  "short_name": "Tionport",
+  "description": "Web, mobile and game development studio",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0B1020",
-  "theme_color": "#0B1020",
+  "background_color": "#101319",
+  "theme_color": "#101319",
   "icons": [
     {
-      "src": "/apple-touch-icon.png",
+      "src": "/brand-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }

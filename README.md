@@ -48,7 +48,9 @@ Bulunmayan yollar sunucuda gerçek HTTP 404 yanıtı verir.
 - `src/data/`: Oyun portföyü, menü, hizmet ve süreç verileri.
 - `src/i18n/`: Dil/yol kayıtları ve çeviri sözlükleri.
 - `src/LegalPage.jsx`: Yasal belge görünümü.
-- `src/styles.css`: Mevcut koyu tema ve duyarlı yerleşim.
+- `src/styles.css`: Tema dosyalarının giriş noktası.
+- `src/styles/`: Renkler, temel öğeler, menü, ana bölüm, içerik, oyunlar,
+  iletişim, altbilgi/yasal belgeler ve mobil düzen için ayrı CSS dosyaları.
 - `scripts/generate-pages.mjs`: 30 HTML girişi ve 32 URL içeren site haritası.
 - `scripts/verify-site.mjs`: Yayın öncesi doğrulama.
 - `deploy/`: Caddy yapılandırması ve sürüm geçiş betikleri.
@@ -58,6 +60,20 @@ Türkçe kök HTML dosyaları sayfa şablonlarıdır. Çeviriler sözlüklerde d
 diğer dillerin HTML dosyaları derlemede yeniden üretilir. Marka metinleri ve
 paylaşım görseli Tionport olarak güncellenmiştir. LinkedIn, GitHub ve Instagram
 adresleri kullanıcının isteğiyle eski hesaplarda kalır.
+
+## Görsel tema
+
+Tion kontrol merkezinden alınan kömür grisi ve lime yeşili palet kullanılır:
+`#101319` zemin, `#171b23` paneller, `#292f3a` sınırlar,
+`#e9edf4` metin ve `#bcf578` vurgu. Ana yazı tipi yerel sunulan DM Sans,
+küçük etiketlerde JetBrains Mono'dur.
+
+Ana sayfa gerçek oyun görselini öne çıkarır; hizmetler satırlar halinde,
+süreç ve ilkeler kartlar halinde sunulur. Mobil menü ve altı dil korunur.
+Açılışı geciktiren splash ekranı kaldırılmıştır. Hareket azaltma tercihi
+desteklenir. Marka simgesi `public/favicon.svg`, paylaşım görselinin vektör
+kaynağı `public/images/og-card.svg` dosyasıdır; yayın görseli
+`public/images/og-tionport.png` olarak kullanılır.
 
 ## VPS yayını
 

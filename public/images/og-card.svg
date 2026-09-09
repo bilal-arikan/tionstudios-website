@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#101319"/>
+  <rect x="30" y="30" width="1140" height="570" rx="20" fill="none" stroke="#292f3a"/>
+  <rect x="70" y="70" width="48" height="50" rx="10" fill="#bcf578"/>
+  <path d="M81 81h26v7H97v23h-8V88h-8z" fill="#1e3012"/>
+  <g font-family="Segoe UI,Arial,sans-serif">
+    <text x="132" y="107" font-size="37" font-weight="700" letter-spacing="-2" fill="#e9edf4">tionport<tspan fill="#bcf578">.</tspan></text>
+    <text x="70" y="284" font-size="91" font-weight="500" letter-spacing="-5" fill="#e9edf4">Web. Mobile.</text>
+    <text x="70" y="388" font-size="105" font-weight="500" letter-spacing="-5" fill="#bcf578">Games.</text>
+    <text x="74" y="443" font-size="21" fill="#a0a9b8">Independent digital studio. Istanbul.</text>
+    <text x="75" y="552" font-size="17" fill="#a0a9b8">tionport.com</text>
+    <text x="890" y="552" font-size="13" letter-spacing="2" fill="#7e899a">DESIGN + CODE</text>
+  </g>
+  <g transform="translate(825 191)">
+    <rect width="290" height="270" rx="25" fill="#171b23" stroke="#3c4b32"/>
+    <rect x="21" y="21" width="248" height="228" rx="13" fill="#bcf57808"/>
+    <path d="M84 192 204 72M97 72h107v107" fill="none" stroke="#bcf578" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path d="M70 505h1060" stroke="#292f3a"/>
+</svg>

@@ -1,7 +1,7 @@
 // Generates the per-locale HTML entry files from the Turkish originals.
 //
 // The Turkish pages at the repo root are the source of truth for page structure
-// (splash markup, splash CSS, the module script tag). This script re-emits them
+// (shared head metadata and the module script tag). This script re-emits them
 // for every non-default locale under /<code>/, rewriting only what is locale
 // specific: <html lang/dir>, title, description, canonical, og tags, the
 // data-page/data-locale attributes and the hreflang alternates.
@@ -71,6 +71,8 @@ function applyLocale(html, { pageId, code, dict }) {
   const url = `${SITE}${pathFor(pageId, code)}`
 
   let out = html
+  out = out.replace(/(<a class="skip-link" href="#main-content">)[^<]*(<\/a>)/,
+    `$1${escapeHtml(dict.nav.skipToContent)}$2`)
 
   // Root element: language + direction, and the locale the app should render.
   out = out.replace(/<html lang="[^"]*"[^>]*>/,

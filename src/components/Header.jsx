@@ -15,9 +15,16 @@ export function Header({ currentPage = 'home', t, locale }) {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24)
+    const handleResize = () => {
+      if (window.innerWidth > 900) setMenuOpen(false)
+    }
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   useEffect(() => {

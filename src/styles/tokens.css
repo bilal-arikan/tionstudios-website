@@ -1,0 +1,23 @@
+:root {
+  font-family: 'DM Sans Variable', 'DM Sans', 'Segoe UI', sans-serif;
+  color: #e9edf4;
+  background: #101319;
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --bg: #101319;
+  --surface: #171b23;
+  --surface-raised: #1e232d;
+  --border: #292f3a;
+  --text: #e9edf4;
+  --muted: #a0a9b8;
+  --subtle: #7e899a;
+  --accent: #bcf578;
+  --accent-ink: #1e3012;
+  --radius: 14px;
+  --font-mono: 'JetBrains Mono Variable', Consolas, monospace;
+  --container: 1280px;
+  --header-height: 86px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}

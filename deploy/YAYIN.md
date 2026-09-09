@@ -4,8 +4,8 @@
 - Ana adres: https://tionport.com.
 - Sunucu: MyHermes (`100.101.118.70` yönetim, `212.108.107.194` genel adres).
 - Yayın kökü: `/var/www/tionport/current`.
-- Güncel sürüm: `/var/www/tionport/releases/20260909-224555`.
-- Önceki sürüm: `/var/www/tionport/releases/20260909-222817`.
+- Güncel sürüm: `/var/www/tionport/releases/20260909-232438`.
+- Önceki sürüm: `/var/www/tionport/releases/20260909-224555`.
 - İlk Caddy yedeği: `/home/hermes/stack/caddy/Caddyfile.before-tionport-20260909-192845`.
 - Yerel başlangıç yedeği: `C:/Users/Bilal/.codex/backups/tionport-20260909`.
 
@@ -50,6 +50,18 @@ DNS önbellekleri nedeniyle bazı ağlar eski yanıtları TTL süresince tutabil
 Yeni web kayıtları ve güvenlik imzası yetkili sunucularda kaydedilmiştir.
 
 ## Güncelleme ve geri dönüş
+
+9 Eylül 2026 tarihindeki tema yenilemesinde Tion kontrol merkezinin kömür grisi
+ve lime paleti kullanılmıştır. Menü, ana sayfa, hizmetler, oyunlar, süreç,
+iletişim, altbilgi ve yasal belge düzenleri yenilenmiştir. DM Sans yazı tipi,
+yeni marka simgesi ve paylaşım görseli eklenmiş; splash ekranı kaldırılmıştır.
+Tema ayrı sorumluluklara sahip dokuz CSS dosyasında tutulur.
+
+320 piksel genişlik dahil dar ekran kontrolleri, menünün Escape/fokus davranışı,
+aynı sayfada dil geçişi ve farklı dil örneklerinde taşma kontrolleri başarılıdır.
+`npm run deploy` doğrulamaları geçmiştir. Canlı sitede 32 sayfanın yeni CSS'yi
+kullandığı; CSS, favicon, dokunmatik simge ve paylaşım görselinin yerel yayın
+dosyalarıyla eşleştiği doğrulanmıştır.
 
 Windows üzerinden `npm run deploy` yeni bir sürüm oluşturur. Her yayında
 `previous` bağlantısı önceki sürümü korur. Geri dönüşte önce bu bağlantının

@@ -1,11 +1,8 @@
 export function BrandMark({ compact = false }) {
   return (
-    <span className={`brand-lockup${compact ? ' brand-lockup--compact' : ''}`}>
-      <img className="brand-symbol brand-symbol--original" src="/apple-touch-icon.png" alt="" aria-hidden="true" />
-      <span className="brand-copy">
-        <strong>TION</strong>
-        <small>PORT</small>
-      </span>
+    <span className={`brand-lockup${compact ? ' brand-lockup--compact' : ''}`} dir="ltr">
+      <span className="brand-symbol" aria-hidden="true">T</span>
+      <span className="brand-word">tionport<span>.</span></span>
     </span>
   )
 }
