@@ -4,8 +4,8 @@
 - Ana adres: https://tionport.com.
 - Sunucu: MyHermes (`100.101.118.70` yönetim, `212.108.107.194` genel adres).
 - Yayın kökü: `/var/www/tionport/current`.
-- Güncel sürüm: `/var/www/tionport/releases/20260910-001949`.
-- Önceki sürüm: `/var/www/tionport/releases/20260910-001636`.
+- Güncel sürüm: `/var/www/tionport/releases/20260910-002404`.
+- Önceki sürüm: `/var/www/tionport/releases/20260910-001949`.
 - İlk Caddy yedeği: `/home/hermes/stack/caddy/Caddyfile.before-tionport-20260909-192845`.
 - Yerel başlangıç yedeği: `C:/Users/Bilal/.codex/backups/tionport-20260909`.
 
@@ -103,3 +103,12 @@ Kullanıcı isteğiyle galaksinin altındaki keşfet yazısı ve durdur/devam et
 kaldırıldı. Fare ve klavye etkileşimi ile sistem hareket azaltma tercihi korunur.
 Yayın denetimleri başarılıdır; canlı sayfada alt yazı ve düğmenin bulunmadığı,
 galaksinin yüklenip çalıştığı doğrulanmıştır.
+
+### Ekranı aşan galaksi
+
+Kullanıcı isteğiyle galaksi mevcut genişlik ve yüksekliğinin iki katına çıkarıldı.
+Parçacık boyutu da ölçekle birlikte büyür. Galaksi açılış alanında ekran kenarlarını
+aşar; metin ve bağlantılar üst katmanda kalır. Masaüstünde ve 390 piksel mobil
+görünümde iki kat ölçek, kenarlardan taşma, yatay kaydırma çubuğunun oluşmaması
+ve ana bağlantının tıklanabilirliği doğrulandı. Yayın kontrolleri geçti; canlı
+sayfada iki kat ölçek ve çalışan galaksi doğrulandı.

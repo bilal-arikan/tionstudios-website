@@ -1,7 +1,9 @@
+.hero { position: relative; isolation: isolate; overflow: clip; }
+.hero-copy, .hero-topline, .hero-bottom { position: relative; z-index: 1; }
 .galaxy { position: relative; min-width: 0; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
 .galaxy-heading { position: absolute; inset: 0 0 auto; display: flex; align-items: center; gap: 9px; color: var(--muted); font: 400 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
 .galaxy-heading > span:last-child { margin-inline-start: auto; color: var(--subtle); }
-.galaxy-stage { position: relative; width: 100%; aspect-ratio: 1.125; margin-block: 22px; isolation: isolate; border-radius: 50%; background: radial-gradient(ellipse at center, #bcf57809 0%, transparent 57%); }
+.galaxy-stage { position: relative; width: 100%; aspect-ratio: 1.125; margin-block: 22px; isolation: isolate; border-radius: 50%; background: radial-gradient(ellipse at center, #bcf57809 0%, transparent 57%); transform: scale(2); }
 .galaxy-poster, .galaxy-canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
 .galaxy-poster { object-fit: contain; transition: opacity .6s; }
 .galaxy-canvas { opacity: 0; transition: opacity .6s; touch-action: pan-y; border-radius: 20px; }

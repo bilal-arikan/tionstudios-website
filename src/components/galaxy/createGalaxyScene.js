@@ -85,7 +85,8 @@ export function createGalaxyScene(host, canvas, onStatus) {
     camera.zoom = camera.aspect > 1.4 ? 1.4 : 1.12
     camera.updateProjectionMatrix()
     uniforms.uPixelRatio.value = ratio
-    uniforms.uScale.value = Math.min(width / 560, 1.3)
+    const visualScale = width / host.clientWidth
+    uniforms.uScale.value = Math.min(host.clientWidth / 560, 1.3) * visualScale
     draw()
   }
 
