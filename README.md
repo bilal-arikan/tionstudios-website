@@ -1,26 +1,37 @@
 # Tionport web sitesi
 
-React 19 + Vite 7 tabanlı çok sayfalı kurumsal site. Üretim hedefi https://tionport.com;
-altyapı MyHermes VPS üzerindeki mevcut Caddy sunucusudur. DNS Cloudflare'da,
-alan adı kaydı Squarespace'te yönetilir.
+[tionport.com](https://tionport.com/) için altı dilli kurumsal tanıtım ve oyun
+portföyü. React 19 + Vite 7, Three.js, Lucide, DM Sans ve JetBrains Mono kullanır.
+Caddy statik `dist/` dosyalarını VPS'de sunar. Ayrı API/veritabanı yoktur;
+iletişim formu `info@tionport.com` alıcılı e-posta taslağı açar.
 
-## Geliştirme ve doğrulama
+Kaynak depo: [bilal-arikan/tionstudios-website](https://github.com/bilal-arikan/tionstudios-website).
+Eski depo adı korunmuştur; ana dal `main`. [Yayın, domain ve geri alma](deploy/YAYIN.md).
 
-Windows PowerShell üzerinden:
+## Geliştirme
+
+Windows PowerShell; Node.js 22.12+ veya 24+, npm:
 
 ```powershell
 npm ci
 npm run dev
+```
+
+Vite varsayılanı 5173; gerçek adres terminal çıktısındadır. `npm run preview`
+üretim derlemesini varsayılan 4173 portunda önizler. Çalışmak için ortam değişkeni
+veya gizli anahtar gerekmez. Canonical domain `scripts/generate-pages.mjs` ve
+HTML kaynaklarında tanımlıdır; otomatik `.env` domain ayarı yoktur.
+
+```powershell
 npm run check
 ```
 
-`check`, kod denetimini, galaksi testlerini, üretim derlemesini ve site doğrulamasını çalıştırır.
-Doğrulama 30 dil/sayfa birleşimini React ile oluşturur; ana başlıkları, yerel
-bağlantıları, görselleri, canonical/hreflang etiketlerini, site haritasını ve
-eski marka kalıntılarını kontrol eder. Kullanıcı isteğiyle korunan üç sosyal
-hesap bağlantısı eski marka kontrolünün dışındadır.
+Bu komut ESLint, 3 galaksi testi, derleme ve 30 yerelleştirilmiş sayfanın
+React çıktısı/metadata/yerel bağlantı/görsel/yasal belge/site haritası denetimini
+çalıştırır. WebGL, klavye ve mobil menü için tarayıcı kontrolü ayrıca gerekir.
+Mevcut büyük Three.js paket uyarısı derlemeyi engellemez.
 
-## Sayfalar
+## Sayfalar ve durum
 
 | Sayfa | Türkçe | İngilizce |
 | --- | --- | --- |
@@ -30,121 +41,35 @@ hesap bağlantısı eski marka kontrolünün dışındadır.
 | Hakkımızda | `/hakkimizda/` | `/en/about/` |
 | İletişim | `/iletisim/` | `/en/contact/` |
 
-İspanyolca, Arapça, Rusça ve Çince sayfalar `/es/`, `/ar/`, `/ru/`, `/zh/`
-altında çevrilmiş yol adlarıyla üretilir. Mevcut altı dil korunmuştur.
-Arapça sağdan sola düzen kullanır. Dil tercihi tarayıcıda saklanır.
-Her URL bağımsız HTML girişidir; yenilemeler ve doğrudan ziyaretler çalışır.
-Bulunmayan yollar sunucuda gerçek HTTP 404 yanıtı verir.
+İspanyolca, Arapça, Rusça ve Çince yollar `src/i18n/locales.js` içindedir.
+Toplam 30 dil/sayfa HTML girişi, ortak iki İngilizce yasal sayfa ve 32 URL'lik
+site haritası vardır. Arapça RTL kullanır; bulunmayan yollar Caddy'de HTTP 404
+verir. `/privacy-policy.html`, `/terms-of-services.html` ve `/app-ads.txt` korunur.
 
-İngilizce yasal belgeler tüm dillerde ortak `/privacy-policy.html` ve
-`/terms-of-services.html` adreslerini kullanır. `/app-ads.txt` korunur.
-İletişim formu `info@tionport.com` alıcılı e-posta taslağı açar.
+Bu depo mobil uygulama kaynağı içermez. `src/data/games.js` portföy verisidir:
+Real Driver için iOS/Android mağaza bağlantıları vardır; diğer kartlardaki arşiv
+ve durum metinleri bağımsız yayın/tamamlanma doğrulaması değildir. Bu denetimde
+mağaza uygulamalarının güncel erişilebilirliği sınanmadı.
 
-## Dosya yapısı
+## Kaynak düzeni
 
-- `src/App.jsx`: Ortak kabuk ve sayfa seçimi.
-- `src/pages/`: Ana sayfa, hizmetler, oyunlar, hakkımızda, iletişim ve 404.
-- `src/components/`: Menü, altbilgi, marka ve ortak bölümler.
-- `src/components/galaxy/`: Galaksi geometrisi, parçacık çizimi, etkileşim ve yaşam döngüsü.
-- `src/data/`: Oyun portföyü, menü, hizmet ve süreç verileri.
-- `src/i18n/`: Dil/yol kayıtları ve çeviri sözlükleri.
-- `src/LegalPage.jsx`: Yasal belge görünümü.
-- `src/styles.css`: Tema dosyalarının giriş noktası.
-- `src/styles/`: Renkler, temel öğeler, menü, ana bölüm, içerik, oyunlar,
-  iletişim, altbilgi/yasal belgeler ve mobil düzen için ayrı CSS dosyaları.
-- `scripts/generate-pages.mjs`: 30 HTML girişi ve 32 URL içeren site haritası.
-- `scripts/verify-site.mjs`: Yayın öncesi doğrulama.
-- `deploy/`: Caddy yapılandırması ve sürüm geçiş betikleri.
-- `scripts/deploy.ps1`: Windows üzerinden VPS yayını.
+- `src/App.jsx`, `src/pages/`: ortak kabuk ve sayfalar.
+- `src/components/`, `src/components/galaxy/`: bölümler ve galaksi yaşam döngüsü.
+- `src/data/`, `src/i18n/`: portföy ve altı dilin sözlük/yol kayıtları.
+- `src/styles/`: tema ve sorumluluklarına ayrılmış stiller.
+- Kök Türkçe HTML girişleri: üretim şablonları. Diğer dil HTML'leri
+  `scripts/generate-pages.mjs` tarafından derlemede yeniden üretilir.
+- `public/`: statik dosyalar; `app-ads.txt` ve `CNAME` için tek kaynak.
+- `public/legal/`: React yasal sayfalarının yüklediği içerik; tasarım kaynağı
+  `public/favicon.svg`, paylaşım görseli `public/images/og-tionport.png`.
+- `.github/workflows/check.yml`: doğrulama ve indirilebilir `dist` paketi.
 
-Türkçe kök HTML dosyaları sayfa şablonlarıdır. Çeviriler sözlüklerde düzenlenir;
-diğer dillerin HTML dosyaları derlemede yeniden üretilir. Marka metinleri ve
-paylaşım görseli Tionport olarak güncellenmiştir. LinkedIn, GitHub ve Instagram
-adresleri kullanıcının isteğiyle eski hesaplarda kalır.
+Galaksi yalnız ana sayfada dinamik yüklenir; azaltılmış hareket tercihi,
+görünmeyen sekmede durma ve WebGL yokken sabit SVG desteklenir. Fare/ok tuşları
+yakın parçacıkları dağıtır; oynatma düğmesi veya altyazı yoktur. Geometri değişince
+`npm run gen:galaxy` ile sabit görseli güncelleyin. Sosyal profillerdeki eski
+Tion Studios bağlantıları kullanıcı tercihiyle korunur.
 
-## Görsel tema
-
-Tion kontrol merkezinden alınan kömür grisi ve lime yeşili palet kullanılır:
-`#101319` zemin, `#171b23` paneller, `#292f3a` sınırlar,
-`#e9edf4` metin ve `#bcf578` vurgu. Ana yazı tipi yerel sunulan DM Sans,
-küçük etiketlerde JetBrains Mono'dur.
-
-Ana sayfanın ilk bölümünde etkileşimli bir parçacık galaksisi bulunur.
-Gerçek oyun görselleri projeler bölümünde korunur; hizmetler satırlar halinde,
-süreç ve ilkeler kartlar halinde sunulur. Mobil menü ve altı dil korunur.
-Açılışı geciktiren splash ekranı kaldırılmıştır. Hareket azaltma tercihi
-desteklenir. Marka simgesi `public/favicon.svg`, paylaşım görselinin vektör
-kaynağı `public/images/og-card.svg` dosyasıdır; yayın görseli
-`public/images/og-tionport.png` olarak kullanılır.
-
-Simge, eğimli T ve sağındaki ikincil parçadan oluşur. 80 × 80 vektör ızgarasında
-tüm uzun eğik kenarlar 1:2 oranında paraleldir. İki gövdenin yatay kalınlığı ve
-aralarındaki boşluk 12 birimdir; alt uçları aynı çizgide biter. Üst ve alt menü
-aynı SVG dosyasını kare oranını koruyarak kullanır. `favicon.png` 32 × 32,
-`brand-icon.png` ve `apple-touch-icon.png` 180 × 180 olarak bu SVG'den üretilir.
-Paylaşım kartındaki simge de aynı geometriyi kullanır.
-
-### Galaksi animasyonu
-
-Dala referansındaki geometrik parçacık hissi, özgün bir spiral galaksiye
-uyarlanmıştır. Three.js yalnızca ana sayfada gerektiğinde yüklenir. Masaüstünde
-26.000, dar veya dokunmatik ekranlarda 13.000 parçacık kullanılır. Tek model
-yavaşça kendi etrafında döner; fareye doğru eğilmez. Fare ve ok tuşları yalnızca
-imleç yakınındaki yıldızları ekran düzleminde yana dağıtır. Parçacıklar kameraya
-yaklaşmaz veya büyümez; imleç uzaklaşınca yumuşakça yerlerine döner.
-Kaydırma konumu modelin biçimini veya kamera açısını değiştirmez.
-
-Galaksinin altında yazı veya oynatma kontrolü gösterilmez. Sistem hareket
-azaltma tercihi başlangıçta ve değiştiğinde uygulanır. Bölüm
-ekran dışında veya sekme gizliyken çizim durur. Bileşen kapanırken gözlemciler,
-olay dinleyicileri ve grafik kaynakları bırakılır. WebGL kullanılamadığında
-`public/images/galaxy.svg` sabit görünümü kalır.
-
-Parçacık üretimi `npm run test` ile doğrulanır. Geometri değiştiğinde sabit
-görseli `npm run gen:galaxy` ile yeniden üretin. Çizim, fare/klavye etkileşimi,
-hareket azaltma tercihi ve dar ekran görünümü geliştirme sunucusunda tarayıcıyla kontrol edilir.
-
-## VPS yayını
-
-SSH yapılandırmasındaki `myhermes` takma adı kullanılır. Yönetim Tailscale ile
-`100.101.118.70`, genel web trafiği `212.108.107.194` adresini kullanır.
-Özel anahtar projeye veya GitHub'a eklenmez.
-
-```powershell
-npm run deploy
-```
-
-Yalnızca doğrulanmış `dist/` içeriği aktarılır. Her sürüm
-`/var/www/tionport/releases/<tarih-saat>/` altına açılır. `current` bağlantısı
-atomik olarak değiştirilir; önceki sürüm `previous` bağlantısında korunur.
-Önceki sürümün hash içeren kaynakları, eski sekmelerin çalışması için saklanır.
-
-İlk kurulum veya Caddy bölümünün değişmesi durumunda:
-
-```powershell
-scp deploy/Caddyfile deploy/install-caddy.sh myhermes:/home/hermes/tionport-incoming/
-ssh myhermes 'sudo bash /home/hermes/tionport-incoming/install-caddy.sh'
-```
-
-Betik mevcut Caddy dosyasını yedekler, yalnızca Tionport bölümünü günceller,
-doğrular ve kesintisiz yeniden yükler. Hata halinde önceki yapılandırmaya döner.
-Caddy Let's Encrypt HTTPS sertifikalarını otomatik yönetir.
-
-Geri dönüş için önce `readlink /var/www/tionport/previous` ile hedefi doğrulayın.
-Bu sürüme `current.next` bağlantısı oluşturup `current` üzerine atomik taşıyın.
-Sürüm klasörlerinin silinmesi gerekmez.
-
-GitHub Actions artık doğrulama ve dağıtım paketi üretir; GitHub Pages yayını ve
-otomatik yayın iş akışı kapatılmıştır. VPS güncellemesi yukarıdaki komutla yapılır.
-
-## Alan adı
-
-- Cloudflare: `desiree.ns.cloudflare.com`, `rex.ns.cloudflare.com`.
-- Ana alan adı: `A @ → 212.108.107.194`, Cloudflare proxy etkin.
-- `www`: `CNAME www → tionport.com`, proxy etkin, ana adrese kalıcı yönlendirme.
-- Cloudflare SSL/TLS modu `Full (Strict)`; DNSSEC etkin.
-- Eski alan adı, yol ve sorgu korunarak yeni adrese yönlendirilir.
-- Google MX, SPF, DKIM ve doğrulama TXT kayıtları korunur.
-- E-posta ve `_domainconnect` kayıtları DNS üzerinden çalışır.
-
-Geçişin canlı sonuçları `deploy/YAYIN.md` dosyasında tutulur.
+Kod, yorumlar ve yeni kaynak metinler İngilizce, belgeler Türkçe yazılır.
+Mevcut altı dilin çeviri içerikleri korunur. Yerel `.claude/launch.json` Git'e
+girmez. Çalışma alanı ve dashboard: [üst kılavuz](../README.md).

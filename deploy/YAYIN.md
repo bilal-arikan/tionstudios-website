@@ -1,144 +1,96 @@
-# Tionport yayın kaydı
+# Tionport yayını ve geri alma
 
-- Son güncelleme: 10 Eylül 2026.
-- Ana adres: https://tionport.com.
-- Sunucu: MyHermes (`100.101.118.70` yönetim, `212.108.107.194` genel adres).
-- Yayın kökü: `/var/www/tionport/current`.
-- Güncel sürüm: `/var/www/tionport/releases/20260910-010450`.
-- Önceki sürüm: `/var/www/tionport/releases/20260910-004540`.
-- İlk Caddy yedeği: `/home/hermes/stack/caddy/Caddyfile.before-tionport-20260909-192845`.
-- Yerel başlangıç yedeği: `C:/Users/Bilal/.codex/backups/tionport-20260909`.
+10 Eylül 2026 kontrolü. Site Caddy ile VPS'de sunulur; GitHub Actions yalnız
+kontrol ve paket üretir. Bu denetimde yeni yayın yapılmadı.
 
-## Tamamlanan geçiş
+## Sunucu ve domain
 
-React + Vite çok sayfalı site VPS'de yayınlanmıştır. Ana sayfa, hizmetler,
-oyunlar, hakkımızda ve iletişim için altı dilde 30 bağımsız HTML girişi vardır.
-Marka metinleri, alan adı, iletişim adresi ve paylaşım görseli Tionport olarak
-güncellenmiştir. Eski sosyal hesap bağlantıları kullanıcı isteğiyle korunmuştur.
+| Bilgi | Değer |
+| --- | --- |
+| Ana adres | [tionport.com](https://tionport.com/) |
+| Yönlendirmeler | `www.tionport.com`, `tionstudios.com`, `www.tionstudios.com` → ana adres |
+| Yönetim | SSH takma adı `myhermes`; Tailscale `100.101.118.70` |
+| Public IP | `212.108.107.194` |
+| Yayın kökü | `/var/www/tionport/current` |
+| Güncel sürüm | `/var/www/tionport/releases/20260910-010450` |
+| Önceki sürüm | `/var/www/tionport/releases/20260910-004540` |
+| Gelen paketler | `/home/hermes/tionport-incoming` |
+| Caddy | `myhermes-caddy`; `/home/hermes/stack/caddy/Caddyfile` |
+| Kaynak depo | [tionstudios-website](https://github.com/bilal-arikan/tionstudios-website), `main` |
 
-Squarespace kaydı korunarak ad sunucuları `desiree.ns.cloudflare.com` ve
-`rex.ns.cloudflare.com` olarak değiştirilmiştir. Ana alan adı ve `www`
-kayıtlarında Cloudflare proxy etkindir. SSL/TLS modu `Full (Strict)` olarak
-kaydedilmiştir. Cloudflare Universal SSL sertifikası etkin durumdadır.
+Ad sunucuları `desiree.ns.cloudflare.com` ve `rex.ns.cloudflare.com` olarak
+DNS sorgusuyla doğrulandı. Registrar Squarespace, Cloudflare proxy,
+Full (Strict), DNSSEC ve Google posta kayıtlarının korunması önceki geçiş
+notlarında kayıtlıdır; bu denetimde yönetim panelleri yeniden kontrol edilmedi.
+DNS/posta değişikliği yapılmadı. Caddy yapılandırması HTTPS ve 308 yönlendirmeyi tanımlar.
 
-Eski Squarespace DNSSEC kaydı geçiş sırasında kullanıcı onayıyla kapatılmış;
-Cloudflare DNSSEC etkinleştirilip yeni DS kaydı Squarespace'e eklenmiştir.
-Cloudflare paneli DNSSEC başarı durumunu göstermektedir. Google ve Cloudflare
-çözümleyicileri imzalı yanıtları doğrulamaktadır.
+SSH özel anahtarı yerel SSH yapılandırmasından kullanılır; depoya konmaz.
+DNS yetkisi Cloudflare, registrar yetkisi Squarespace hesap sahibinden alınır.
+Normal dosya yayını Cloudflare tokeni gerektirmez.
 
-Google Workspace MX, SPF, DKIM ve alan adı doğrulama TXT kayıtları başlangıç
-yedeğiyle karşılaştırılmış ve birebir korunduğu doğrulanmıştır.
-`tionstudios.com` ve `www.tionstudios.com` web kayıtları VPS'ye taşınmıştır;
-eski alan adının e-posta kayıtları korunmuştur.
+## Doğrulama ve yayın
 
-GitHub Pages yayını ve Pages dağıtım iş akışı kapatılmıştır. Kaynak depo
-korunur; yeni GitHub Actions iş akışı doğrulama ve yayın paketi üretir.
+Windows PowerShell, site klasöründe:
 
-## Doğrulamalar
+```powershell
+npm run deploy
+```
 
-- `npm run deploy`: kod denetimi, üretim derlemesi, 30 sayfanın oluşturulması,
-  metadata, yerel bağlantı, görsel, yasal belge ve site haritası kontrolleri başarılı.
-- Cloudflare üzerinden 35 genel URL geçerli HTTPS ile HTTP 200 yanıtı vermiştir.
-- Olmayan adres HTTP 404 yanıtı verir.
-- `www.tionport.com`, `tionstudios.com` ve `www.tionstudios.com`, geçerli HTTPS
-  ile yol ve sorguyu koruyarak HTTP 308 üzerinden ana adrese yönlendirilir.
-- Canlı paylaşım görselinin dosya özeti yayın sürümüyle eşleşir.
-- Masaüstü görünümü, mobil menü, bağımsız hizmetler sayfasına geçiş ve ortak
-  gizlilik belgesi tarayıcıda kontrol edilmiştir.
+`scripts/deploy.ps1`, önce `npm run check` çalıştırır. Başarılı `dist/` paketini
+SCP ile taşır ve `deploy/release.sh` betiğini SSH üzerinden çalıştırır. Her
+sürüm ayrı klasöre açılır; `current` atomik değiştirilir, eski hedef `previous`
+olur. Önceki hash'li varlıklar yeni sürüme kopyalanır; açık sekmeler korunur.
 
-DNS önbellekleri nedeniyle bazı ağlar eski yanıtları TTL süresince tutabilir.
-Yeni web kayıtları ve güvenlik imzası yetkili sunucularda kaydedilmiştir.
+İlk kurulum veya Caddy bölümünün güncellenmesi için:
 
-## Güncelleme ve geri dönüş
+```powershell
+ssh myhermes 'mkdir -p /home/hermes/tionport-incoming'
+scp deploy/Caddyfile deploy/install-caddy.sh myhermes:/home/hermes/tionport-incoming/
+ssh myhermes 'sudo bash /home/hermes/tionport-incoming/install-caddy.sh'
+```
 
-9 Eylül 2026 tarihindeki tema yenilemesinde Tion kontrol merkezinin kömür grisi
-ve lime paleti kullanılmıştır. Menü, ana sayfa, hizmetler, oyunlar, süreç,
-iletişim, altbilgi ve yasal belge düzenleri yenilenmiştir. DM Sans yazı tipi,
-yeni marka simgesi ve paylaşım görseli eklenmiş; splash ekranı kaldırılmıştır.
-Tema ayrı sorumluluklara sahip dokuz CSS dosyasında tutulur.
+Kurucu yalnız `BEGIN TIONPORT WEBSITE` / `END TIONPORT WEBSITE` bölümünü
+birleştirir; Caddy dosyasının inode'unu korur, yedekler, doğrular ve reload yapar.
+Hata halinde önceki yapılandırmayı geri koyar. Ortak dosyada sonraki değişiklikler
+varsa eski Caddy yedeğinin tamamını körlemesine geri yüklemeyin.
 
-320 piksel genişlik dahil dar ekran kontrolleri, menünün Escape/fokus davranışı,
-aynı sayfada dil geçişi ve farklı dil örneklerinde taşma kontrolleri başarılıdır.
-`npm run deploy` doğrulamaları geçmiştir. Canlı sitede 32 sayfanın yeni CSS'yi
-kullandığı; CSS, favicon, dokunmatik simge ve paylaşım görselinin yerel yayın
-dosyalarıyla eşleştiği doğrulanmıştır.
+## Geri alma
 
-Windows üzerinden `npm run deploy` yeni bir sürüm oluşturur. Her yayında
-`previous` bağlantısı önceki sürümü korur. Geri dönüşte önce bu bağlantının
-hedefini kontrol edin, ardından `current` bağlantısını atomik olarak değiştirin.
-Ayrıntılı kurulum adımları `README.md` dosyasındadır.
+Önce `current` ve `previous` hedeflerini kontrol edin. Aşağıdaki Bash komutları
+VPS'de yetkili SSH oturumunda çalıştırılır; önceki sürümü silmez.
 
-## Etkileşimli galaksi — 10 Eylül 2026
+```bash
+root=/var/www/tionport
+readlink "$root/current"
+target=$(readlink -f "$root/previous")
+case "$target" in "$root/releases/"*) ;; *) echo 'Invalid rollback target'; exit 1 ;; esac
+test -s "$target/index.html" || exit 1
+sudo ln -sfn "$target" "$root/current.next"
+sudo mv -Tf "$root/current.next" "$root/current"
+curl --fail https://tionport.com/
+```
 
-Ana sayfanın ilk bölümüne Dala referansından esinlenen, kömür grisi ve lime
-paletinde bir Three.js parçacık galaksisi eklenmiştir. Tek spiral model fare
-ve ok tuşlarıyla etkileşir; kaydırmaya bağlı sahne veya model değişimi yoktur.
-Gerçek oyun görselleri projeler bölümünde korunmuştur.
+Sonrasında farklı dil sayfası, yasal belge, görsel ve 404'ü kontrol edin.
+`previous` geri alma sonrası otomatik tersine çevrilmez; yeniden ileri gitmek
+isterseniz başlangıçta kaydettiğiniz sürüm hedefini kullanın. Site statiktir,
+veritabanı geri dönüşü yoktur. Geri alma bu denetimde uygulanmadı.
 
-Duraklatma kontrolü, sistem hareket azaltma tercihi, ekran dışında ve gizli
-sekmede çizimi durdurma, WebGL olmadığında sabit galaksi görseli bulunur.
-Dar ve dokunmatik ekranlarda parçacık sayısı ve çizim çözünürlüğü azaltılır.
-Çizim kodu yalnızca ana sayfada gerektiğinde yüklenir.
+## CI ve güncel kanıt
 
-- Kod denetimi, üç geometri testi, üretim derlemesi ve 30 sayfa doğrulaması başarılı.
-- Masaüstünde çizim hatası görülmedi; fare ve klavye etkileşimi kontrol edildi.
-- Duraklatılmış sahnenin iki ekran görüntüsü birebir eşleşti.
-- 390 ve 320 piksel mobil görünümleri ile 820 piksel tablet düzeni kontrol edildi;
-  İngilizce, Arapça ve Rusça örneklerinde yatay taşma görülmedi.
-- Canlı sitede 32 URL yeni CSS'yi kullanıyor. CSS, ana JavaScript, galaksi çizim
-  paketi ve sabit görsel dosyalarının SHA-256 değerleri yerel yayınla eşleşiyor.
+`.github/workflows/check.yml`: `main` push, pull request ve manuel tetikleme;
+Ubuntu, Node 22, `npm ci`, `npm run check`, ardından `dist` artifact'i.
+VPS'ye otomatik dağıtım adımı yoktur.
 
-### Galaksi boyutu ve eğimi
+Denetimin başlangıç commit'i `1d6740458b57cc9f7ee007f4aafde494f9d09b3b` için
+[Validate website çalışması](https://github.com/bilal-arikan/tionstudios-website/actions/runs/34410492682)
+başarılıdır. Bu sonuç, sonraki yerel belge temizliğinin uzak CI sonucu değildir.
+Yerel temizlik sonrası kontroller [ortak denetim kaydındadır](../../tion-dashboard/docs/DENETIM.md).
 
-Kullanıcı isteğiyle masaüstündeki açılış bölümü 1640 piksele kadar genişletildi;
-galaksiye daha geniş bir sütun ayrıldı ve kamera yakınlaştırıldı. Dikey eğim
-ters çevrilerek yukarıya bakan bir görünüm verildi. Sabit galaksi görseli de
-yeni açıya göre üretildi. Masaüstü, 1280 piksel dizüstü ve 390 piksel mobil
-görünümleri kontrol edildi. Yayın kontrolleri geçti; altı ana sayfanın ve canlı
-animasyon dosyalarının yeni sürümle eşleştiği doğrulandı.
+Güncel salt okunur HTTP kontrolleri: ana sayfa ve İngilizce hizmetler 200,
+bulunmayan adres 404; `www.tionport.com` ve `tionstudios.com` yol/sorguyu koruyan
+308 yanıtı verdi. Güncel/önceki sürüm symlink'leri SSH ile doğrulandı. Yeni
+oturumlu tarayıcı veya bütün dil yollarının canlı taraması yapılmadı.
 
-### Galaksi alt kontrollerinin kaldırılması
-
-Kullanıcı isteğiyle galaksinin altındaki keşfet yazısı ve durdur/devam et düğmesi
-kaldırıldı. Fare ve klavye etkileşimi ile sistem hareket azaltma tercihi korunur.
-Yayın denetimleri başarılıdır; canlı sayfada alt yazı ve düğmenin bulunmadığı,
-galaksinin yüklenip çalıştığı doğrulanmıştır.
-
-### Ekranı aşan galaksi
-
-Kullanıcı isteğiyle galaksi mevcut genişlik ve yüksekliğinin iki katına çıkarıldı.
-Parçacık boyutu da ölçekle birlikte büyür. Galaksi açılış alanında ekran kenarlarını
-aşar; metin ve bağlantılar üst katmanda kalır. Masaüstünde ve 390 piksel mobil
-görünümde iki kat ölçek, kenarlardan taşma, yatay kaydırma çubuğunun oluşmaması
-ve ana bağlantının tıklanabilirliği doğrulandı. Yayın kontrolleri geçti; canlı
-sayfada iki kat ölçek ve çalışan galaksi doğrulandı.
-
-### Yana dağılan parçacıklar ve bağımsız dönüş
-
-İmleç etkisi ekran düzleminde dışarı doğru dağılacak şekilde değiştirildi.
-Kameraya yaklaşma, etkileşim sırasında büyüme ve parlaklık artışı kaldırıldı.
-İmleç uzaklaşınca parçacıklar yerlerine döner; etki galaksinin merkezine kaymaz.
-Galaksinin fareye yönelmesi kaldırıldı, sabit eğimde kendi etrafındaki dönüşü
-korundu. Tarayıcıda yana açılma ve eski dağılıma dönüş kontrol edildi; yayın
-denetimleri başarılıdır ve canlı galaksi yüklenmektedir.
-
-Son yayında daha yumuşak dağılma ayarı da aktarılmıştır. Canlı ana sayfa paketi
-ve galaksi çizim dosyasının SHA-256 özeti son kaynak derlemesiyle eşleşmektedir.
-
-### Galaksi odak çizgisinin düzeltilmesi
-
-Ekranı kaplayan lime çizginin, iki kat büyütülmüş galaksi tuvalinin klavye odak
-çerçevesi olduğu tarayıcıda yeniden oluşturularak doğrulandı. Yalnızca tuvalin
-çerçevesi kaldırıldı; klavye odağı başlığın yanındaki küçük noktada gösterilir.
-Bağlantıların odak çerçeveleri korunur. Yerel ve canlı sayfada odak sırasında
-tuval çerçevesinin kaldırıldığı ve küçük odak işaretinin göründüğü doğrulandı.
-Yayın denetimleri başarılıdır.
-
-### Geometrik T simgesi
-
-Referanstaki eğimli T simgesi site paletine uyarlanarak yeniden çizildi. Uzun
-eğik kenarlar paraleldir; gövde kalınlıkları, aralıkları ve alt hizaları tutarlıdır.
-Üst ve alt menü, favicon, telefon simgeleri ve paylaşım kartı güncellendi.
-Masaüstü ve mobilde kare oranı ile görsellerin yüklenmesi doğrulandı. Yayın
-denetimleri geçti; altı dildeki canlı sayfalar yeni simge adreslerini kullanır.
-Canlı SVG, telefon simgesi ve paylaşım görseli yerel dosyalarla birebir eşleşir.
+Önceki Caddy yedeği `/home/hermes/stack/caddy/Caddyfile.before-tionport-20260909-192845`,
+önceki yerel başlangıç yedeği `C:/Users/Bilal/.codex/backups/tionport-20260909`
+olarak kayıtlıdır; bu ikisinin içeriği yeniden doğrulanmadı.
