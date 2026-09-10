@@ -1,38 +1,17 @@
-// Generates the per-locale HTML entry files from the Turkish originals.
-//
-// The Turkish pages at the repo root are the source of truth for page structure
-// (shared head metadata and the module script tag). This script re-emits them
-// for every non-default locale under /<code>/, rewriting only what is locale
-// specific: <html lang/dir>, title, description, canonical, og tags, the
-// data-page/data-locale attributes and the hreflang alternates.
-//
-// Run it after editing a Turkish page or adding a locale:
-//   npm run gen:pages
+// Generate disposable HTML entries and the sitemap from templates and locales.
+// Run npm run gen:pages after editing a template or changing localized metadata.
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, copyFileSync, rmSync } from 'node:fs'
 import { dirname, join } from 'node:path'
-import { fileURLToPath, pathToFileURL } from 'node:url'
-
-const here = dirname(fileURLToPath(import.meta.url))
-const root = join(here, '..')
+import { pathToFileURL } from 'node:url'
+import { DEFAULT_LOCALE, localeCodes, locales, pathFor } from '../src/i18n/locales.js'
+import { entryFile, generatedDir, localizedPages, projectRoot, staticEntries, templateDir } from './site-paths.mjs'
 
 const SITE = 'https://tionport.com'
 
-const { DEFAULT_LOCALE, localeCodes, locales, pathFor } =
-  await import(pathToFileURL(join(root, 'src/i18n/locales.js')).href)
-
 async function dictionaryFor(code) {
-  const mod = await import(pathToFileURL(join(root, `src/i18n/translations/${code}.js`)).href)
+  const mod = await import(pathToFileURL(join(projectRoot, `src/i18n/translations/${code}.js`)).href)
   return mod.default
-}
-
-// page id -> the Turkish source file that defines its structure
-const SOURCES = {
-  home: 'index.html',
-  services: 'hizmetler/index.html',
-  games: 'oyunlar/index.html',
-  about: 'hakkimizda/index.html',
-  contact: 'iletisim/index.html',
 }
 
 const escapeHtml = (value) =>
@@ -111,29 +90,31 @@ function applyLocale(html, { pageId, code, dict }) {
 
 let written = 0
 
-/** Turn '/en/services/' into 'en/services/index.html' on disk. */
-function targetFile(pageId, code) {
-  const path = pathFor(pageId, code)          // '/en/services/' or '/'
-  const trimmed = path.replace(/^\/|\/$/g, '') // 'en/services' or ''
-  return trimmed ? join(root, trimmed, 'index.html') : join(root, 'index.html')
-}
-
 const templates = Object.fromEntries(
-  Object.entries(SOURCES).map(([pageId, source]) => [pageId, readFileSync(join(root, source), 'utf8')]),
+  localizedPages.map((pageId) => [pageId, readFileSync(join(templateDir, `${pageId}.html`), 'utf8')]),
 )
 
-for (const [pageId] of Object.entries(SOURCES)) {
+// This fixed output directory contains no hand-edited source. Remove obsolete
+// routes before regenerating so deleted locales cannot leak into the next build.
+rmSync(generatedDir, { recursive: true, force: true })
+mkdirSync(generatedDir, { recursive: true })
+
+for (const pageId of localizedPages) {
   const original = templates[pageId]
 
   for (const code of localeCodes) {
     const dict = await dictionaryFor(code)
     const html = applyLocale(original, { pageId, code, dict })
-    const target = targetFile(pageId, code)
+    const target = join(generatedDir, entryFile(pageId, code))
 
     mkdirSync(dirname(target), { recursive: true })
     writeFileSync(target, html, 'utf8')
     written += 1
   }
+}
+
+for (const file of staticEntries) {
+  copyFileSync(join(templateDir, file), join(generatedDir, file))
 }
 
 console.log(`generate-pages: wrote ${written} files across ${localeCodes.length} locales`)
@@ -146,7 +127,7 @@ console.log(`generate-pages: wrote ${written} files across ${localeCodes.length}
 const PRIORITY = { home: '1.0', services: '0.9', games: '0.9', contact: '0.8', about: '0.7' }
 
 const sitemapUrls = []
-for (const pageId of Object.keys(SOURCES)) {
+for (const pageId of localizedPages) {
   for (const code of localeCodes) {
     const alternates = localeCodes
       .map((alt) => `    <xhtml:link rel="alternate" hreflang="${locales[alt].htmlLang}" href="${SITE}${pathFor(pageId, alt)}" />`)
@@ -179,7 +160,7 @@ for (const [pageId, freq, priority] of [['privacy', 'yearly', '0.3'], ['terms', 
 }
 
 writeFileSync(
-  join(root, 'public/sitemap.xml'),
+  join(generatedDir, 'sitemap.xml'),
   [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
@@ -191,7 +172,3 @@ writeFileSync(
 )
 
 console.log(`generate-pages: sitemap has ${sitemapUrls.length} URLs`)
-
-if (!existsSync(join(root, 'index.html'))) {
-  throw new Error('generate-pages: root index.html missing after generation')
-}

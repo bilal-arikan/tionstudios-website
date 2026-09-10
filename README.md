@@ -26,7 +26,7 @@ HTML kaynaklarında tanımlıdır; otomatik `.env` domain ayarı yoktur.
 npm run check
 ```
 
-Bu komut ESLint, 3 galaksi testi, derleme ve 30 yerelleştirilmiş sayfanın
+Bu komut ESLint, galaksi ve temiz sayfa üretimi testleri, derleme ve 30 yerelleştirilmiş sayfanın
 React çıktısı/metadata/yerel bağlantı/görsel/yasal belge/site haritası denetimini
 çalıştırır. WebGL, klavye ve mobil menü için tarayıcı kontrolü ayrıca gerekir.
 Mevcut büyük Three.js paket uyarısı derlemeyi engellemez.
@@ -51,18 +51,36 @@ Real Driver için iOS/Android mağaza bağlantıları vardır; diğer kartlardak
 ve durum metinleri bağımsız yayın/tamamlanma doğrulaması değildir. Bu denetimde
 mağaza uygulamalarının güncel erişilebilirliği sınanmadı.
 
-## Kaynak düzeni
+## Klasör düzeni
 
-- `src/App.jsx`, `src/pages/`: ortak kabuk ve sayfalar.
-- `src/components/`, `src/components/galaxy/`: bölümler ve galaksi yaşam döngüsü.
-- `src/data/`, `src/i18n/`: portföy ve altı dilin sözlük/yol kayıtları.
-- `src/styles/`: tema ve sorumluluklarına ayrılmış stiller.
-- Kök Türkçe HTML girişleri: üretim şablonları. Diğer dil HTML'leri
-  `scripts/generate-pages.mjs` tarafından derlemede yeniden üretilir.
-- `public/`: statik dosyalar; `app-ads.txt` ve `CNAME` için tek kaynak.
-- `public/legal/`: React yasal sayfalarının yüklediği içerik; tasarım kaynağı
-  `public/favicon.svg`, paylaşım görseli `public/images/og-tionport.png`.
-- `.github/workflows/check.yml`: doğrulama ve indirilebilir `dist` paketi.
+| Klasör | Sorumluluk |
+| --- | --- |
+| `src/` | React uygulaması; `pages/` sayfalar, `components/` ortak bölümler, `styles/` stiller |
+| `src/i18n/`, `src/data/` | Dil/yol kayıtları, çeviriler ve portföy verileri |
+| `templates/` | Beş sayfanın Türkçe HTML şablonu, iki yasal giriş ve 404 girişi |
+| `public/` | Olduğu gibi yayımlanan görsel, ikon, reklam ve yasal belge kaynakları |
+| `scripts/` | Sayfa/görsel üretimi, doğrulama ve Windows yayın araçları |
+| `tests/` | Galaksi ve sayfa üretimi testleri |
+| `deploy/` | Caddy, sunucu yayın betikleri ve [yayın kılavuzu](deploy/YAYIN.md) |
+| `.github/workflows/` | CI doğrulaması ve indirilebilir `dist` paketi |
+| `.generated/` | Vite'ın kullandığı 33 HTML girişi ve site haritası; otomatik, Git dışında |
+| `dist/` | Yayımlanacak üretim çıktısı; otomatik, Git dışında |
+
+`npm run dev` ve `npm run build`, önce `templates/` ile `src/i18n/` kaynaklarından
+`.generated/` klasörünü yeniden oluşturur. Dil klasörleri yalnız bu çıktıda ve
+`dist/` içinde bulunur; yayımlanan URL'ler değişmez. Vite girdileri
+`scripts/site-paths.mjs` üzerinden kayıtlı sayfalardan belirlenir; depo genelinde
+HTML taraması yapılmaz. `node_modules/` npm bağımlılıklarıdır, kaynak değildir.
+
+React, CSS ve çeviri içeriği Vite üzerinden yenilenir. Geliştirme sunucusu açıkken
+HTML şablonu, dil/yol kaydı veya sayfa metadata'sı değişirse ayrı terminalde
+`npm run gen:pages` çalıştırın; yeni bir dil/yol eklediyseniz sunucuyu yeniden
+başlatın. `.generated/`, `dist/` ve üretilen `sitemap.xml` elle düzenlenmez;
+üretim her seferinde eski ara çıktıları temizler ve kaynak şablonlara dokunmaz.
+
+Yasal sayfalar `public/legal/` içeriğini yükler. `app-ads.txt` ve `CNAME` için tek
+kaynak `public/` klasörüdür. Tasarım kaynağı `public/favicon.svg`, paylaşım görseli
+`public/images/og-tionport.png` dosyasıdır.
 
 Galaksi yalnız ana sayfada dinamik yüklenir; azaltılmış hareket tercihi,
 görünmeyen sekmede durma ve WebGL yokken sabit SVG desteklenir. Fare/ok tuşları

@@ -25,7 +25,7 @@ function validateLinks(html, context) {
   }
 }
 
-const server = await createServer({ server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' })
+const server = await createServer({ server: { middlewareMode: true, hmr: false }, appType: 'custom', logLevel: 'error' })
 let count = 0
 try {
   const { translator } = await server.ssrLoadModule('/src/i18n/index.js')
