@@ -5,6 +5,9 @@ import { readFileSync, writeFileSync, mkdirSync, copyFileSync, rmSync } from 'no
 import { dirname, join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { DEFAULT_LOCALE, localeCodes, locales, pathFor } from '../src/i18n/locales.js'
+import { realDriverMeta } from '../src/i18n/realDriver.js'
+import { detailPages } from '../src/data/detailPages.js'
+import { legacyGamesRoutes } from '../src/i18n/locales.js'
 import { entryFile, generatedDir, localizedPages, projectRoot, staticEntries, templateDir } from './site-paths.mjs'
 
 const SITE = 'https://tionport.com'
@@ -44,7 +47,9 @@ function stripRedirect(html) {
 
 function applyLocale(html, { pageId, code, dict }) {
   const locale = locales[code]
-  const meta = dict.meta?.[pageId] ?? {}
+  const detail = detailPages[pageId]
+  const meta = detail ? { title: `${detail.item.title} — Tionport`, description: detail.description }
+    : pageId === 'realDriver' ? realDriverMeta : dict.meta?.[pageId] ?? {}
   const title = meta.title ?? ''
   const description = meta.description ?? ''
   const url = `${SITE}${pathFor(pageId, code)}`
@@ -56,6 +61,12 @@ function applyLocale(html, { pageId, code, dict }) {
   // Root element: language + direction, and the locale the app should render.
   out = out.replace(/<html lang="[^"]*"[^>]*>/,
     `<html lang="${locale.htmlLang}" dir="${locale.dir}" data-locale="${code}" data-page="${pageId}">`)
+  out = out.replace(/<body data-page="[^"]*">/, `<body data-page="${pageId}">`)
+  if (detail) {
+    const image = `${SITE}${detail.item.image ?? '/images/og-tionport.png'}`
+    out = out.replace(/<meta property="og:image" content="[^"]*" \/>/,
+      `<meta property="og:image" content="${escapeHtml(image)}" />`)
+  }
 
   // The language redirect belongs only on the default-locale pages. Leaving it
   // on a translated page would bounce visitors between locales.
@@ -91,7 +102,7 @@ function applyLocale(html, { pageId, code, dict }) {
 let written = 0
 
 const templates = Object.fromEntries(
-  localizedPages.map((pageId) => [pageId, readFileSync(join(templateDir, `${pageId}.html`), 'utf8')]),
+  localizedPages.map((pageId) => [pageId, readFileSync(join(templateDir, `${detailPages[pageId] ? 'detail' : pageId}.html`), 'utf8')]),
 )
 
 // This fixed output directory contains no hand-edited source. Remove obsolete
@@ -115,6 +126,15 @@ for (const pageId of localizedPages) {
 
 for (const file of staticEntries) {
   copyFileSync(join(templateDir, file), join(generatedDir, file))
+}
+
+// Retired catalog URLs lead to the product section on the homepage.
+for (const code of localeCodes) {
+  const destination = `${pathFor('home', code)}#projects`
+  const target = join(generatedDir, `${legacyGamesRoutes[code].slice(1)}index.html`)
+  mkdirSync(dirname(target), { recursive: true })
+  writeFileSync(target, `<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=${escapeHtml(destination)}"><link rel="canonical" href="${SITE}${pathFor('home', code)}"><title>Product — Tionport</title></head><body><p><a href="${escapeHtml(destination)}">View products on the homepage</a></p></body></html>\n`, 'utf8')
 }
 
 console.log(`generate-pages: wrote ${written} files across ${localeCodes.length} locales`)

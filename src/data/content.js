@@ -2,7 +2,7 @@ import { Blocks, Code2, Globe2, Layers3, MonitorSmartphone, Palette, ShieldCheck
 import { pathFor } from '../i18n'
 import { games } from './games'
 
-export const NAV_PAGES = ['services', 'games', 'about', 'contact']
+export const NAV_PAGES = ['services', 'product', 'about', 'contact']
 
 export const SERVICE_ICONS = [Palette, Globe2, Smartphone, Blocks]
 
@@ -10,7 +10,7 @@ export const SERVICE_ACCENTS = ['cyan', 'violet', 'blue', 'lime']
 
 export const PRINCIPLE_ICONS = [Layers3, Code2, MonitorSmartphone, ShieldCheck]
 
-export const projectArchive = games.filter((game) => !game.featured).slice(0, 3)
+export const projectArchive = games.filter((game) => !game.featured)
 
 export const technologyList = ['React', 'TypeScript', 'Node.js', 'Cloud', '.NET', 'Unity', 'PostgreSQL', 'REST API']
 
@@ -40,7 +40,7 @@ export function buildPrinciples(t) {
 export function buildNavigation(t, locale) {
   return NAV_PAGES.map((page) => ({
     page,
-    label: t(`nav.${page}`),
-    href: pathFor(page, locale),
+    label: page === 'product' ? 'Product' : t(`nav.${page}`),
+    href: page === 'product' ? `${pathFor('home', locale)}#projects` : pathFor(page, locale),
   }))
 }

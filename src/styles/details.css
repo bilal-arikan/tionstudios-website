@@ -1,0 +1,45 @@
+.detail-hero { padding-block: 36px 85px; }
+.detail-back { color: var(--muted); margin-bottom: 44px; }
+.detail-hero-grid { display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; gap: 70px; }
+.detail-hero-copy h1 { margin-top: 24px; font-size: clamp(44px, 5.2vw, 72px); }
+.detail-tagline { margin-top: 18px; font-size: 23px; color: var(--text); }
+.detail-description { margin-top: 24px; color: var(--muted); font-size: 18px; max-width: 540px; }
+.detail-hero-copy .button { margin-top: 32px; }
+.detail-cover { overflow: hidden; border-radius: var(--radius); border: 1px solid var(--border); }
+.detail-cover img { width: 100%; aspect-ratio: 1.25; object-fit: cover; }
+.detail-product-art .product-project-art { aspect-ratio: 1.4; }
+.detail-product-art .product-project-art > span { width: 120px; height: 120px; font-size: 54px; border-radius: 30px; }
+.detail-product-art > p { padding: 22px; text-align: center; font: 400 14px var(--font-mono); color: var(--project-color); }
+.detail-overview { background: var(--surface); border-block: 1px solid var(--border); }
+.detail-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.detail-overview h2 { margin-top: 20px; font-size: 36px; }
+.detail-overview p { margin-top: 24px; color: var(--muted); }
+.detail-features { padding-inline-start: 22px; margin-top: 25px; color: var(--text); }
+.detail-features li { padding-block: 7px; }
+.detail-features li::marker { color: var(--accent); }
+.detail-access { border: 1px solid var(--border); border-radius: var(--radius); padding: 30px; background: var(--bg); }
+.detail-access h2 { margin-top: 0; font-size: 27px; }
+.detail-online-links { margin: 25px 0 0; padding: 0; list-style: none; }
+.detail-online-links li + li { border-top: 1px solid var(--border); }
+.detail-online-links a { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding-block: 20px; border-radius: 4px; }
+.detail-online-links a strong { display: block; font-weight: 550; }
+.detail-online-links a span span { display: block; color: var(--muted); font: 400 12px/1.6 var(--font-mono); margin-top: 5px; overflow-wrap: anywhere; }
+.detail-online-links a:hover, .detail-online-links a > svg { color: var(--accent); }
+.detail-facts { margin: 25px 0 0; }
+.detail-facts > div { padding-block: 15px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; gap: 18px; }
+.detail-facts dt { color: var(--muted); }
+.detail-facts dd { margin: 0; text-align: end; }
+.detail-archive-note { font-size: 13px; }
+@media (max-width: 900px) {
+  .detail-hero-grid { gap: 35px; }
+  .detail-overview-grid { gap: 35px; }
+}
+@media (max-width: 640px) {
+  .detail-hero { padding-block: 24px 55px; }
+  .detail-back { margin-bottom: 28px; }
+  .detail-hero-grid, .detail-overview-grid { grid-template-columns: 1fr; gap: 32px; }
+  .detail-description { font-size: 16px; }
+  .detail-tagline { font-size: 20px; }
+  .detail-overview h2 { font-size: 30px; }
+  .detail-access { padding: 24px; }
+}

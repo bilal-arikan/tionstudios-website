@@ -1,6 +1,7 @@
-import { ArrowRight, Gamepad2 } from 'lucide-react'
+import { ArrowUpRight, Gamepad2 } from 'lucide-react'
 import { pathFor } from '../i18n'
 import { projectArchive } from '../data/content.js'
+import { gamePageId } from '../data/detailPages.js'
 import { SplitTitle } from './SplitTitle.jsx'
 import { Reveal } from './Reveal.jsx'
 import { SectionHeading } from './SectionHeading.jsx'
@@ -24,34 +25,30 @@ export function Projects({ t, locale }) {
           </div>
         </Reveal>
 
-        <FeaturedProject t={t} />
+        <FeaturedProject t={t} locale={locale} />
 
         <div className="project-archive-grid">
           {projectArchive.map((project, index) => (
-            <Reveal key={project.title} delay={index * 90}>
+            <Reveal key={project.title} delay={(index % 3) * 90}>
               <article className="archive-card">
-                <div className="archive-image">
+                <a className="archive-image" href={pathFor(gamePageId(project.slug), locale)} aria-label={`Explore ${project.title}`}>
                   <img
                     src={project.image}
                     alt={t('projects.coverAlt', { title: project.title, subtitle: project.subtitle })}
                     loading="lazy"
                   />
-                  <span className="archive-arrow" aria-hidden="true"><Gamepad2 size={18} /></span>
-                </div>
+                  <span className="archive-arrow" aria-hidden="true"><ArrowUpRight size={18} /></span>
+                </a>
                 <div className="archive-content">
                   <span>{project.category} · {project.status}</span>
-                  <h3>{project.title}</h3>
+                  <h3><a href={pathFor(gamePageId(project.slug), locale)}>{project.title}</a></h3>
                   <p>{project.subtitle}</p>
+                  <a className="text-link" lang="en" href={pathFor(gamePageId(project.slug), locale)}>Explore game <ArrowUpRight size={16} /></a>
                 </div>
               </article>
             </Reveal>
           ))}
         </div>
-        <Reveal className="projects-all-row">
-          <a className="button button--outline-light" href={pathFor('games', locale)}>
-            {t('projects.allGames')} <ArrowRight size={17} />
-          </a>
-        </Reveal>
       </div>
     </section>
   )

@@ -1,0 +1,71 @@
+@media (max-width: 1000px) {
+  .rd-page .rd-wrap { width: calc(100% - 56px); }
+  .rd-page .rd-hero { min-height: 670px; }
+  .rd-page .rd-hero-image { width: 100%; object-position: 62% center; }
+  .rd-page .rd-hero-shade { background: linear-gradient(90deg, #101112e8, #10111290 45%, #10111220), linear-gradient(0deg, #101112, transparent 40%); }
+  .rd-page .rd-mode-tabs { grid-template-columns: repeat(3, 1fr); gap: 4px 0; }
+  .rd-page .rd-mode-copy { padding: 28px; }
+  .rd-page .rd-mode-copy h3 { font-size: 28px; }
+  .rd-page .rd-garage-grid { gap: 35px; }
+  .rd-page .rd-platform { min-width: 0; flex: 1; max-width: 260px; gap: 12px; }
+  .rd-page .rd-platform > svg:last-child { display: none; }
+}
+
+@media (max-width: 700px) {
+  .rd-page .rd-wrap { width: calc(100% - 40px); }
+  .rd-page .rd-section { padding-block: 65px; }
+  .rd-page .rd-subnav { height: 58px; gap: 15px; }
+  .rd-page .rd-subnav > div { display: none; }
+  .rd-page .rd-wordmark { font-size: 17px; }
+  .rd-page .rd-subnav-play { font-size: 11px; gap: 7px; }
+  .rd-page .rd-hero { height: 730px; min-height: 0; }
+  .rd-page .rd-hero-content { padding-top: 30px; }
+  .rd-page .rd-hero .rd-eyebrow { font-size: 8px; letter-spacing: .08em; }
+  .rd-page .rd-eyebrow-divider { margin-inline: 0; }
+  .rd-page .rd-hero h1 { font-size: clamp(65px, 17.2vw, 120px); margin-top: 30px; }
+  .rd-page .rd-hero-subtitle { margin-top: 19px; font-size: 10px; letter-spacing: .34em; }
+  .rd-page .rd-hero-copy { margin-top: 21px; font-size: 14px; }
+  .rd-page .rd-hero-image { top: 270px; height: 400px; width: 100%; object-position: 56% center; }
+  .rd-page .rd-hero-shade { background: linear-gradient(0deg, #101112 0%, transparent 25%, transparent 48%, #101112 67%); }
+  .rd-page .rd-hero-actions { position: absolute; left: 20px; right: 20px; bottom: 82px; margin-top: 0; gap: 22px; }
+  .rd-page .rd-button { padding: 13px 16px; gap: 16px; font-size: 12px; }
+  .rd-page .rd-watch-link { font-size: 11px; gap: 7px; }
+  .rd-page .rd-watch-link > span { height: 30px; width: 30px; }
+  .rd-page .rd-hero-side { display: none; }
+  .rd-page .rd-hero-bottom { font-size: 7px; gap: 10px; bottom: 28px; }
+  .rd-page .rd-hero-bottom a, .rd-page .rd-hero-bottom > span { gap: 8px; }
+  .rd-page .rd-hero-bottom i { width: 25px; }
+  .rd-page .rd-ticker > div { font-size: 22px; gap: 26px; min-width: 1150px; }
+  .rd-page .rd-section-heading { display: block; margin-bottom: 30px; }
+  .rd-page .rd-section-heading > p, .rd-page .rd-section-heading > a { margin-top: 24px; }
+  .rd-page .rd-mode-tabs button { padding: 16px 8px; gap: 8px; font-size: 11px; }
+  .rd-page .rd-mode-tabs button > span { font-size: 8px; }
+  .rd-page .rd-mode-panel { grid-template-columns: 1fr; }
+  .rd-page .rd-mode-visual { aspect-ratio: 16 / 10; }
+  .rd-page .rd-mode-copy { min-height: 310px; }
+  .rd-page .rd-mode-copy > svg { margin-bottom: 18px; }
+  .rd-page .rd-video { aspect-ratio: 16 / 9; }
+  .rd-page .rd-video-topline { font-size: 7px; left: 14px; right: 14px; top: 15px; }
+  .rd-page .rd-play { height: 62px; width: 62px; }
+  .rd-page .rd-play svg { width: 22px; }
+  .rd-page .rd-video-caption { left: 14px; bottom: 15px; font-size: 25px; }
+  .rd-page .rd-video-footnote { display: grid; gap: 8px; font-size: 8px; }
+  .rd-page .rd-garage { padding-top: 0; }
+  .rd-page .rd-garage-grid { grid-template-columns: 1fr; gap: 36px; }
+  .rd-page .rd-garage-art { min-height: 380px; }
+  .rd-page .rd-garage-outline { font-size: 85px; }
+  .rd-page .rd-gallery-grid { grid-template-columns: 1fr; gap: 36px; }
+  .rd-page .rd-gallery-caption strong { font-size: 17px; }
+  .rd-page .rd-platforms { flex-direction: column; align-items: stretch; gap: 10px; max-width: 330px; margin-inline: auto; }
+  .rd-page .rd-platform { max-width: none; min-height: 75px; gap: 22px; }
+  .rd-page .rd-platform > span:nth-child(2) { margin-right: auto; }
+  .rd-page .rd-platform > svg:last-child { display: block; }
+  .rd-page .rd-download .rd-download-note { font-size: 9px; }
+}
+
+@media (max-width: 359px) {
+  .rd-page .rd-hero-actions { flex-direction: column; align-items: stretch; gap: 12px; bottom: 60px; }
+  .rd-page .rd-watch-link { justify-content: center; }
+  .rd-page .rd-hero-bottom > span { display: none; }
+  .rd-page .rd-hero-subtitle { letter-spacing: .22em; }
+}

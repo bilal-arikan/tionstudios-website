@@ -28,7 +28,7 @@ export function Hero({ t, locale }) {
             <span><Smartphone size={17} />{t('hero.proofMobile')}</span>
             <span><Gamepad2 size={18} />{t('hero.proofGame')}</span>
           </div>
-          <a href="#hizmetler">{t('hero.scroll')}<span>↓</span></a>
+          <a href="#projects">{t('hero.scroll')}<span>↓</span></a>
         </div>
       </div>
     </section>

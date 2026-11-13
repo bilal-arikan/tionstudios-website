@@ -1,0 +1,26 @@
+.product-projects-section { background: var(--bg); }
+.product-projects-heading { margin-bottom: 48px; }
+.product-projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.product-project-card { --project-color: var(--accent); height: 100%; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.product-project-card--violet { --project-color: #b9a2ff; }
+.product-project-card--cyan { --project-color: #7edce8; }
+.product-project-art { display: grid; place-items: center; aspect-ratio: 1.8; border-bottom: 1px solid var(--border); background: radial-gradient(ellipse at center, color-mix(in srgb, var(--project-color) 14%, transparent), transparent 70%), var(--surface); }
+.product-project-art > span { display: grid; place-items: center; width: 84px; height: 84px; border: 1px solid color-mix(in srgb, var(--project-color) 40%, transparent); border-radius: 22px; color: var(--project-color); background: var(--bg); font-size: 36px; font-weight: 550; letter-spacing: -.06em; transform: rotate(-6deg); transition: transform .3s var(--ease); }
+.product-project-card:hover .product-project-art > span { transform: rotate(0); }
+.product-project-content { padding: 28px; }
+.product-project-content h3 { font-size: 30px; }
+.product-project-links { list-style: none; margin: 24px 0 0; padding: 0; }
+.product-project-links li { border-top: 1px solid var(--border); }
+.product-project-links a { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 70px; padding-block: 12px; border-radius: 4px; }
+.product-project-link-label { display: block; color: var(--muted); font-size: 11px; }
+.product-project-domain { display: block; margin-top: 3px; font: 400 12px/1.6 var(--font-mono); overflow-wrap: anywhere; }
+.product-project-links a > svg { color: var(--project-color); }
+.product-project-links a:hover .product-project-domain { color: var(--project-color); }
+@media (max-width: 900px) {
+  .product-projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+}
+@media (max-width: 640px) {
+  .product-projects-heading { margin-bottom: 32px; }
+  .product-projects-grid { grid-template-columns: 1fr; }
+  .product-project-content { padding: 24px; }
+}

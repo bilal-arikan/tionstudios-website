@@ -1,6 +1,6 @@
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { DEFAULT_LOCALE, legalRoutes, localeCodes, pathFor, routes } from '../src/i18n/locales.js'
+import { DEFAULT_LOCALE, legalRoutes, legacyGamesRoutes, localeCodes, pathFor, routes } from '../src/i18n/locales.js'
 
 export const projectRoot = fileURLToPath(new URL('../', import.meta.url))
 export const generatedDir = join(projectRoot, '.generated')
@@ -9,6 +9,7 @@ export const publicDir = join(projectRoot, 'public')
 export const outputDir = join(projectRoot, 'dist')
 export const localizedPages = Object.keys(routes[DEFAULT_LOCALE])
 export const staticEntries = ['404.html', ...Object.values(legalRoutes)]
+export const redirectEntries = Object.values(legacyGamesRoutes).map((path) => `${path.slice(1)}index.html`)
 
 /** Map a public URL to its HTML entry without changing the published route. */
 export function entryFile(pageId, code) {
@@ -19,4 +20,5 @@ export function entryFile(pageId, code) {
 export const htmlEntries = [
   ...localizedPages.flatMap((pageId) => localeCodes.map((code) => entryFile(pageId, code))),
   ...staticEntries,
+  ...redirectEntries,
 ].map((file) => join(generatedDir, file))

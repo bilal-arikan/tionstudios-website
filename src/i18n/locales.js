@@ -1,6 +1,8 @@
 // Locale registry — the single source of truth for which languages exist,
 // how their URLs are shaped, and how each page path is spelled per language.
 
+import { detailPages } from '../data/detailPages.js'
+
 export const DEFAULT_LOCALE = 'tr'
 
 export const locales = {
@@ -16,7 +18,7 @@ export const locales = {
 export const localeCodes = Object.keys(locales)
 
 // Page identifiers used across the app. 'home' is the site root.
-export const pageIds = ['home', 'services', 'games', 'about', 'contact', 'privacy', 'terms']
+export const pageIds = ['home', 'services', 'realDriver', 'about', 'contact', ...Object.keys(detailPages), 'privacy', 'terms']
 
 // URL segment for each page, per locale. The default locale keeps the original
 // Turkish paths so existing links and search rankings are never broken.
@@ -27,6 +29,20 @@ export const routes = {
   ar: { home: '', services: 'khadamat',   games: 'alaab',   about: 'man-nahnu',  contact: 'ittasil-bina' },
   ru: { home: '', services: 'uslugi',     games: 'igry',    about: 'o-nas',      contact: 'kontakty' },
   zh: { home: '', services: 'fuwu',       games: 'youxi',   about: 'guanyu',     contact: 'lianxi' },
+}
+
+export const legacyGamesRoutes = {}
+for (const locale of localeCodes) {
+  const gameSegment = routes[locale].games
+  const prefix = locale === DEFAULT_LOCALE ? '' : `/${locale}`
+  legacyGamesRoutes[locale] = `${prefix}/${gameSegment}/`
+  routes[locale].realDriver = `${gameSegment}/real-driver`
+  delete routes[locale].games
+  for (const [pageId, detail] of Object.entries(detailPages)) {
+    routes[locale][pageId] = detail.kind === 'game'
+      ? `${gameSegment}/${detail.item.slug}`
+      : `products/${detail.item.id}`
+  }
 }
 
 // Legal pages keep a single spelling across locales: they are flat .html files
