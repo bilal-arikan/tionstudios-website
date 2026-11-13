@@ -103,7 +103,6 @@ export function Header({ currentPage = 'home', t, locale }) {
           </div>
           <div className="mobile-nav-meta">
             <a href="mailto:info@tionport.com">info@tionport.com</a>
-            <span>{t('about.location')}</span>
           </div>
         </nav>
 

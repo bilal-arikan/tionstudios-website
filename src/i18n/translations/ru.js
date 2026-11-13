@@ -13,7 +13,7 @@ export default {
   meta: {
     home: {
       title: 'Tionport — студия цифровых продуктов и разработки',
-      description: 'Tionport — студия веб-, мобильной и игровой разработки из Стамбула.',
+      description: 'Tionport — студия веб-, мобильной и игровой разработки.',
     },
     services: {
       title: 'Услуги — Tionport',
@@ -25,7 +25,7 @@ export default {
     },
     about: {
       title: 'О нас — Tionport',
-      description: 'Студия разработки программного обеспечения и игр из Стамбула.',
+      description: 'Студия разработки программного обеспечения и игр.',
     },
     contact: {
       title: 'Контакты — Tionport',
@@ -49,7 +49,7 @@ export default {
   },
 
   hero: {
-    eyebrow: 'Tionport · Стамбул',
+    eyebrow: 'Tionport',
     titleBefore: 'Разрабатываем веб, мобильные',
     titleAccent: 'и игровые',
     titleAfter: 'продукты.',
@@ -75,7 +75,6 @@ export default {
     shippedCount: 'опубликовано',
     designCode: 'Дизайн + код',
     oneTeam: 'Одна команда',
-    location: 'Стамбул',
   },
 
   services: {
@@ -143,8 +142,7 @@ export default {
     eyebrow: 'О нас',
     titleBefore: 'TION',
     titleAccent: 'Port.',
-    description: 'Мы студия разработки программного обеспечения и игр из Стамбула.',
-    location: 'Стамбул, Türkiye',
+    description: 'Мы студия разработки программного обеспечения и игр.',
     principles: [
       { title: 'Дизайн и разработка',   text: 'Дизайн и инженерия идут одним процессом.' },
       { title: 'Техническая основа',    text: 'Создаём системы, которые легко поддерживать.' },
@@ -172,8 +170,6 @@ export default {
     titleAccent: 'вашем проекте.',
     description: 'Оставьте краткую информацию или напишите нам напрямую.',
     directLabel: 'Написать нам',
-    locationLabel: 'Местоположение',
-    location: 'Стамбул, Türkiye',
     formStep: 'E-MAIL',
     formHeading: 'Информация о проекте',
     fields: {
@@ -263,9 +259,7 @@ export default {
       ctaText: 'Поддерживаем и дизайн, и разработку.',
     },
     about: {
-      description: 'Студия разработки программного обеспечения и игр из Стамбула.',
-      factLocation: 'Местоположение',
-      factLocationValue: 'Стамбул',
+      description: 'Студия разработки программного обеспечения и игр.',
       factAreas: 'Направления',
       factAreasValue: 'Веб · Мобильные · Игры',
       ctaTitle: 'Контакты',

@@ -1,4 +1,4 @@
-import { MapPin, Sparkles } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 import { SplitTitle } from './SplitTitle.jsx'
 import { buildPrinciples } from '../data/content.js'
 import { Reveal } from './Reveal.jsx'
@@ -15,7 +15,6 @@ export function About({ t, locale }) {
           <p>
             {t('about.description')}
           </p>
-          <div className="location-chip"><MapPin size={16} />{t('about.location')}</div>
         </Reveal>
 
         <div className="principles-grid">

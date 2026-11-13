@@ -29,7 +29,6 @@ export function Footer({ t, locale }) {
         <div className="footer-contact-column">
           <span>{t('footer.contact')}</span>
           <a href="mailto:info@tionport.com">info@tionport.com <ArrowUpRight size={17} /></a>
-          <p>{t('about.location')}</p>
         </div>
       </div>
       <div className="container footer-bottom">

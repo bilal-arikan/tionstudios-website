@@ -16,7 +16,7 @@ export default {
   meta: {
     home: {
       title: 'Tionport — استوديو المنتجات الرقمية والبرمجيات',
-      description: 'Tionport استوديو لتطوير الويب وتطبيقات الهاتف والألعاب، مقره إسطنبول.',
+      description: 'Tionport استوديو لتطوير الويب وتطبيقات الهاتف والألعاب.',
     },
     services: {
       title: 'الخدمات — Tionport',
@@ -28,7 +28,7 @@ export default {
     },
     about: {
       title: 'من نحن — Tionport',
-      description: 'استوديو لتطوير البرمجيات والألعاب مقره إسطنبول.',
+      description: 'استوديو لتطوير البرمجيات والألعاب.',
     },
     contact: {
       title: 'اتصل بنا — Tionport',
@@ -52,7 +52,7 @@ export default {
   },
 
   hero: {
-    eyebrow: 'Tionport · إسطنبول',
+    eyebrow: 'Tionport',
     titleBefore: 'نطوّر الويب والتطبيقات',
     titleAccent: 'والألعاب',
     titleAfter: 'الرقمية.',
@@ -78,7 +78,6 @@ export default {
     shippedCount: 'منشورة',
     designCode: 'تصميم + برمجة',
     oneTeam: 'فريق واحد',
-    location: 'إسطنبول',
   },
 
   services: {
@@ -146,8 +145,7 @@ export default {
     eyebrow: 'من نحن',
     titleBefore: 'TION',
     titleAccent: 'Port.',
-    description: 'نحن استوديو لتطوير البرمجيات والألعاب مقره إسطنبول.',
-    location: 'إسطنبول، تركيا',
+    description: 'نحن استوديو لتطوير البرمجيات والألعاب.',
     principles: [
       { title: 'التصميم والتطوير', text: 'يسير التصميم والهندسة ضمن مسار واحد.' },
       { title: 'أساس تقني متين',   text: 'نبني أنظمة قابلة للصيانة على المدى الطويل.' },
@@ -175,8 +173,6 @@ export default {
     titleAccent: 'مشروعك.',
     description: 'اترك لنا معلومات مختصرة أو راسلنا مباشرة عبر البريد.',
     directLabel: 'راسلنا مباشرة',
-    locationLabel: 'الموقع',
-    location: 'إسطنبول، تركيا',
     formStep: 'البريد',
     formHeading: 'معلومات المشروع',
     fields: {
@@ -266,9 +262,7 @@ export default {
       ctaText: 'نقدم الدعم في التصميم والتطوير معًا.',
     },
     about: {
-      description: 'استوديو لتطوير البرمجيات والألعاب مقره إسطنبول.',
-      factLocation: 'الموقع',
-      factLocationValue: 'إسطنبول',
+      description: 'استوديو لتطوير البرمجيات والألعاب.',
       factAreas: 'المجالات',
       factAreasValue: 'ويب · هاتف · ألعاب',
       ctaTitle: 'اتصل بنا',

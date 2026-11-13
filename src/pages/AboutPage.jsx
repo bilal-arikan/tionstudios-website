@@ -13,7 +13,6 @@ export function AboutPage({ t, locale }) {
         accent={t('about.titleAccent')}
         description={t('pages.about.description')}
         facts={[
-          { label: t('pages.about.factLocation'), value: t('pages.about.factLocationValue') },
           { label: t('pages.about.factAreas'), value: t('pages.about.factAreasValue') },
         ]}
       />

@@ -13,7 +13,7 @@ export default {
   meta: {
     home: {
       title: 'Tionport — Estudio de Producto Digital y Software',
-      description: 'Tionport es un estudio de desarrollo web, móvil y de videojuegos con sede en Estambul.',
+      description: 'Tionport es un estudio de desarrollo web, móvil y de videojuegos.',
     },
     services: {
       title: 'Servicios — Tionport',
@@ -25,7 +25,7 @@ export default {
     },
     about: {
       title: 'Nosotros — Tionport',
-      description: 'Estudio de desarrollo de software y videojuegos con sede en Estambul.',
+      description: 'Estudio de desarrollo de software y videojuegos.',
     },
     contact: {
       title: 'Contacto — Tionport',
@@ -49,7 +49,7 @@ export default {
   },
 
   hero: {
-    eyebrow: 'Tionport · Estambul',
+    eyebrow: 'Tionport',
     titleBefore: 'Desarrollamos web, móvil y',
     titleAccent: 'videojuegos',
     titleAfter: 'a medida.',
@@ -75,7 +75,6 @@ export default {
     shippedCount: 'publicados',
     designCode: 'Diseño + código',
     oneTeam: 'Un solo equipo',
-    location: 'Estambul',
   },
 
   services: {
@@ -143,8 +142,7 @@ export default {
     eyebrow: 'Nosotros',
     titleBefore: 'TION',
     titleAccent: 'Port.',
-    description: 'Somos un estudio de desarrollo de software y videojuegos con sede en Estambul.',
-    location: 'Estambul, Türkiye',
+    description: 'Somos un estudio de desarrollo de software y videojuegos.',
     principles: [
       { title: 'Diseño y desarrollo',    text: 'El diseño y la ingeniería avanzan en un mismo proceso.' },
       { title: 'Base técnica',           text: 'Construimos sistemas que se pueden mantener.' },
@@ -172,8 +170,6 @@ export default {
     titleAccent: 'proyecto.',
     description: 'Déjanos unos datos o escríbenos directamente por correo.',
     directLabel: 'Escríbenos',
-    locationLabel: 'Ubicación',
-    location: 'Estambul, Türkiye',
     formStep: 'CORREO',
     formHeading: 'Datos del proyecto',
     fields: {
@@ -263,9 +259,7 @@ export default {
       ctaText: 'Damos soporte tanto en diseño como en desarrollo.',
     },
     about: {
-      description: 'Estudio de desarrollo de software y videojuegos con sede en Estambul.',
-      factLocation: 'Ubicación',
-      factLocationValue: 'Estambul',
+      description: 'Estudio de desarrollo de software y videojuegos.',
       factAreas: 'Áreas',
       factAreasValue: 'Web · Móvil · Juegos',
       ctaTitle: 'Contacto',

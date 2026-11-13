@@ -14,7 +14,7 @@ export default {
   meta: {
     home: {
       title: 'Tionport — 数字产品与软件工作室',
-      description: 'Tionport 是一家位于伊斯坦布尔的网页、移动与游戏开发工作室。',
+      description: 'Tionport 是一家网页、移动与游戏开发工作室。',
     },
     services: {
       title: '服务 — Tionport',
@@ -26,7 +26,7 @@ export default {
     },
     about: {
       title: '关于我们 — Tionport',
-      description: '位于伊斯坦布尔的软件与游戏开发工作室。',
+      description: '软件与游戏开发工作室。',
     },
     contact: {
       title: '联系我们 — Tionport',
@@ -50,7 +50,7 @@ export default {
   },
 
   hero: {
-    eyebrow: 'Tionport · 伊斯坦布尔',
+    eyebrow: 'Tionport',
     titleBefore: '我们开发网页、移动与',
     titleAccent: '游戏',
     titleAfter: '产品。',
@@ -76,7 +76,6 @@ export default {
     shippedCount: '已上线',
     designCode: '设计 + 开发',
     oneTeam: '同一团队',
-    location: '伊斯坦布尔',
   },
 
   services: {
@@ -144,8 +143,7 @@ export default {
     eyebrow: '关于我们',
     titleBefore: 'TION',
     titleAccent: 'Port.',
-    description: '我们是一家位于伊斯坦布尔的软件与游戏开发工作室。',
-    location: '土耳其，伊斯坦布尔',
+    description: '我们是一家软件与游戏开发工作室。',
     principles: [
       { title: '设计与开发', text: '设计与工程在同一流程中推进。' },
       { title: '技术基础',   text: '我们构建易于长期维护的系统。' },
@@ -173,8 +171,6 @@ export default {
     titleAccent: '您的项目。',
     description: '留下简要信息，或直接发送邮件给我们。',
     directLabel: '直接联系',
-    locationLabel: '所在地',
-    location: '土耳其，伊斯坦布尔',
     formStep: '邮件',
     formHeading: '项目信息',
     fields: {
@@ -264,9 +260,7 @@ export default {
       ctaText: '我们同时提供设计与开发支持。',
     },
     about: {
-      description: '位于伊斯坦布尔的软件与游戏开发工作室。',
-      factLocation: '所在地',
-      factLocationValue: '伊斯坦布尔',
+      description: '软件与游戏开发工作室。',
       factAreas: '业务领域',
       factAreasValue: '网页 · 移动 · 游戏',
       ctaTitle: '联系我们',

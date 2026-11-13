@@ -12,9 +12,6 @@ export function ContactPage({ t, locale }) {
         title={t('contact.titleBefore')}
         accent={t('contact.titleAccent')}
         description="info@tionport.com"
-        facts={[
-          { label: t('pages.about.factLocation'), value: t('contact.location') },
-        ]}
       >
         <a className="button" href="mailto:info@tionport.com">{t('pages.contact.sendEmail')} <Mail size={17} /></a>
       </PageHero>

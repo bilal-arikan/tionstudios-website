@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Mail, MapPin, Send, Sparkles } from 'lucide-react'
+import { Mail, Send, Sparkles } from 'lucide-react'
 import { SplitTitle } from './SplitTitle.jsx'
 import { Reveal } from './Reveal.jsx'
 
@@ -37,10 +37,6 @@ export function Contact({ t, locale }) {
               <span><Mail size={18} /></span>
               <div><small>{t('contact.directLabel')}</small><strong>info@tionport.com</strong></div>
             </a>
-            <div>
-              <span><MapPin size={18} /></span>
-              <div><small>{t('contact.locationLabel')}</small><strong>{t('contact.location')}</strong></div>
-            </div>
           </div>
         </Reveal>
 

@@ -13,7 +13,7 @@ export default {
   meta: {
     home: {
       title: 'Tionport — Digital Product and Software Studio',
-      description: 'Tionport is an Istanbul-based web, mobile and game development studio.',
+      description: 'Tionport is a web, mobile and game development studio.',
     },
     services: {
       title: 'Services — Tionport',
@@ -25,7 +25,7 @@ export default {
     },
     about: {
       title: 'About — Tionport',
-      description: 'An Istanbul-based software and game development studio.',
+      description: 'A software and game development studio.',
     },
     contact: {
       title: 'Contact — Tionport',
@@ -49,7 +49,7 @@ export default {
   },
 
   hero: {
-    eyebrow: 'Tionport · Istanbul',
+    eyebrow: 'Tionport',
     titleBefore: 'We build web, mobile and',
     titleAccent: 'game',
     titleAfter: 'products.',
@@ -75,7 +75,6 @@ export default {
     shippedCount: 'live',
     designCode: 'Design + code',
     oneTeam: 'One team',
-    location: 'Istanbul',
   },
 
   services: {
@@ -143,8 +142,7 @@ export default {
     eyebrow: 'About',
     titleBefore: 'TION',
     titleAccent: 'Port.',
-    description: 'We are an Istanbul-based software and game development studio.',
-    location: 'Istanbul, Türkiye',
+    description: 'We are a software and game development studio.',
     principles: [
       { title: 'Design and development', text: 'Design and engineering run as one process.' },
       { title: 'Technical foundation',   text: 'We build systems that stay maintainable.' },
@@ -172,8 +170,6 @@ export default {
     titleAccent: 'your project.',
     description: 'Leave a few details or email us directly.',
     directLabel: 'Email us',
-    locationLabel: 'Location',
-    location: 'Istanbul, Türkiye',
     formStep: 'EMAIL',
     formHeading: 'Project details',
     fields: {
@@ -263,9 +259,7 @@ export default {
       ctaText: 'We support both design and development.',
     },
     about: {
-      description: 'An Istanbul-based software and game development studio.',
-      factLocation: 'Location',
-      factLocationValue: 'Istanbul',
+      description: 'A software and game development studio.',
       factAreas: 'Areas',
       factAreasValue: 'Web · Mobile · Games',
       ctaTitle: 'Get in touch',

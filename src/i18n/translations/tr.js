@@ -11,7 +11,7 @@ export default {
   meta: {
     home: {
       title: 'Tionport — Dijital Ürün ve Yazılım Stüdyosu',
-      description: 'Tionport, İstanbul merkezli web, mobil ve oyun geliştirme stüdyosudur.',
+      description: 'Tionport, web, mobil ve oyun geliştirme stüdyosudur.',
     },
     services: {
       title: 'Hizmetler — Tionport',
@@ -23,7 +23,7 @@ export default {
     },
     about: {
       title: 'Hakkımızda — Tionport',
-      description: 'İstanbul merkezli yazılım ve oyun geliştirme stüdyosu.',
+      description: 'Yazılım ve oyun geliştirme stüdyosu.',
     },
     contact: {
       title: 'İletişim — Tionport',
@@ -47,7 +47,7 @@ export default {
   },
 
   hero: {
-    eyebrow: 'Tionport · İstanbul',
+    eyebrow: 'Tionport',
     titleBefore: 'Web, mobil ve',
     titleAccent: 'oyun',
     titleAfter: 'geliştiriyoruz.',
@@ -73,7 +73,6 @@ export default {
     shippedCount: 'yayında',
     designCode: 'Tasarım + kod',
     oneTeam: 'Tek ekip',
-    location: 'İstanbul',
   },
 
   services: {
@@ -141,8 +140,7 @@ export default {
     eyebrow: 'Hakkımızda',
     titleBefore: 'TION',
     titleAccent: 'Port.',
-    description: 'İstanbul merkezli yazılım ve oyun geliştirme stüdyosuyuz.',
-    location: 'İstanbul, Türkiye',
+    description: 'Yazılım ve oyun geliştirme stüdyosuyuz.',
     principles: [
       { title: 'Tasarım ve geliştirme', text: 'Tasarım ve yazılım aynı süreçte yürütülür.' },
       { title: 'Teknik yapı',           text: 'Bakımı yapılabilir sistemler geliştiririz.' },
@@ -170,8 +168,6 @@ export default {
     titleAccent: 'bize yazın.',
     description: 'Kısa bir bilgi bırakın veya doğrudan e-posta gönderin.',
     directLabel: 'Doğrudan yazın',
-    locationLabel: 'Konum',
-    location: 'İstanbul, Türkiye',
     formStep: 'E-POSTA',
     formHeading: 'Proje bilgileri',
     fields: {
@@ -249,9 +245,7 @@ export default {
       ctaText: 'Tasarım ve geliştirme desteği veriyoruz.',
     },
     about: {
-      description: 'İstanbul merkezli yazılım ve oyun geliştirme stüdyosu.',
-      factLocation: 'Konum',
-      factLocationValue: 'İstanbul',
+      description: 'Yazılım ve oyun geliştirme stüdyosu.',
       factAreas: 'Alanlar',
       factAreasValue: 'Web · Mobil · Oyun',
       ctaTitle: 'İletişim',
