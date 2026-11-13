@@ -26,7 +26,7 @@ HTML kaynaklarında tanımlıdır; otomatik `.env` domain ayarı yoktur.
 npm run check
 ```
 
-Bu komut ESLint, galaksi ve temiz sayfa üretimi testleri, derleme ve 30 yerelleştirilmiş sayfanın
+Bu komut ESLint, galaksi ve temiz sayfa üretimi testleri, derleme ve 114 dil/yol sayfasının
 React çıktısı/metadata/yerel bağlantı/görsel/yasal belge/site haritası denetimini
 çalıştırır. WebGL, klavye ve mobil menü için tarayıcı kontrolü ayrıca gerekir.
 Mevcut büyük Three.js paket uyarısı derlemeyi engellemez.
@@ -37,14 +37,24 @@ Mevcut büyük Three.js paket uyarısı derlemeyi engellemez.
 | --- | --- | --- |
 | Ana sayfa | `/` | `/en/` |
 | Hizmetler | `/hizmetler/` | `/en/services/` |
-| Oyunlar | `/oyunlar/` | `/en/games/` |
+| Ana sayfa oyun bölümü | `/#projeler` | `/en/#projeler` |
+| Ürün tanıtımı | `/products/{id}/` | `/en/products/{id}/` |
+| Oyun tanıtımı | `/oyunlar/{slug}/` | `/en/games/{slug}/` |
+| Real Driver | `/oyunlar/real-driver/` | `/en/games/real-driver/` |
 | Hakkımızda | `/hakkimizda/` | `/en/about/` |
 | İletişim | `/iletisim/` | `/en/contact/` |
 
 İspanyolca, Arapça, Rusça ve Çince yollar `src/i18n/locales.js` içindedir.
-Toplam 30 dil/sayfa HTML girişi, ortak iki İngilizce yasal sayfa ve 32 URL'lik
+Toplam 114 dil/sayfa HTML girişi, ortak iki İngilizce yasal sayfa ve 116 URL'lik
 site haritası vardır. Arapça RTL kullanır; bulunmayan yollar Caddy'de HTTP 404
 verir. `/privacy-policy.html`, `/terms-of-services.html` ve `/app-ads.txt` korunur.
+
+Ana sayfada hizmetler bölümü yerine web projelerinin kartları
+bulunur; yedi oyunun tamamı aynı sayfada gösterilir. Ayrı Games kataloğu
+kaldırılmıştır; menüdeki Product bağlantısı ana sayfanın ürün bölümüne gider.
+Detay sayfalarındaki geri bağlantılar ve eski altı Games adresi de aynı ürün
+bölümüne yönlendirilir. Eski Games adresleri HTML yönlendirmesi yapar
+ve site haritasına dahil edilmez. Her ürün ve oyunun ayrı tanıtım sayfası vardır.
 
 Bu depo mobil uygulama kaynağı içermez. `src/data/games.js` portföy verisidir:
 Real Driver için iOS/Android mağaza bağlantıları vardır; diğer kartlardaki arşiv
@@ -57,13 +67,13 @@ mağaza uygulamalarının güncel erişilebilirliği sınanmadı.
 | --- | --- |
 | `src/` | React uygulaması; `pages/` sayfalar, `components/` ortak bölümler, `styles/` stiller |
 | `src/i18n/`, `src/data/` | Dil/yol kayıtları, çeviriler ve portföy verileri |
-| `templates/` | Beş sayfanın Türkçe HTML şablonu, iki yasal giriş ve 404 girişi |
+| `templates/` | Altı sayfanın HTML şablonu, iki yasal giriş ve 404 girişi |
 | `public/` | Olduğu gibi yayımlanan görsel, ikon, reklam ve yasal belge kaynakları |
 | `scripts/` | Sayfa/görsel üretimi, doğrulama ve Windows yayın araçları |
 | `tests/` | Galaksi ve sayfa üretimi testleri |
 | `deploy/` | Caddy, sunucu yayın betikleri ve [yayın kılavuzu](deploy/YAYIN.md) |
 | `.github/workflows/` | CI doğrulaması ve indirilebilir `dist` paketi |
-| `.generated/` | Vite'ın kullandığı 33 HTML girişi ve site haritası; otomatik, Git dışında |
+| `.generated/` | Vite'ın kullandığı 123 HTML girişi (114 sayfa, 3 sabit giriş, 6 yönlendirme) ve site haritası; otomatik, Git dışında |
 | `dist/` | Yayımlanacak üretim çıktısı; otomatik, Git dışında |
 
 `npm run dev` ve `npm run build`, önce `templates/` ile `src/i18n/` kaynaklarından
@@ -91,3 +101,48 @@ Tion Studios bağlantıları kullanıcı tercihiyle korunur.
 Kod, yorumlar ve yeni kaynak metinler İngilizce, belgeler Türkçe yazılır.
 Mevcut altı dilin çeviri içerikleri korunur. Yerel `.claude/launch.json` Git'e
 girmez. Çalışma alanı ve dashboard: [üst kılavuz](../README.md).
+
+## Real Driver tanıtım sayfası
+
+Ana sayfa, dilin oyun yolu altındaki `real-driver/` sayfasına
+bağlanır. Yeni kampanya içeriği İngilizcedir (`lang="en"`, `dir="ltr"`);
+üst menü, alt bilgi ve dil seçici mevcut yerelleştirmeyi korur. Altı dilin
+sayfa yolları, canonical ve site haritası otomatik üretilir.
+
+Sayfa bileşenleri `src/components/real-driver/`, sayfa girişi
+`src/pages/RealDriverPage.jsx`, stilleri `src/styles/real-driver*.css` altındadır.
+Sürüş modları, galeri ve platform ayarları `src/data/realDriver.js` içindedir.
+Steam sayfası açıldığında bu dosyadaki `steamUrl: null` resmi mağaza adresiyle
+değiştirilir; bekleme kartı otomatik olarak bağlantıya dönüşür. Çıkış tarihi
+veya henüz kullanılabilir bir Steam sürümü iddia edilmez.
+
+YouTube fragmanı (`wSkLt35uevA`) yalnız oynatma düğmesine basıldığında
+`youtube-nocookie.com` üzerinden yüklenir. Gömme erişimi engellenirse doğrudan
+YouTube bağlantısı kullanılabilir. Altı sürüş modu klavyeyle seçilebilir;
+galeri yerel `dialog` ile açılır, Escape ile kapanır ve ok tuşlarıyla gezilir.
+Görsel kaynakları: [Real Driver görselleri](public/images/real-driver/README.md).
+
+## Ürün ve oyun tanıtımları
+
+Ürün açıklamaları, özellikler ve resmi bağlantılar `src/data/projects.js`
+dosyasında; mevcut oyun verisi `src/data/games.js`, yeni İngilizce oyun tanıtım
+metinleri `src/data/gameDetails.js` dosyasındadır. Mevcut Türkçe oyun verileri
+korunur. Yeni ürünler mevcut veri listesine eklendiğinde ayrı sayfa kaydı
+`src/data/detailPages.js` üzerinden üretilir.
+
+Ortak tanıtım bileşenleri `src/components/detail/`, sayfa girişi
+`src/pages/DetailPage.jsx`, stiller `src/styles/details.css` ve HTML şablonu
+`templates/detail.html` altındadır. Tanıtım içeriği İngilizce ve LTR;
+menü, alt bilgi ve dil seçici mevcut altı dili korur. Dil seçimi aynı ürün veya
+oyunun karşılık gelen adresini açar. Real Driver kendi kampanya sayfasını korur.
+
+Ürün metinleri 9 Ekim 2026 tarihinde görünen resmi ana sayfa içeriklerinden
+hazırlanmıştır: [TionAds](https://tionads.com/), [Solsty](https://solsty.net/en/),
+[Namesight](https://namesight.app/en), [Duomsy](https://duomsy.com/),
+[TevApp](https://tevapp.com/) ve [Farkındayım](https://farkindayim.tr/en).
+Bu kaynak incelemesi uygulama işlevlerinin veya hesapların sınanması değildir.
+
+17 Ekim 2026 tarihinde [Bedenden Beyne](https://www.bedendenbeyne.com/) ve
+[Afyon Cimnastik](https://afyoncimnastik.com/site/) resmi ana sayfaları incelenerek
+iki ürün eklendi. Afyon Cimnastik'in veli ve eğitmen portalları ayrı
+bağlantılardır; hesap oturumu veya işlem testi yapılmadı.
