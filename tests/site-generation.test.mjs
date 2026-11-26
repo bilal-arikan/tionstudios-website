@@ -33,15 +33,15 @@ test('a source-only checkout regenerates pages without changing templates or ret
 
     const output = join(workspace, '.generated')
     const first = snapshot(output)
-    assert.equal(Object.keys(first).filter((file) => file.endsWith('.html')).length, 123)
+    assert.equal(Object.keys(first).filter((file) => file.endsWith('.html')).length, 111)
     for (const file of ['index.html', 'en/services/index.html', 'ar/alaab/index.html', 'zh/lianxi/index.html',
       'oyunlar/real-driver/index.html', 'en/games/real-driver/index.html', 'ar/alaab/real-driver/index.html',
       'products/tionads/index.html', 'en/products/tevapp/index.html', 'ar/products/farkindayim/index.html',
-      'products/bedendenbeyne/index.html', 'en/products/afyoncimnastik/index.html',
       'oyunlar/sea-treasure/index.html', 'en/games/war-train/index.html', 'ar/alaab/platforms/index.html',
       '404.html', 'privacy-policy.html', 'terms-of-services.html', 'sitemap.xml']) {
       assert.ok(existsSync(join(output, file)), `Missing generated endpoint: ${file}`)
     }
+    assert.ok(!existsSync(join(output, 'products/bedendenbeyne/index.html')), 'Removed products must not be generated')
     assert.ok(readFileSync(join(output, 'en/games/index.html'), 'utf8').includes('0;url=/en/#projects'))
     assert.ok(!readFileSync(join(output, 'sitemap.xml'), 'utf8').includes('<loc>https://tionport.com/en/games/</loc>'))
     for (const page of ['product-tionads', 'game-war-train']) {

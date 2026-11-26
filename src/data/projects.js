@@ -77,30 +77,4 @@ export const productProjects = [
       { label: 'Website', url: 'https://farkindayim.tr' },
     ],
   },
-  {
-    id: 'bedendenbeyne',
-    title: 'Bedenden Beyne',
-    tagline: 'Sensory engagement and movement.',
-    description: 'Bedenden Beyne presents personalized, non-medical development programs that combine sensory engagement and physical activities.',
-    features: ['Personalized development programs', 'Sensory and movement-based activities', 'Family guidance and support'],
-    monogram: 'BB',
-    accent: 'lime',
-    links: [
-      { label: 'Website', url: 'https://bedendenbeyne.com' },
-    ],
-  },
-  {
-    id: 'afyoncimnastik',
-    title: 'Afyon Cimnastik',
-    tagline: 'Stay connected to your child’s progress.',
-    description: 'Afyon Cimnastik brings attendance, payments, development reports and centre announcements together for families.',
-    features: ['Attendance tracking and notifications', 'Instalment, payment and receipt tracking', 'Development reports and instructor notes'],
-    monogram: 'AC',
-    accent: 'violet',
-    links: [
-      { label: 'Website', url: 'https://afyoncimnastik.com' },
-      { label: 'Parent portal', url: 'https://veli.afyoncimnastik.com' },
-      { label: 'Instructor portal', url: 'https://egitmen.afyoncimnastik.com' },
-    ],
-  },
 ]

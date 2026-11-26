@@ -26,7 +26,7 @@ HTML kaynaklarında tanımlıdır; otomatik `.env` domain ayarı yoktur.
 npm run check
 ```
 
-Bu komut ESLint, galaksi ve temiz sayfa üretimi testleri, derleme ve 114 dil/yol sayfasının
+Bu komut ESLint, galaksi ve temiz sayfa üretimi testleri, derleme ve 102 dil/yol sayfasının
 React çıktısı/metadata/yerel bağlantı/görsel/yasal belge/site haritası denetimini
 çalıştırır. WebGL, klavye ve mobil menü için tarayıcı kontrolü ayrıca gerekir.
 Mevcut büyük Three.js paket uyarısı derlemeyi engellemez.
@@ -45,7 +45,7 @@ Mevcut büyük Three.js paket uyarısı derlemeyi engellemez.
 | İletişim | `/iletisim/` | `/en/contact/` |
 
 İspanyolca, Arapça, Rusça ve Çince yollar `src/i18n/locales.js` içindedir.
-Toplam 114 dil/sayfa HTML girişi, ortak iki İngilizce yasal sayfa ve 116 URL'lik
+Toplam 102 dil/sayfa HTML girişi, ortak iki İngilizce yasal sayfa ve 104 URL'lik
 site haritası vardır. Arapça RTL kullanır; bulunmayan yollar Caddy'de HTTP 404
 verir. `/privacy-policy.html`, `/terms-of-services.html` ve `/app-ads.txt` korunur.
 
@@ -73,7 +73,7 @@ mağaza uygulamalarının güncel erişilebilirliği sınanmadı.
 | `tests/` | Galaksi ve sayfa üretimi testleri |
 | `deploy/` | Caddy, sunucu yayın betikleri ve [yayın kılavuzu](deploy/YAYIN.md) |
 | `.github/workflows/` | CI doğrulaması ve indirilebilir `dist` paketi |
-| `.generated/` | Vite'ın kullandığı 123 HTML girişi (114 sayfa, 3 sabit giriş, 6 yönlendirme) ve site haritası; otomatik, Git dışında |
+| `.generated/` | Vite'ın kullandığı 111 HTML girişi (102 sayfa, 3 sabit giriş, 6 yönlendirme) ve site haritası; otomatik, Git dışında |
 | `dist/` | Yayımlanacak üretim çıktısı; otomatik, Git dışında |
 
 `npm run dev` ve `npm run build`, önce `templates/` ile `src/i18n/` kaynaklarından
@@ -142,7 +142,6 @@ hazırlanmıştır: [TionAds](https://tionads.com/), [Solsty](https://solsty.net
 [TevApp](https://tevapp.com/) ve [Farkındayım](https://farkindayim.tr/en).
 Bu kaynak incelemesi uygulama işlevlerinin veya hesapların sınanması değildir.
 
-17 Ekim 2026 tarihinde [Bedenden Beyne](https://www.bedendenbeyne.com/) ve
-[Afyon Cimnastik](https://afyoncimnastik.com/site/) resmi ana sayfaları incelenerek
-iki ürün eklendi. Afyon Cimnastik'in veli ve eğitmen portalları ayrı
-bağlantılardır; hesap oturumu veya işlem testi yapılmadı.
+Bedenden Beyne ve Afyon Cimnastik 17 Ekim 2026'da eklenmiş, 25 Kasım 2026'da
+kullanıcı isteğiyle Tionport'tan kaldırılıp bilalarikan.com portfolyosuna taşınmıştır.
+Eski `/products/bedendenbeyne/` ve `/products/afyoncimnastik/` adresleri artık 404 verir.
