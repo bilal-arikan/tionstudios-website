@@ -65,16 +65,4 @@ export const productProjects = [
       { label: 'Web app', url: 'https://app.tevapp.com' },
     ],
   },
-  {
-    id: 'farkindayim',
-    title: 'Farkındayım',
-    tagline: 'Art for a shared cause.',
-    description: 'Farkındayım brings artists together to create works whose rights and revenues support social causes.',
-    features: ['Collaborative artistic projects', 'Directing proceeds to a project’s stated cause', 'Artist, project and backstage showcases'],
-    monogram: 'F',
-    accent: 'cyan',
-    links: [
-      { label: 'Website', url: 'https://farkindayim.tr' },
-    ],
-  },
 ]
